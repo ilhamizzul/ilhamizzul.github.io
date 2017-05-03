@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="assets/css/ekko-lightbox.css">
+	
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/ekko-lightbox.js"></script>
+    
     
 </head>
 
@@ -55,7 +60,7 @@
             <div class="row">
                 <div class="col-md-4 item"><i class="glyphicon glyphicon-camera"></i>
                     <h2>photograph </h2>
-                    <p>I love to take a photo. especially about nature, social interest etc. i think i am still not expert so i am still gonna train and train my photograph's skill more. </p>
+                    <p>I love to take a photo. especially about nature, social interest etc. i think i am still not an expert, so i am still learn about my photograph's skill more. </p>
                 </div>
                 <div class="col-md-4 item"><i class="glyphicon glyphicon-picture"></i>
                     <h2>Design </h2>
@@ -63,7 +68,7 @@
                 </div>
                 <div class="col-md-4 item"><i class="fa fa-file-code-o"></i>
                     <h2>Front End Web Designer</h2>
-                    <p>tidak hanya design dan photograph saya juga memiliki hobby coding sehingga saya juga mendalami membuat tampilan web design</p>
+                    <p>not only design and photograph but also i interested in front end web coding.</p>
                 </div>
             </div>
             <img src="assets/img/round 1.png" class="round">
@@ -71,28 +76,216 @@
     </div>
     <div class="container site-section" id="portofolio">
         <h1>My Workshop</h1>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="assets/img/3.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/3.JPG"></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="assets/img/4.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/4.JPG"></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="assets/img/6.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/6.JPG"></a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <a href="assets/img/16.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/16.jpg"></a>
-                </div>
-            </div>
+		<div style="padding-bottom:48px">
+		<div class="btn-group" role="group">
+			  <button type="button" class="btn btn-default" onclick="showA();">Photography</button>
+			  <button type="button" class="btn btn-default" onclick="showB();">Design</button>
+			  <button type="button" class="btn btn-default" onclick="showC();">Programming</button>
         </div>
+		</div>
+        <div id="kontenA" style="display:block;">
+            <div id="page1" style="display:block;">
+        		<div class="row">
+                <!-- Baris satu -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/3Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/3.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/4Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/4.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/6Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/6.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/16Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/16.jpg"></a>
+                        </div>
+                    </div>
+                <!-- Baris dua -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/2Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/2.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/5Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/5.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/9Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/9.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/11Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/11.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page2" style="display:none;">
+                <div class="row">
+                <!-- Baris tiga -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/21Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/21.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/25Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/25.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/28Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/28.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/29Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/29.jpg"></a>
+                        </div>
+                    </div>
+                <!-- Baris empat -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/15Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/15.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/31Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/31.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/33Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/33.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/32Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/32.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page3" style="display:none;">
+                <div class="row">
+                <!-- Baris lima -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/7Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/7.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/22Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/22.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/24Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/24.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/37Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/37.jpg"></a>
+                        </div>
+                    </div>
+                <!-- Baris enam -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/66Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/66.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/70Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/70.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/83Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/83.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/95Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/95.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page4" style="display:none;">
+                <div class="row">
+                <!-- Baris tujuh -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/81Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/81.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/82Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/82.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/90Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/90.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/93Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/93.jpg"></a>
+                        </div>
+                    </div>
+                <!-- Baris delapan -->
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/10Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/10.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/13Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/13.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/12Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/12.JPG"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <a href="assets/img/photography/compressed/18Com.JPG" data-toggle="lightbox" data-gallery="photo" data-type="image"><img class="img-responsive img-fluid" src="assets/img/photography/original/18.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="pagination">
+                <li><button class="btn btn-default" onclick="showPage1()">1</button></li>
+                <li><button class="btn btn-default" onclick="showPage2()">2</button></li>
+                <li><button class="btn btn-default" onclick="showPage3()">3</button></li>
+                <li><button class="btn btn-default" onclick="showPage4()">4</button></li>
+            </ul>
+		</div>
+		
+		<div id="kontenB" style="display:none">
+			<!-- Ijul, Jangan lupa di isi untuk konten B Nya -->
+		</div>
+		
+		<div id="kontenC" style="display:none">
+			<!-- Ijul, Jangan lupa di isi untuk konten C Nya -->
+		</div>
         <img src="assets/img/round 3.png" class="round">
     </div>
     <footer id="contact">
@@ -128,11 +321,64 @@
             event.preventDefault();
             $(this).ekkoLightbox();
         });
+		    var kontenA = document.getElementById('kontenA');
+			var kontenB = document.getElementById('kontenB');
+			var kontenC = document.getElementById('kontenC');
+
+            var page1 = document.getElementById('page1');
+            var page2 = document.getElementById('page2');
+            var page3 = document.getElementById('page3');
+            var page4 = document.getElementById('page4');
+
+			
+		function showA(){
+			hideAll();
+			kontenA.style.display = "block";
+		}
+		
+		function showB(){
+			hideAll();
+			kontenB.style.display = "block";
+		}
+		
+		function showC(){
+			hideAll();
+			kontenC.style.display = "block";
+		}
+		
+		function hideAll(){
+			kontenA.style.display = "none";
+			kontenB.style.display = "none";
+			kontenC.style.display = "none";
+		}
+
+        function showPage1(){
+            hideAllPage();
+            page1.style.display = "block";
+        }
+        
+        function showPage2(){
+            hideAllPage();
+            page2.style.display = "block";
+        }
+
+        function showPage3(){
+            hideAllPage();
+            page3.style.display = "block";
+        }
+
+        function showPage4(){
+            hideAllPage();
+            page4.style.display = "block";
+        }
+
+        function hideAllPage(){
+            page1.style.display = "none";
+            page2.style.display = "none";
+            page3.style.display = "none";
+            page4.style.display = "none";
+        }
     </script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/ekko-lightbox.js"></script>
-    
 </body>
 
 </html>
