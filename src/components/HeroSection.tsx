@@ -10,7 +10,16 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-slate-900/80"></div>
       <div className="container relative z-10 mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
-        <div className="flex-1 text-center lg:text-left">
+        <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+          <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-blue-400 overflow-hidden shadow-xl shadow-blue-900/40 bg-blue-100 dark:bg-blue-900">
+            <img 
+              src="/lovable-uploads/7e1e47c2-bb14-4557-b0a1-a1c102f40d05.png" 
+              alt="Ilham Izzul Hadyan" 
+              className="w-full h-full object-cover" 
+            />
+          </div>
+        </div>
+        <div className="flex-1 text-center lg:text-left order-1 lg:order-2">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
               Ilham Izzul Hadyan
@@ -32,15 +41,6 @@ const HeroSection = () => {
                 Download Resume
               </a>
             </Button>
-          </div>
-        </div>
-        <div className="flex-1 flex justify-center lg:justify-end">
-          <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-blue-400 overflow-hidden shadow-xl shadow-blue-900/40 bg-blue-100 dark:bg-blue-900">
-            <img 
-              src="/lovable-uploads/7e1e47c2-bb14-4557-b0a1-a1c102f40d05.png" 
-              alt="Ilham Izzul Hadyan" 
-              className="w-full h-full object-cover" 
-            />
           </div>
         </div>
       </div>
