@@ -5,33 +5,32 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 
 const SkillsSection = () => {
   const qaTools = [
-    { name: "Selenium", level: "Expert", description: "Automation testing framework for web applications" },
-    { name: "Postman", level: "Expert", description: "API testing and development tool" },
+    { name: "Selenium", level: "Advanced", description: "Automation testing framework for web applications" },
+    { name: "Postman", level: "Advanced", description: "API testing and development tool" },
     { name: "Katalon", level: "Advanced", description: "Integrated test automation platform" },
-    { name: "Rest Assured", level: "Advanced", description: "Java library for REST API testing" },
-    { name: "JMeter", level: "Intermediate", description: "Performance and load testing tool" },
+    { name: "Rest Assured", level: "Intermediate", description: "Java library for REST API testing" },
+    { name: "JMeter", level: "Basic", description: "Performance and load testing tool" },
     { name: "Cucumber", level: "Advanced", description: "BDD automation framework" },
     { name: "TestNG", level: "Advanced", description: "Testing framework for Java" },
-    { name: "JUnit", level: "Advanced", description: "Unit testing framework for Java" },
-    { name: "Jenkins", level: "Intermediate", description: "CI/CD automation server" },
+    { name: "Github Actions", level: "Intermediate", description: "CI/CD automation server" },
   ];
 
   const programmingSkills = [
     { name: "Java", level: "Advanced", description: "Primary language for automation frameworks" },
-    { name: "JavaScript", level: "Advanced", description: "Web development and testing" },
+    { name: "JavaScript", level: "Advanced", description: "Web development" },
     { name: "SQL", level: "Advanced", description: "Database querying and testing" },
     { name: "HTML/CSS", level: "Intermediate", description: "Web development fundamentals" },
-    { name: "Python", level: "Intermediate", description: "Scripting and automation" },
+    { name: "ASP.NET", level: "Intermediate", description: "Creating API and website pages" },
     { name: "Git", level: "Advanced", description: "Version control system" },
   ];
 
   const methodologies = [
-    { name: "BDD", level: "Expert", description: "Behavior-Driven Development" },
-    { name: "POM", level: "Expert", description: "Page Object Model design pattern" },
-    { name: "Agile/Scrum", level: "Expert", description: "Iterative development methodology" },
+    { name: "BDD", level: "Advanced", description: "Behavior-Driven Development" },
+    { name: "POM", level: "Advanced", description: "Page Object Model design pattern" },
+    { name: "Agile/Scrum", level: "Advanced", description: "Iterative development methodology" },
     { name: "CI/CD", level: "Advanced", description: "Continuous Integration and Deployment" },
-    { name: "Test Planning", level: "Expert", description: "Test strategy development" },
-    { name: "Defect Management", level: "Expert", description: "Bug tracking and resolution" },
+    { name: "Test Planning", level: "Intermediate", description: "Test strategy development" },
+    { name: "Defect Management", level: "Intermediate", description: "Bug tracking and resolution" },
   ];
 
   const getLevelColor = (level: string) => {
@@ -43,7 +42,7 @@ const SkillsSection = () => {
       case "Intermediate":
         return "bg-sky-500 dark:bg-sky-600";
       default:
-        return "bg-slate-500";
+        return "bg-sky-400";
     }
   };
 

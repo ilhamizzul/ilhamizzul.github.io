@@ -35,7 +35,7 @@ const AboutSection = () => {
               creating efficient, scalable solutions.
             </p>
             <p className="text-lg mb-6 text-slate-700 dark:text-slate-300">
-              At Pupuk Indonesia, I developed automation dashboards and comprehensive QA systems 
+              At Pupuk Indonesia, I developed dashboard analytics for management user, and comprehensive QA systems 
               that significantly improved testing efficiency. I'm passionate about implementing 
               best practices in software testing and continuously expanding my technical knowledge.
             </p>

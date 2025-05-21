@@ -20,7 +20,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md py-4 border-b border-slate-200 dark:border-slate-800">
       <div className="container flex items-center justify-between">
         <a href="#" className="text-xl font-bold text-blue-600 dark:text-blue-400">
-          Ilham Izzul
+          Ilham Izzul Hadyan
         </a>
 
         {!isMobile ? (

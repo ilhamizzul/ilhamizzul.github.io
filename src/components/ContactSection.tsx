@@ -21,7 +21,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2">Email</h4>
-                  <p className="text-slate-600 dark:text-slate-300">contact@ilhamizzul.com</p>
+                  <p className="text-slate-600 dark:text-slate-300">ilhamizzul@gmail.com</p>
                 </div>
                 
                 <div>
@@ -59,7 +59,7 @@ const ContactSection = () => {
                   </svg>
                 </a>
                 <a 
-                  href="mailto:contact@ilhamizzul.com" 
+                  href="mailto:ilhamizzul@gmail.com" 
                   className="p-3 bg-slate-200 dark:bg-slate-700 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
                   aria-label="Email"
                 >

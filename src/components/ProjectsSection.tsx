@@ -31,13 +31,13 @@ const ProjectsSection = () => {
       bgColor: "bg-gradient-to-br from-blue-700/20 to-indigo-500/20"
     },
     {
-      title: "Performance Monitoring Dashboard",
-      description: "Designed and developed a real-time performance monitoring dashboard to track application metrics and identify bottlenecks.",
-      tools: ["JMeter", "Grafana", "InfluxDB", "JavaScript"],
+      title: "Subsidized Fertilizer Stock Dashboard",
+      description: "Built a visual dashboard for subsidized fertilizer stock at kiosks using Vue.js and integrated data from Rekan Kios to support Distribution Planning & Control System (DPCS).",
+      tools: ["SQL", "Vue.js", "API", "Dashboard"],
       achievements: [
-        "Reduced system downtime by 35%",
-        "Improved response time analysis",
-        "Created customizable alert system"
+        "Integrated cross-team data via API",
+        "Designed and implemented real-time stock visualization dashboard",
+        "Improved transparency and efficiency in fertilizer distribution"
       ],
       link: "#",
       bgColor: "bg-gradient-to-br from-cyan-600/20 to-blue-500/20"

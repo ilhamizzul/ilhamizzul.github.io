@@ -4,40 +4,42 @@ import { Badge } from "@/components/ui/badge";
 const ExperienceSection = () => {
   const experiences = [
     {
-      role: "Senior QA Automation Engineer",
+      role: "Software Engineer",
       company: "Pupuk Indonesia",
-      period: "Jan 2022 - Present",
+      period: "Sep 2022 - Present",
       description: "Leading the QA automation initiatives and establishing testing frameworks for critical business applications.",
       responsibilities: [
-        "Designed and implemented comprehensive test automation frameworks using Selenium and Java",
-        "Developed automation dashboards for real-time monitoring of test execution and defect trends",
-        "Mentored junior QA engineers and established best practices for the team"
+        "Design and implement a real-time dashboard to monitor subsidized fertilizer stock across multiple regions, enhancing data transparency and enabling faster decision-making for >5 distribution managers",
+        "Engineer a web-based analytical dashboard to provide insights into logistics and distribution performance, supporting cross-functional teams with actionable KPIs",
+        "Deliver backend APIs and UI components for internal tools used in logistics and distribution planning, contributing to the successful rollout of cross-departmental reporting features",
+        "Collaborate with stakeholders to develop custom dashboard features that aligned with business needs, improving the clarity of operational reports and accelerating review cycles"
       ],
-      technologies: ["Selenium", "Java", "TestNG", "Jenkins", "Postman", "REST Assured"]
+      technologies: ["Javascript", "SQL", "ASP.NET", "Next.JS", "Git", "MVC"]
     },
     {
-      role: "QA Automation Engineer",
-      company: "Tech Innovations",
-      period: "Mar 2020 - Dec 2021",
-      description: "Responsible for designing and implementing test automation solutions for web and mobile applications.",
+      role: "QA Engineer",
+      company: "Pupuk Indonesia",
+      period: "Dec 2023 - Mar 2025",
+      description: "Responsible for designing and implementing test solutions for web and mobile applications.",
       responsibilities: [
-        "Created and maintained automated test scripts using Selenium WebDriver and Java",
-        "Performed API testing using Postman and integrated with Newman for CI/CD",
-        "Collaborated with development teams to ensure quality throughout the SDLC"
+        "Revamp the QA documentation structure and reporting format, improving test traceability and audit readiness by 60% across multiple projects",
+        "Implement test automation using Katalon Studio and Postman for Android and API endpoints, increasing test coverage by 40% and reducing regression testing time by 30%",
+        "Proactively explored and applied automation strategies, improving test efficiency and contributing to consistent delivery cycles across development teams"
       ],
-      technologies: ["Selenium", "Java", "Cucumber", "BDD", "Postman", "Git"]
+      technologies: ["Katalon", "Postman", "Git", "API Testing"]
     },
     {
-      role: "Junior QA Engineer",
+      role: "Quality Assurance Intern",
       company: "Software Solutions Inc.",
-      period: "Jun 2019 - Feb 2020",
-      description: "Started career in software testing with focus on manual testing and basic automation tasks.",
+      period: "Feb 2022 - Jul 2022",
+      description: "Started career in software testing as intern with focus on manual testing.",
       responsibilities: [
-        "Executed manual test cases and documented defects",
-        "Assisted in test plan creation and test case development",
-        "Learned and implemented basic automation scripts"
+        "Performed detailed manual testing across various modules to validate system functionality and uncover defects, contributing to stable product releases",
+        "Enhanced the structure and clarity of test report documentation, improving communication of test outcomes to development and stakeholder teams",
+        "Executed end-to-end regression testing cycles to ensure system integrity after updates and deployments",
+        "Assessed product quality by aligning testing processes with both client requirements and established industry standards, supporting overall project success"
       ],
-      technologies: ["Manual Testing", "JIRA", "SQL", "Basic Selenium"]
+      technologies: ["Manual Testing", "Mobile Testing", "End-to-end Testing"]
     }
   ];
 
