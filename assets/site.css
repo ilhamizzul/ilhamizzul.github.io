@@ -1,0 +1,8 @@
+html{background:var(--bg);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.if-light,.if-dark{display:inline-flex}
+html.t-dark .if-light{display:none}
+html.t-light .if-dark{display:none}
+[hidden]{display:none !important}
+section[id]{scroll-margin-top:84px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--azure);outline-offset:3px;border-radius:10px}

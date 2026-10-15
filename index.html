@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en" class="t-light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ilham Izzul Hadyan — Engineer × Data × QA</title>
+<meta name="description" content="Portfolio of Ilham Izzul Hadyan, a fullstack .NET engineer who builds supply-chain systems, reads the data they produce, and tests them like a QA.">
+<meta name="author" content="Ilham Izzul Hadyan">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ilham Izzul Hadyan — Engineer × Data × QA">
+<meta property="og:description" content="Portfolio of Ilham Izzul Hadyan, a fullstack .NET engineer who builds supply-chain systems, reads the data they produce, and tests them like a QA.">
+<meta property="og:url" content="https://ilhamizzul.github.io/">
+<meta property="og:image" content="https://ilhamizzul.github.io/assets/logo-ih.png">
+<meta name="theme-color" content="#0A1FB0">
+<link rel="icon" type="image/png" href="assets/logo-ih.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.className='t-'+t}catch(e){}})();</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--dot:rgba(10,31,176,.13);--panel:#0A1FB0;--panel-ink:#FFFFFF;--panel-muted:#C9D4FF}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--dot:rgba(120,150,255,.18);--panel:#101C66;--panel-ink:#FFFFFF;--panel-muted:#BCC8FF}
+a{color:var(--royal)}a:hover{color:var(--violet)}
+.nav-links{display:flex}
+.menu-btn{display:none}
+@media (max-width: 760px){
+.nav-links{display:none}.menu-btn{display:inline-flex}.hide-sm{display:none !important}
+.brand-name{font-size:15px !important}
+.hero-viz{height:230px !important;padding-left:30px !important;padding-right:24px !important;gap:8px !important}
+.slab-in{padding:14px 8px 14px 18px !important;gap:6px !important}
+.slab-title{font-size:15px !important}
+.slab-meta{display:none !important}
+.deco{display:none !important}
+.hero-meta{gap:6px 16px !important}
+}
+@media (max-width: 360px){.brand-name{display:none}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<div style="background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.6">
+
+<header style="position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line)">
+<nav aria-label="Primary" style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink)">
+<img src="assets/logo-ih.png" alt="IH logo" style="height: 30px; width: auto">
+<span class="brand-name" style="font-weight: 700; font-size: 17px; letter-spacing: -0.01em">Ilham Izzul Hadyan</span>
+</a>
+<div style="display: flex; align-items: center; gap: 8px">
+<div class="nav-links" style="align-items: center; gap: 4px">
+<a href="#work" style="padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px">Work</a>
+<a href="#skills" style="padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px">Skills</a>
+<a href="#experience" style="padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px">Experience</a>
+<a href="#about" style="padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px">About</a>
+</div>
+<button type="button" aria-label="Toggle color theme" data-action="theme" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer">
+<span class="if-light">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</span>
+<span class="if-dark">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+</span>
+</button>
+<a class="hide-sm" href="#contact" style="padding: 11px 18px; border-radius: 12px; background: var(--btn); color: var(--btn-ink); text-decoration: none; font-weight: 600; font-size: 15px">Let’s talk</a>
+<button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" data-action="menu" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); align-items: center; justify-content: center; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</nav>
+<div class="menu-panel" data-menu hidden>
+<div style="padding: 8px 20px 20px; display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line)">
+<a href="#work" data-action="menu" style="padding: 12px 4px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 18px">Work</a>
+<a href="#skills" data-action="menu" style="padding: 12px 4px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 18px">Skills</a>
+<a href="#experience" data-action="menu" style="padding: 12px 4px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 18px">Experience</a>
+<a href="#about" data-action="menu" style="padding: 12px 4px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 18px">About</a>
+<a href="#contact" data-action="menu" style="margin-top: 8px; padding: 14px 18px; border-radius: 12px; background: var(--btn); color: var(--btn-ink); text-decoration: none; font-weight: 600; text-align: center">Let’s talk</a>
+</div>
+</div>
+</header>
+
+<main id="top">
+
+<section aria-labelledby="hero-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 112px) clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(48px, 6vw, 72px); align-items: center">
+<div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+<div style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: var(--chip); color: var(--chip-ink); font-size: 14px; font-weight: 600">
+<span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--azure)"></span>
+Open to collaborations &amp; remote roles
+</div>
+<h1 id="hero-title" style="margin: 0; font-size: clamp(46px, 7vw, 92px); line-height: 1; letter-spacing: -0.035em; font-weight: 800">Engineer <span style="color: var(--violet)">×</span> Data <span style="color: var(--violet)">×</span> QA</h1>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); max-width: 34em">I’m Izzul — a fullstack .NET engineer who builds supply-chain systems end to end, reads the data they produce, and tests them as if they’re about to break.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#work" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border-radius: 14px; background: var(--btn); color: var(--btn-ink); text-decoration: none; font-weight: 600">See selected work
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+<a href="#cv" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>
+Download CV</a>
+</div>
+<div class="hero-meta" style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">
+<span>4+ yrs · C# / .NET</span>
+<span>Scrum · ClickUp</span>
+<span>Jakarta · UTC+7</span>
+</div>
+</div>
+
+<div class="hero-viz" role="img" aria-label="Three slanted panels: Engineer, Data and QA" style="display: flex; align-items: flex-end; gap: clamp(10px, 1.6vw, 18px); height: clamp(320px, 34vw, 440px); padding-left: 40px; min-width: 0">
+<div style="flex: 1; min-width: 0; height: 74%; transform: skewX(-18deg); border-radius: 22px; background: #0A22B8; color: #FFFFFF; display: flex; align-items: flex-end; overflow: hidden">
+<div class="slab-in" style="transform: skewX(18deg); padding: 22px 22px 22px 34px; display: flex; flex-direction: column; gap: 10px">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"></path></svg>
+<div class="slab-title" style="font-weight: 700; font-size: clamp(16px, 1.5vw, 20px)">Engineer</div>
+<div class="slab-meta" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF; line-height: 1.5">C# · ASP.NET<br>Blazor · EF Core</div>
+</div>
+</div>
+<div style="flex: 1; min-width: 0; height: 88%; transform: skewX(-18deg); border-radius: 22px; background: #0659D6; color: #FFFFFF; display: flex; align-items: flex-end; overflow: hidden">
+<div class="slab-in" style="transform: skewX(18deg); padding: 22px 22px 22px 34px; display: flex; flex-direction: column; gap: 10px">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>
+<div class="slab-title" style="font-weight: 700; font-size: clamp(16px, 1.5vw, 20px)">Data</div>
+<div class="slab-meta" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #D6E6FF; line-height: 1.5">SQL Server<br>Snowflake</div>
+</div>
+</div>
+<div style="flex: 1; min-width: 0; height: 100%; transform: skewX(-18deg); border-radius: 22px; background: #4B2BFF; color: #FFFFFF; display: flex; align-items: flex-end; overflow: hidden">
+<div class="slab-in" style="transform: skewX(18deg); padding: 22px 22px 22px 34px; display: flex; flex-direction: column; gap: 10px">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+<div class="slab-title" style="font-weight: 700; font-size: clamp(16px, 1.5vw, 20px)">QA</div>
+<div class="slab-meta" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #E2DCFF; line-height: 1.5">Test plans<br>Regression · UAT</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="work" aria-labelledby="work-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">01 — SELECTED WORK</span>
+<h2 id="work-title" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800">Systems built for the field</h2>
+</div>
+<p style="margin: 0; max-width: 30em; color: var(--muted); font-size: 15px">Ordered by impact. Enterprise work is shown as anonymized snapshots — illustrative visuals, no production data.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px">
+
+<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div role="img" aria-label="Illustration: a list of delivery assignments, each with a warehouse, a truck and a status" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 36px 24px 16px">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><div style="height: 7px; width: 70%; border-radius: 4px; background: var(--line)"></div><div style="height: 6px; width: 45%; border-radius: 4px; background: var(--line)"></div></div>
+<span style="padding: 3px 8px; border-radius: 6px; background: var(--chip); color: var(--chip-ink); font-size: 11px; font-weight: 600">Assigned</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><div style="height: 7px; width: 60%; border-radius: 4px; background: var(--line)"></div><div style="height: 6px; width: 50%; border-radius: 4px; background: var(--line)"></div></div>
+<span style="padding: 3px 8px; border-radius: 6px; background: var(--royal); color: #FFFFFF; font-size: 11px; font-weight: 600">Dispatched</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><div style="height: 7px; width: 75%; border-radius: 4px; background: var(--line)"></div><div style="height: 6px; width: 35%; border-radius: 4px; background: var(--line)"></div></div>
+<span style="padding: 3px 8px; border-radius: 6px; background: var(--violet); color: #FFFFFF; font-size: 11px; font-weight: 600">Delivered</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Enterprise · Logistics</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500">2026</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">iDelivery — Delivery Assignment</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Built from a blank page on a tight deadline — business process, data design, rules and API — for subsidized-fertilizer delivery. Live in 5 provinces, with 300+ deliveries and 2,500+ tons in its first 3 weeks.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">.NET 10</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Clean Architecture</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">EF Core</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
+</div>
+<a href="idelivery.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; font-weight: 700; text-decoration: none; font-size: 15px">Read case study
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</article>
+
+<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div role="img" aria-label="Illustration: relative map spend before and after, down 84 percent" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; justify-content: center; gap: 40px; padding: 40px 24px 18px">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">RELATIVE SPEND</span>
+<div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px">
+<div style="width: 64px; height: 100%; border-radius: 10px 10px 4px 4px; background: var(--line)"></div>
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">Before</span>
+</div>
+<div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px">
+<span style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; color: var(--violet)">−84%</span>
+<div style="width: 64px; height: 16%; border-radius: 10px 10px 4px 4px; background: var(--royal)"></div>
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">After</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Cost saving</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--chip); color: var(--chip-ink); font-size: 13px; font-weight: 600">Truck Tracking</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500">2024–2026 · 2 iterations</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Route API Cost Efficiency</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Cut the monthly Google Maps bill by 84% — from about Rp10M to Rp1.6M — by asking for each route once and remembering it.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">ASP.NET Core</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">JavaScript</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Google Maps</span>
+</div>
+<a href="route-api-cost-efficiency.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; font-weight: 700; text-decoration: none; font-size: 15px">Read case study
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</article>
+
+<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div role="img" aria-label="Illustration: a start zone and a finish zone, with a tap outside the zone refused" style="position: relative; height: 200px; border-radius: 16px; background-color: var(--surface-2); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; overflow: hidden">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
+<div style="position: absolute; left: 22%; top: 56%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; border: 2px solid var(--royal); background: rgba(26, 68, 224, 0.10)"></div>
+<div style="position: absolute; left: 22%; top: 56%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--royal)"></div>
+<div style="position: absolute; left: 66%; top: 56%; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%; border: 2px dashed var(--azure); background: rgba(10, 120, 230, 0.08)"></div>
+<div style="position: absolute; left: 66%; top: 56%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--azure)"></div>
+<div style="position: absolute; left: 40%; top: 20%; width: 14px; height: 14px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 6px rgba(75, 43, 255, 0.18)"></div>
+<div style="position: absolute; left: calc(40% + 22px); top: calc(20% - 4px); padding: 3px 8px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); font-size: 11px; font-weight: 600; color: var(--violet)">Can’t start here</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Anti-fraud</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--chip); color: var(--chip-ink); font-size: 13px; font-weight: 600">Truck Tracking</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500">2024–2025</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Field Anti-Fraud Geofencing</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Trips used to start and finish from anywhere — even another island. Now they only count inside a zone at the warehouse and the destination, sized per location by central staff.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">C#</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">ASP.NET Core</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
+</div>
+<a href="geofencing.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; font-weight: 700; text-decoration: none; font-size: 15px">Read case study
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</article>
+
+<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div role="img" aria-label="Illustration: an abstract bar chart without values" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; gap: 10px; padding: 44px 28px 24px">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
+<div style="flex: 1; height: 38%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
+<div style="flex: 1; height: 62%; border-radius: 6px 6px 2px 2px; background: var(--royal)"></div>
+<div style="flex: 1; height: 48%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
+<div style="flex: 1; height: 80%; border-radius: 6px 6px 2px 2px; background: var(--royal)"></div>
+<div style="flex: 1; height: 70%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
+<div style="flex: 1; height: 100%; border-radius: 6px 6px 2px 2px; background: var(--violet)"></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Enterprise · Analytics</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500">2023–now</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Supply Chain Analytics</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">12+ dashboards from plant warehouse to kiosk — jetties, ships, trucks, warehouses and kiosks — used by around 8 teams, and still growing.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Snowflake</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Data reconciliation</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">RBAC</span>
+</div>
+<a href="supply-chain-analytics.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; font-weight: 700; text-decoration: none; font-size: 15px">Read case study
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</article>
+
+<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div role="img" aria-label="Illustration: goods moving from warehouse to distributor to retailer, each hand-off a QR scan" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; gap: 0; padding: 0 28px">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
+<div style="width: 56px; height: 56px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--royal); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v10H3z"></path><path d="M8 20v-6h8v6"></path></svg>
+</div>
+<div style="flex: 1; border-top: 2px dashed var(--azure); position: relative; min-width: 24px"></div>
+<div style="width: 56px; height: 56px; border-radius: 14px; background: var(--royal); color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6"></rect><rect x="14" y="4" width="6" height="6"></rect><rect x="4" y="14" width="6" height="6"></rect><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"></path></svg>
+</div>
+<div style="flex: 1; border-top: 2px dashed var(--azure); min-width: 24px"></div>
+<div style="width: 56px; height: 56px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--royal); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l1-5h14l1 5M4 9v11h16V9M4 9h16"></path><path d="M10 20v-5h4v5"></path></svg>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Enterprise · Distribution</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500">2023–2024</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">QR-Based Distribution Tracking</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Traceability from warehouse to retailer. Every hand-off is a scan, and every scan is an auditable event.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">.NET</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">REST API</span>
+</div>
+</article>
+
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px; padding-top: 8px">
+<div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+<h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.015em">Side projects</h3>
+<span style="color: var(--muted); font-size: 15px">Built for fun, outside work.</span>
+</div>
+<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px 28px; align-items: center">
+<div role="img" aria-label="Illustration: a budget app card with category progress bars" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">KANTONG</span>
+<div style="width: 210px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; color: var(--muted)">This month</div>
+<div style="font-weight: 800; font-size: 20px; letter-spacing: -0.01em">Rp ••••••</div>
+<div style="display: flex; flex-direction: column; gap: 7px">
+<div style="height: 7px; border-radius: 4px; background: var(--chip)"><div style="width: 72%; height: 7px; border-radius: 4px; background: var(--royal)"></div></div>
+<div style="height: 7px; border-radius: 4px; background: var(--chip)"><div style="width: 45%; height: 7px; border-radius: 4px; background: var(--azure)"></div></div>
+<div style="height: 7px; border-radius: 4px; background: var(--chip)"><div style="width: 88%; height: 7px; border-radius: 4px; background: var(--violet)"></div></div>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Side project · Just for fun</span>
+<span style="padding: 5px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 500">2026</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Kantong — Budget Tracker</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">A personal budget tracker I vibe-coded for fun — TypeScript end to end, with Vitest keeping the money math honest.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">TypeScript</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Vitest</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Vibe coding</span>
+</div>
+<a href="https://github.com/ilhamizzul" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; font-weight: 700; text-decoration: none; font-size: 15px">View on GitHub
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+</a>
+</div>
+</article>
+</div>
+</section>
+
+<section id="skills" aria-labelledby="skills-title" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">02 — SKILLS</span>
+<h2 id="skills-title" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; max-width: 16em">One engineer, three ways of looking at a system</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px">
+<div style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #0A22B8; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700">Engineer</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Backend services and fullstack features in C#/.NET — APIs, data access, schema migrations, and the UI on top.</p>
+<p style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.8">C# · ASP.NET Core · Blazor · EF Core · REST · Laravel / Filament</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #0659D6; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700">Data</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">From the SQL that answers the question to the dashboard people keep open. Analyst first, so numbers get sanity-checked.</p>
+<p style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.8">SQL Server · Snowflake · Grafana · Data profiling · Reconciliation · Dashboards</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 14px; background: #4B2BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 22px; font-weight: 700">QA</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">A QA background means test cases get written before the bug report does — and releases go out with fewer surprises.</p>
+<p style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.8">Postman · Katalon · Selenium · Appium · JMeter · Qase.io</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="experience" aria-labelledby="exp-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px 64px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">03 — EXPERIENCE</span>
+<h2 id="exp-title" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800">From QA to data to engineering</h2>
+<p style="margin: 0; color: var(--muted)">Four years of .NET, built on top of analysis and testing — and a stint teaching it.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-left: 2px solid var(--line)">
+<li style="position: relative; padding: 0 0 36px 28px">
+<span aria-hidden="true" style="position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--royal); box-shadow: 0 0 0 4px var(--bg)"></span>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">Sep 2022 — Present</div>
+<h3 style="margin: 4px 0 2px; font-size: 20px; font-weight: 700">Fullstack .NET Software Engineer</h3>
+<div style="font-weight: 600; color: var(--royal)">Pupuk Indonesia · Supply Chain Digitalization</div>
+<p style="margin: 8px 0 0; color: var(--muted); font-size: 15px">Backend APIs, monitoring dashboards and field-facing apps for national fertilizer distribution — including geofencing anti-fraud, iDelivery, and an 84% cut in Google Maps API costs.</p>
+</li>
+<li style="position: relative; padding: 0 0 36px 28px">
+<span aria-hidden="true" style="position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 4px var(--bg)"></span>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">Dec 2023 — Feb 2025</div>
+<h3 style="margin: 4px 0 2px; font-size: 20px; font-weight: 700">Software Quality Assurance Initiative</h3>
+<div style="font-weight: 600; color: var(--royal)">Pupuk Indonesia · alongside the engineering role</div>
+<p style="margin: 8px 0 0; color: var(--muted); font-size: 15px">Led automated API testing with Postman, wrote bug and test reports in Qase.io across multiple apps, and mentored 2 QA interns.</p>
+</li>
+<li style="position: relative; padding: 0 0 36px 28px">
+<span aria-hidden="true" style="position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 4px var(--bg)"></span>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">Feb 2022 — Jul 2022</div>
+<h3 style="margin: 4px 0 2px; font-size: 20px; font-weight: 700">Quality Assurance Intern</h3>
+<div style="font-weight: 600; color: var(--royal)">Mitra Integrasi Informatika</div>
+<p style="margin: 8px 0 0; color: var(--muted); font-size: 15px">Manual and regression testing to catch defects before release; reworked the team’s test report format.</p>
+</li>
+<li style="position: relative; padding: 0 0 36px 28px">
+<span aria-hidden="true" style="position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--azure); box-shadow: 0 0 0 4px var(--bg)"></span>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">Jul 2021 — Nov 2021</div>
+<h3 style="margin: 4px 0 2px; font-size: 20px; font-weight: 700">Junior Data Analyst</h3>
+<div style="font-weight: 600; color: var(--royal)">Telkom Indonesia</div>
+<p style="margin: 8px 0 0; color: var(--muted); font-size: 15px">Extracted, processed and visualized database metrics for management, and sped up reporting with SQL Server and Grafana.</p>
+</li>
+<li style="position: relative; padding: 0 0 0 28px">
+<span aria-hidden="true" style="position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); box-sizing: border-box"></span>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">Feb 2018 — Dec 2022 · Education</div>
+<h3 style="margin: 4px 0 2px; font-size: 20px; font-weight: 700">Informatics Engineering</h3>
+<div style="font-weight: 600; color: var(--royal)">Telkom University · GPA 3.89 / 4.00</div>
+<p style="margin: 8px 0 0; color: var(--muted); font-size: 15px">Lab &amp; practicum assistant and lecturer assistant for software construction. Thesis on continuous code quality in Scrum teams.</p>
+</li>
+</ol>
+</section>
+
+<section id="about" aria-labelledby="about-title" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px)">
+<div style="border-radius: 24px; border: 1px solid var(--line); background: var(--surface); padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 32px 56px">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">04 — ABOUT</span>
+<h2 id="about-title" style="margin: 0; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">I kept all three hats on</h2>
+<p style="margin: 0; color: var(--muted)">I started on the QA side, moved through data analysis, and landed in backend engineering — without dropping the first two. Assisting lectures and lab practicums at university — and a thesis on continuous code quality in Scrum teams — left me with a habit of writing docs as if someone will learn from them. I work in Scrum and like small, shippable increments.</p>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 20px; align-content: start">
+<div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">BASED IN</dt><dd style="margin: 6px 0 0; font-weight: 700">Jakarta · UTC+7</dd></div>
+<div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">LANGUAGES</dt><dd style="margin: 6px 0 0; font-weight: 700">Indonesian, English</dd></div>
+<div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">OPEN TO</dt><dd style="margin: 6px 0 0; font-weight: 700">Remote roles, freelance, collaborations</dd></div>
+<div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">WAY OF WORKING</dt><dd style="margin: 6px 0 0; font-weight: 700">Scrum, test-minded, documented</dd></div>
+</dl>
+</div>
+</section>
+
+<section id="contact" aria-labelledby="contact-title" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px)">
+<div style="position: relative; overflow: hidden; border-radius: 28px; background: var(--panel); color: var(--panel-ink); padding: clamp(32px, 6vw, 72px); display: flex; flex-direction: column; gap: 24px">
+<div class="deco" aria-hidden="true" style="position: absolute; right: -40px; top: -60px; width: 220px; height: 420px; transform: skewX(-18deg); border-radius: 28px; background: rgba(255, 255, 255, 0.06)"></div>
+<div class="deco" aria-hidden="true" style="position: absolute; right: 160px; top: 80px; width: 120px; height: 360px; transform: skewX(-18deg); border-radius: 24px; background: rgba(120, 100, 255, 0.35)"></div>
+<span style="position: relative; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--panel-muted); letter-spacing: 0.04em">05 — CONTACT</span>
+<h2 id="contact-title" style="position: relative; margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; max-width: 13em">Have something to build, measure, or test?</h2>
+<p style="position: relative; margin: 0; color: var(--panel-muted); font-size: 18px; max-width: 32em">Open to remote roles, freelance projects and collaborations. Tell me what you’re working on.</p>
+<div style="position: relative; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a href="mailto:ilhamizzul@gmail.com" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 14px; background: #FFFFFF; color: #0A1A8C; text-decoration: none; font-weight: 700">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+ilhamizzul@gmail.com</a>
+<a href="https://www.linkedin.com/in/ilham-izzul-hadyan/" style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 22px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, 0.4); color: #FFFFFF; text-decoration: none; font-weight: 600">LinkedIn
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+</a>
+<a href="https://github.com/ilhamizzul" style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 22px; border-radius: 14px; border: 1.5px solid rgba(255, 255, 255, 0.4); color: #FFFFFF; text-decoration: none; font-weight: 600">GitHub
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px clamp(20px, 5vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted)">
+<div style="display: flex; align-items: center; gap: 10px">
+<img src="assets/logo-ih.png" alt="" style="height: 20px; width: auto">
+<span>© 2026 Ilham Izzul Hadyan</span>
+</div>
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px">Engineer × Data × QA</span>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

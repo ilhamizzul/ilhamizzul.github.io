@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" class="t-light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iDelivery — Ilham Izzul Hadyan</title>
+<meta name="description" content="Case study: building a subsidized-fertilizer delivery platform from a blank page — live in 5 provinces within weeks.">
+<meta name="author" content="Ilham Izzul Hadyan">
+<meta property="og:type" content="website">
+<meta property="og:title" content="iDelivery — Ilham Izzul Hadyan">
+<meta property="og:description" content="Case study: building a subsidized-fertilizer delivery platform from a blank page — live in 5 provinces within weeks.">
+<meta property="og:url" content="https://ilhamizzul.github.io/idelivery.html">
+<meta property="og:image" content="https://ilhamizzul.github.io/assets/logo-ih.png">
+<meta name="theme-color" content="#0A1FB0">
+<link rel="icon" type="image/png" href="assets/logo-ih.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.className='t-'+t}catch(e){}})();</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--dot:rgba(10,31,176,.13)}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--dot:rgba(120,150,255,.18)}
+a{color:var(--royal)}a:hover{color:var(--violet)}
+@media (max-width: 760px){
+.flow{flex-direction:column !important;align-items:stretch !important}
+.flow > div{flex:0 0 auto !important}
+.flow-arrow{transform:rotate(90deg);align-self:center}
+.layer-row{flex-direction:column !important;align-items:flex-start !important;gap:2px !important}
+}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<div style="background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.65">
+
+<header style="position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line)">
+<nav aria-label="Case study" style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 0; text-decoration: none; color: var(--ink); font-weight: 600">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+All work</a>
+<img src="assets/logo-ih.png" alt="IH logo" style="height: 28px; width: auto">
+<button type="button" aria-label="Toggle color theme" data-action="theme" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer">
+<span class="if-light">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</span>
+<span class="if-dark">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+</span>
+</button>
+</nav>
+</header>
+
+<main>
+
+<section aria-labelledby="cs-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 40px) 40px; display: flex; flex-direction: column; gap: 24px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">CASE STUDY · ENTERPRISE · LOGISTICS</span>
+<h1 id="cs-title" style="margin: 0; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; max-width: 12em">iDelivery — Delivery Assignment</h1>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">The platform behind subsidized-fertilizer delivery assignments — tracking every shipment from the producer’s warehouse to the drop point, live in five provinces within weeks of launch.</p>
+<dl style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">YEAR</dt><dd style="margin: 6px 0 0; font-weight: 700">2026</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MY ROLE</dt><dd style="margin: 6px 0 0; font-weight: 700">Business process, data design, rules, API, rollout</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STACK</dt><dd style="margin: 6px 0 0; font-weight: 700">.NET 10 · EF Core · SQL Server</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">ARCHITECTURE</dt><dd style="margin: 6px 0 0; font-weight: 700">Clean Architecture · JWT roles</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">ROLLOUT</dt><dd style="margin: 6px 0 0; font-weight: 700">On site · Pangkal Pinang, Bangka</dd></div>
+</dl>
+</section>
+
+<section aria-label="Illustration" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)">
+<div role="img" aria-label="Delivery flow: assignment, warehouse pickup, delivery and receipt, with point-of-sale and warehouse inventory integrations" style="position: relative; border-radius: 24px; border: 1px solid var(--line); background-color: var(--surface-2); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 20px 20px; padding: 60px clamp(20px, 3vw, 40px) 36px; display: flex; flex-direction: column; gap: 28px">
+<span style="position: absolute; top: 18px; left: 20px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE FLOW</span>
+<div class="flow" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">STEP 1</div><div style="font-weight: 700">Assignment</div></div>
+<svg class="flow-arrow" width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h18M14 4l6 6-6 6"></path></svg>
+<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: #0A22B8; color: #FFFFFF; text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #C9D4FF">STEP 2</div><div style="font-weight: 700">Warehouse pickup</div></div>
+<svg class="flow-arrow" width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h18M14 4l6 6-6 6"></path></svg>
+<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: #0659D6; color: #FFFFFF; text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #D6E6FF">STEP 3</div><div style="font-weight: 700">Delivery</div></div>
+<svg class="flow-arrow" width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h18M14 4l6 6-6 6"></path></svg>
+<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: #4B2BFF; color: #FFFFFF; text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #E2DCFF">STEP 4</div><div style="font-weight: 700">Drop point</div></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SYNCED WITH</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600">Point of sale</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600">Warehouse inventory</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="ctx-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px 64px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">01 — CONTEXT</span>
+<h2 id="ctx-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Accountable all the way to the drop point</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; color: var(--muted)">
+<p style="margin: 0">Under Presidential Regulation No. 6/2025 on subsidized fertilizer governance — and its implementing Ministry of Agriculture Regulation No. 15/2025 — Pupuk Indonesia carries full responsibility for subsidized fertilizer until it reaches the drop point: farmer groups, retailers and cooperatives.</p>
+<p style="margin: 0">Fertilizer gets there in one of two ways: through appointed distribution partners, or directly from producer to drop point under a sale-and-purchase agreement. Either way, every shipment has to be accounted for.</p>
+<p style="margin: 0; color: var(--ink); font-weight: 600">iDelivery is the web platform distribution partners use to assign deliveries and follow each shipment’s status — from the producer’s warehouse to the drop point.</p>
+</div>
+</section>
+
+<section aria-labelledby="role-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px 64px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">02 — MY ROLE</span>
+<h2 id="role-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Building a temple overnight</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; color: var(--muted)">
+<p style="margin: 0">In Indonesian folklore, a thousand temples had to rise in a single night. iDelivery felt a little like that: the platform was needed fast, and there was <strong style="color: var(--ink)">no settled business process</strong> yet from stakeholders or users to build it on.</p>
+<p style="margin: 0">So the job went well beyond writing an API. I helped shape the process itself, then turned it into data and rules the system could enforce.</p>
+</div>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px">
+<li style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #0A22B8; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">1</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">Business process</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Mapped how a delivery should move, from assignment to drop point, together with stakeholders — before any of it existed on paper.</p>
+</li>
+<li style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #0659D6; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">2</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">Database design</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Designed the data structure that every shipment, warehouse and partner record lives in.</p>
+</li>
+<li style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: #4B2BFF; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-weight: 800">3</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">Business rules</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Wrote down what is and isn’t allowed at each step, so the system enforces the process instead of trusting it.</p>
+</li>
+<li style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="width: 40px; height: 40px; border-radius: 12px; background: var(--chip); color: var(--chip-ink); display: inline-flex; align-items: center; justify-content: center; font-weight: 800">4</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700">The API</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Built the backend that brings it all together — the part people usually assume is the whole job.</p>
+</li>
+</ol>
+<div style="padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: #0A22B8; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px 48px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">THE CATCH</span>
+<p style="margin: 0; font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; line-height: 1.25">Fast and undefined is a risky combination.</p>
+</div>
+<p style="margin: 0; color: #C9D4FF; font-size: 16px">With subsidized fertilizer on the line, every rule doubled as a safeguard. Risk mitigation had to be strong enough to hold under real deliveries, and accurate enough to match how distribution actually works on the ground.</p>
+</div>
+</section>
+
+<section aria-labelledby="built-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">03 — THE API</span>
+<h2 id="built-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">An API built to change safely</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px">
+<div style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--violet); font-weight: 500">ARCHITECTURE</span><h3 style="margin: 0; font-size: 18px; font-weight: 700">Clean Architecture on .NET 10</h3><p style="margin: 0; color: var(--muted); font-size: 15px">Domain rules sit apart from EF Core and SQL Server, so they can be tested and changed without touching the database layer.</p></div>
+<div style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--violet); font-weight: 500">ACCESS</span><h3 style="margin: 0; font-size: 18px; font-weight: 700">Role-based JWT</h3><p style="margin: 0; color: var(--muted); font-size: 15px">Each role sees and does only its part of the pickup and delivery flow.</p></div>
+<div style="padding: 24px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--violet); font-weight: 500">INTEGRATION</span><h3 style="margin: 0; font-size: 18px; font-weight: 700">PoS &amp; warehouse inventory</h3><p style="margin: 0; color: var(--muted); font-size: 15px">Deliveries stay consistent with sales and stock records instead of living in a separate silo.</p></div>
+</div>
+</section>
+
+<section aria-labelledby="arch-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">04 — ARCHITECTURE</span>
+<h2 id="arch-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Layers, from the request inward</h2>
+</div>
+<div role="img" aria-label="Clean Architecture layers: API, Application, Domain, and Infrastructure with EF Core and SQL Server, connected to point of sale and warehouse inventory" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; padding: clamp(20px, 3vw, 32px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="padding: 16px 20px; border-radius: 14px; background: var(--surface-2); display: flex; justify-content: space-between; gap: 12px" class="layer-row"><span style="font-weight: 700">API</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">endpoints · JWT roles</span></div>
+<div style="padding: 16px 20px; border-radius: 14px; background: #0A22B8; color: #FFFFFF; display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 700">Application</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">use cases</span></div>
+<div style="padding: 16px 20px; border-radius: 14px; background: #4B2BFF; color: #FFFFFF; display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 700">Domain</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #E2DCFF">delivery rules</span></div>
+<div style="padding: 16px 20px; border-radius: 14px; background: #0659D6; color: #FFFFFF; display: flex; justify-content: space-between; gap: 12px" class="layer-row"><span style="font-weight: 700">Infrastructure</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #D6E6FF">EF Core · SQL Server</span></div>
+</div>
+<div style="display: flex; flex-direction: column; justify-content: center; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">EXTERNAL SYSTEMS</span>
+<div style="display: flex; align-items: center; gap: 12px"><svg width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h20M6 4L2 10l4 6M18 4l4 6-4 6"></path></svg><div style="flex: 1; padding: 16px 20px; border-radius: 14px; border: 1.5px dashed var(--line); font-weight: 700">Point of sale</div></div>
+<div style="display: flex; align-items: center; gap: 12px"><svg width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h20M6 4L2 10l4 6M18 4l4 6-4 6"></path></svg><div style="flex: 1; padding: 16px 20px; border-radius: 14px; border: 1.5px dashed var(--line); font-weight: 700">Warehouse inventory</div></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="roll-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">05 — ROLLOUT &amp; RESULTS</span>
+<h2 id="roll-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Three weeks in, already carrying real tonnage</h2>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column-reverse; gap: 6px"><dt style="font-size: 15px; color: var(--muted)">provinces live at rollout</dt><dd style="margin: 0; font-size: clamp(44px, 5vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--royal)">5</dd></div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column-reverse; gap: 6px"><dt style="font-size: 15px; color: var(--muted)">deliveries in the first 3 weeks</dt><dd style="margin: 0; font-size: clamp(44px, 5vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--royal)">300+</dd></div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column-reverse; gap: 6px"><dt style="font-size: 15px; color: var(--muted)">tons of fertilizer delivered in the first 3 weeks</dt><dd style="margin: 0; font-size: clamp(44px, 5vw, 64px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--violet)">2,500+</dd></div>
+</dl>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">FIELD VISIT</span><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Rolled out on site in Pangkal Pinang, Bangka</div><p style="margin: 0; font-size: 15px; color: #C9D4FF">Seeing the warehouse flow first-hand, with the people who run it.</p></div>
+<div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink); display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">ITERATION</span><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Built from warehouse feedback</div><p style="margin: 0; font-size: 15px">Feature requests from warehouse staff feed straight back into the backlog.</p></div>
+</div>
+</section>
+
+<section aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
+<a href="supply-chain-analytics.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink)">
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">NEXT CASE STUDY</span>
+<span style="font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em">Supply Chain Analytics</span>
+</span>
+<span style="width: 52px; height: 52px; border-radius: 50%; background: var(--btn); color: var(--btn-ink); display: inline-flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</a>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px clamp(20px, 5vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted)">
+<span>© 2026 Ilham Izzul Hadyan</span>
+<a href="mailto:ilhamizzul@gmail.com" style="font-weight: 600; text-decoration: none; padding: 8px 0">ilhamizzul@gmail.com</a>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

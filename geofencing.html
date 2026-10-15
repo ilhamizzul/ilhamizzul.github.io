@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" class="t-light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Anti-Fraud Geofencing — Ilham Izzul Hadyan</title>
+<meta name="description" content="Case study: making the start and finish of every delivery trip count only inside a configurable geofence.">
+<meta name="author" content="Ilham Izzul Hadyan">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Field Anti-Fraud Geofencing — Ilham Izzul Hadyan">
+<meta property="og:description" content="Case study: making the start and finish of every delivery trip count only inside a configurable geofence.">
+<meta property="og:url" content="https://ilhamizzul.github.io/geofencing.html">
+<meta property="og:image" content="https://ilhamizzul.github.io/assets/logo-ih.png">
+<meta name="theme-color" content="#0A1FB0">
+<link rel="icon" type="image/png" href="assets/logo-ih.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.className='t-'+t}catch(e){}})();</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--sea:#D4E1FA;--land:#FBFCFF;--depot:#0A1140;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--sea:#070D2A;--land:#141D47;--depot:#EEF2FF;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF}
+a{color:var(--royal)}a:hover{color:var(--violet)}
+.seg{min-height:44px;padding:8px 16px;border-radius:10px;border:0;background:transparent;color:var(--muted);font:600 14px 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer}
+.seg.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(10,17,64,.14)}
+.mode-before .after-only{display:none}
+.mode-after .before-only{display:none}
+@media (max-width: 760px){
+.geo-map{height:280px !important}
+}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<div style="background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.65">
+
+<header style="position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line)">
+<nav aria-label="Case study" style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 0; text-decoration: none; color: var(--ink); font-weight: 600">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+All work</a>
+<img src="assets/logo-ih.png" alt="IH logo" style="height: 28px; width: auto">
+<button type="button" aria-label="Toggle color theme" data-action="theme" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer">
+<span class="if-light">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</span>
+<span class="if-dark">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+</span>
+</button>
+</nav>
+</header>
+
+<main>
+
+<section aria-labelledby="cs-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 40px) 40px; display: flex; flex-direction: column; gap: 24px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">CASE STUDY · TRUCK TRACKING · ANTI-FRAUD</span>
+<h1 id="cs-title" style="margin: 0; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; max-width: 12em">Field Anti-Fraud Geofencing</h1>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">A delivery trip could be started and finished from anywhere — even from another island. Geofencing made the start line and the finish line mean something again.</p>
+<dl style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">YEAR</dt><dd style="margin: 6px 0 0; font-weight: 700">2024–2025</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MY ROLE</dt><dd style="margin: 6px 0 0; font-weight: 700">Designed and built the geofence check</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SYSTEM</dt><dd style="margin: 6px 0 0; font-weight: 700">Truck Tracking</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">GUARDS</dt><dd style="margin: 6px 0 0; font-weight: 700">Trip start &amp; trip finish</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">RADIUS</dt><dd style="margin: 6px 0 0; font-weight: 700">Set per location by central staff</dd></div>
+</dl>
+</section>
+
+<section aria-label="The problem in one picture" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)">
+<div class="mode-before" data-map style="border-radius: 24px; border: 1px solid var(--line); background: var(--surface); overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 16px clamp(16px, 2.5vw, 22px); border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATION · ONE TRIP IN EAST JAVA</span>
+<span class="before-only" style="font-weight: 700; font-size: 17px">A trip could start and end anywhere</span>
+<span class="after-only" style="font-weight: 700; font-size: 17px; color: var(--royal)">Start and finish only count inside their zones</span>
+</div>
+<div role="group" aria-label="Compare before and after geofencing" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 14px; background: var(--surface-2)">
+<button type="button" class="seg on" data-seg="before" aria-pressed="true" data-action="map-before">Before</button>
+<button type="button" class="seg" data-seg="after" aria-pressed="false" data-action="map-after">With geofencing</button>
+</div>
+</div>
+<svg class="geo-map" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of East Java with a planned trip from a warehouse near Surabaya to a destination near Bondowoso. Before: the trip is started on Madura island and finished far from the destination. With geofencing: the start and finish each have a zone, and taps outside them are refused." style="display: block; width: 100%; height: clamp(300px, 36vw, 440px); background: var(--sea)">
+<g fill="none" stroke-width="1" style="stroke: var(--line)">
+<path d="M0 130 H1000 M0 330 H1000 M200 0 V400 M400 0 V400 M600 0 V400 M800 0 V400"></path>
+</g>
+<g style="fill: var(--land); stroke: var(--line)" stroke-width="2" stroke-linejoin="round">
+<path d="M0 140 C100 132 190 140 240 158 C290 186 330 228 400 246 C480 266 580 276 680 262 C780 248 880 226 1000 218 L1000 400 L0 400 Z"></path>
+<path d="M200 50 C320 32 600 26 820 44 C870 50 884 72 850 88 C740 104 520 112 360 108 C280 106 220 96 210 80 C205 66 196 56 200 50 Z"></path>
+</g>
+<g style="fill: var(--muted)" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="15" font-weight="600">
+<text x="470" y="80">Madura</text>
+<text x="150" y="214">Surabaya</text>
+<text x="520" y="334">Probolinggo</text>
+<text x="748" y="358">Bondowoso</text>
+</g>
+<path d="M275 205 C320 260 380 280 450 288 S600 300 660 296 S720 300 720 320" fill="none" stroke-width="5" stroke-linecap="round" style="stroke: var(--violet)"></path>
+<g class="after-only">
+<circle cx="275" cy="205" r="46" stroke-width="2.5" style="fill: var(--royal); stroke: var(--royal)" fill-opacity="0.12"></circle>
+<circle cx="720" cy="320" r="78" stroke-width="2.5" stroke-dasharray="9 7" style="fill: var(--azure); stroke: var(--azure)" fill-opacity="0.1"></circle>
+</g>
+<g class="before-only" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 8" style="stroke: var(--violet)" stroke-opacity="0.55">
+<path d="M600 74 Q420 118 288 192"></path>
+<path d="M470 368 Q600 384 708 330"></path>
+</g>
+<path transform="translate(275 205)" d="M0 -30 C-11 -30 -18 -21 -18 -13 C-18 -1 0 12 0 12 C0 12 18 -1 18 -13 C18 -21 11 -30 0 -30 Z" style="fill: var(--depot)"></path>
+<circle cx="275" cy="192" r="6" style="fill: var(--land)"></circle>
+<g transform="translate(716 322)">
+<path d="M0 0 V-40" stroke-width="3" stroke-linecap="round" style="stroke: var(--depot)"></path>
+<path d="M0 -40 H24 L18 -32 L24 -24 H0 Z" style="fill: var(--depot)"></path>
+</g>
+<g class="before-only">
+<circle cx="600" cy="70" r="20" style="fill: var(--violet)" fill-opacity="0.18"></circle>
+<circle cx="600" cy="70" r="9" style="fill: var(--violet)"></circle>
+<circle cx="470" cy="372" r="20" style="fill: var(--violet)" fill-opacity="0.18"></circle>
+<circle cx="470" cy="372" r="9" style="fill: var(--violet)"></circle>
+<g font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="15" font-weight="700" style="fill: var(--violet)">
+<text x="622" y="76">“Trip started”</text>
+<text x="300" y="378">“Trip finished”</text>
+</g>
+</g>
+<g class="after-only">
+<g fill="none" stroke-width="3" stroke-linecap="round" style="stroke: var(--muted)">
+<circle cx="600" cy="70" r="12"></circle>
+<path d="M592 62 L608 78 M608 62 L592 78"></path>
+<circle cx="470" cy="372" r="12"></circle>
+<path d="M462 364 L478 380 M478 364 L462 380"></path>
+</g>
+<g font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="15" font-weight="700" style="fill: var(--muted)">
+<text x="622" y="76">Can’t start here</text>
+<text x="330" y="378">Can’t finish here</text>
+</g>
+</g>
+</svg>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 14px clamp(16px, 2.5vw, 22px); border-top: 1px solid var(--line); font-size: 14px">
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 22px; height: 5px; border-radius: 3px; background: var(--violet)"></span>Planned route</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><svg width="14" height="18" viewBox="-18 -30 36 42" aria-hidden="true" style="fill: var(--depot)"><path d="M0 -30 C-11 -30 -18 -21 -18 -13 C-18 -1 0 12 0 12 C0 12 18 -1 18 -13 C18 -21 11 -30 0 -30 Z"></path></svg>Official start (warehouse)</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><svg width="16" height="18" viewBox="-2 -42 28 44" aria-hidden="true"><path d="M0 0 V-40" stroke-width="3" style="stroke: var(--depot)"></path><path d="M0 -40 H24 L18 -32 L24 -24 H0 Z" style="fill: var(--depot)"></path></svg>Official finish</span>
+<span class="before-only" style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: var(--violet)"></span>Where the driver actually tapped</span>
+<span class="after-only" style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--royal); box-sizing: border-box"></span>Geofence zone</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="ctx-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px 64px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">01 — CONTEXT</span>
+<h2 id="ctx-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Every trip has a start line and a finish line</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; color: var(--muted)">
+<p style="margin: 0">This happens inside <strong style="color: var(--ink)">Truck Tracking</strong>, the same system behind the <a href="route-api-cost-efficiency.html" style="font-weight: 600">Route API cost story</a>. Each delivery trip has an official starting point — the warehouse — and an official destination.</p>
+<p style="margin: 0">The driver presses <strong style="color: var(--ink)">start</strong> when the trip begins and <strong style="color: var(--ink)">finish</strong> when it ends. Those two taps are what the rest of the system trusts.</p>
+</div>
+</section>
+
+<section aria-labelledby="gap-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">02 — THE LOOPHOLE</span>
+<h2 id="gap-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Nothing checked where those taps happened</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">START</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Start the trip from anywhere</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">A trip could be started wherever the phone happened to be — far from the warehouse, even on a different island.</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">FINISH</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Finish the trip from anywhere</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">The same at the other end: a delivery could be marked complete without ever reaching its destination.</p>
+</div>
+</div>
+<p style="margin: 0; max-width: 40em; font-size: clamp(18px, 1.8vw, 22px); font-weight: 600; line-height: 1.5">For a dishonest driver, that was an open door. For everyone else, it meant the delivery records couldn’t prove what really happened.</p>
+</section>
+
+<section aria-labelledby="fix-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">03 — THE FIX</span>
+<h2 id="fix-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Put a fence around the start and the finish</h2>
+</div>
+<p style="margin: 0; max-width: 28em; color: var(--muted)">A geofence is an invisible circle around a place. When the driver presses start or finish, the app checks whether they are inside it.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">INSIDE THE ZONE</span>
+<h3 style="margin: 0; font-size: 22px; font-weight: 800">The trip starts — or finishes — as normal</h3>
+<p style="margin: 0; color: #C9D4FF; font-size: 15px">Nothing changes for a driver who is where they should be.</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--violet)">OUTSIDE THE ZONE</span>
+<h3 style="margin: 0; font-size: 22px; font-weight: 800">The tap doesn’t count</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Starting from another town, or finishing short of the destination, is no longer possible.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="radius-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">04 — THE TWIST</span>
+<h2 id="radius-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">One circle size can’t fit every place</h2>
+</div>
+<p style="margin: 0; max-width: 28em; color: var(--muted)">A fixed radius would either let cheaters through or lock honest drivers out. Two things make every location different.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">SIZE</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Places come in different sizes</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">A large start or finish area needs a bigger circle than a compact one, or drivers standing on site would be told they’re outside.</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">SIGNAL</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">Some places barely have signal</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">In rural areas and internet blank spots, a phone’s location is harder to pin down. Those places need extra room.</p>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 20px; align-items: stretch">
+<div role="img" aria-label="Illustration of geofence settings: a compact site with a tight radius, a large area with a wider radius, and a rural weak-signal location with the widest radius" style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MAIN SYSTEM · GEOFENCE SETTINGS · ILLUSTRATION</span>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 16px; background: var(--surface-2)">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex-shrink: 0"><circle cx="36" cy="36" r="14" stroke-width="2.5" style="fill: var(--royal); stroke: var(--royal)" fill-opacity="0.14"></circle><circle cx="36" cy="36" r="4" style="fill: var(--depot)"></circle></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px"><strong>Compact site</strong><div style="height: 8px; border-radius: 4px; background: var(--chip)"><div style="width: 30%; height: 8px; border-radius: 4px; background: var(--royal)"></div></div><span style="font-size: 13px; color: var(--muted)">Tight radius</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 16px; background: var(--surface-2)">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex-shrink: 0"><circle cx="36" cy="36" r="24" stroke-width="2.5" style="fill: var(--royal); stroke: var(--royal)" fill-opacity="0.14"></circle><circle cx="36" cy="36" r="4" style="fill: var(--depot)"></circle></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px"><strong>Large start or finish area</strong><div style="height: 8px; border-radius: 4px; background: var(--chip)"><div style="width: 60%; height: 8px; border-radius: 4px; background: var(--royal)"></div></div><span style="font-size: 13px; color: var(--muted)">Wider radius</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 16px; background: var(--surface-2)">
+<svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true" style="flex-shrink: 0"><circle cx="36" cy="36" r="33" stroke-width="2.5" stroke-dasharray="6 5" style="fill: var(--azure); stroke: var(--azure)" fill-opacity="0.12"></circle><circle cx="36" cy="36" r="4" style="fill: var(--depot)"></circle></svg>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px"><strong>Rural spot, weak signal</strong><div style="height: 8px; border-radius: 4px; background: var(--chip)"><div style="width: 92%; height: 8px; border-radius: 4px; background: var(--azure)"></div></div><span style="font-size: 13px; color: var(--muted)">Extra room</span></div>
+</div>
+</div>
+<div style="padding: clamp(24px, 4vw, 36px); border-radius: 24px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; justify-content: center; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">SO THE RADIUS BECAME A SETTING</span>
+<p style="margin: 0; font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; line-height: 1.25">Central staff set the right radius for each location, straight from the main system.</p>
+<p style="margin: 0; color: #C9D4FF">The fence stays tight where it can and loosens only where the place — or the signal — demands it.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="out-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">05 — OUTCOME</span>
+<h2 id="out-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Start and finish mean something again</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Less room for fraud</div><p style="margin: 8px 0 0; font-size: 15px">Starting from another island, or finishing short of the destination, no longer works.</p></div>
+<div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Delivery data that holds up</div><p style="margin: 8px 0 0; font-size: 15px">Every recorded start and finish is tied to the place it was supposed to happen.</p></div>
+</div>
+</section>
+
+<section aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
+<a href="route-api-cost-efficiency.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink)">
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">NEXT CASE STUDY · SAME SYSTEM</span>
+<span style="font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em">Route API Cost Efficiency</span>
+</span>
+<span style="width: 52px; height: 52px; border-radius: 50%; background: var(--btn); color: var(--btn-ink); display: inline-flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</a>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px clamp(20px, 5vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted)">
+<span>© 2026 Ilham Izzul Hadyan</span>
+<a href="mailto:ilhamizzul@gmail.com" style="font-weight: 600; text-decoration: none; padding: 8px 0">ilhamizzul@gmail.com</a>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

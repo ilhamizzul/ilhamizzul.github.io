@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en" class="t-light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Route API Cost Efficiency — Ilham Izzul Hadyan</title>
+<meta name="description" content="Case study: two fixes that cut a fleet map's monthly Google Maps bill by 84%.">
+<meta name="author" content="Ilham Izzul Hadyan">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Route API Cost Efficiency — Ilham Izzul Hadyan">
+<meta property="og:description" content="Case study: two fixes that cut a fleet map's monthly Google Maps bill by 84%.">
+<meta property="og:url" content="https://ilhamizzul.github.io/route-api-cost-efficiency.html">
+<meta property="og:image" content="https://ilhamizzul.github.io/assets/logo-ih.png">
+<meta name="theme-color" content="#0A1FB0">
+<link rel="icon" type="image/png" href="assets/logo-ih.png">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.className='t-'+t}catch(e){}})();</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--road:#E1E7F7;--sea:#D4E1FA;--land:#FBFCFF;--truck:#1A44E0;--depot:#0A1140;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--road:#26336E;--sea:#070D2A;--land:#141D47;--truck:#6E95FF;--depot:#EEF2FF;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF}
+a{color:var(--royal)}a:hover{color:var(--violet)}
+.only-sm{display:none}
+.seg{min-height:44px;padding:8px 16px;border-radius:10px;border:0;background:transparent;color:var(--muted);font:600 14px 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer}
+.seg.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(10,17,64,.14)}
+.mode-before .after-only{display:none}
+.mode-after .before-only{display:none}
+@media (max-width: 760px){
+.hide-sm{display:none !important}
+.only-sm{display:block}
+.map-svg{height:250px !important}
+.map-chips{position:static !important;padding:12px 14px 16px}
+.fix-grid{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
+}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<div style="background: var(--bg); color: var(--ink); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.65">
+
+<header style="position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line)">
+<nav aria-label="Case study" style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 5vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 0; text-decoration: none; color: var(--ink); font-weight: 600">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+All work</a>
+<img src="assets/logo-ih.png" alt="IH logo" style="height: 28px; width: auto">
+<button type="button" aria-label="Toggle color theme" data-action="theme" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer">
+<span class="if-light">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</span>
+<span class="if-dark">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+</span>
+</button>
+</nav>
+</header>
+
+<main>
+
+<section aria-labelledby="cs-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 40px) 40px; display: flex; flex-direction: column; gap: 24px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">CASE STUDY · COST SAVING · TWO FIXES · 2024–2026</span>
+<h1 id="cs-title" style="margin: 0; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; max-width: 12em">Route API Cost Efficiency</h1>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">A map that follows fertilizer trucks was paying Google for the same road again and again. Two simple fixes taught it to remember — and cut the monthly bill by 84%.</p>
+<dl style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MY ROLE</dt><dd style="margin: 6px 0 0; font-weight: 700">Found the cause, designed and built the fix</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SERVICE</dt><dd style="margin: 6px 0 0; font-weight: 700">Google Maps</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">FIRST FIX · 2024–2025</dt><dd style="margin: 6px 0 0; font-weight: 800; color: var(--violet)">−84% monthly cost</dd></div>
+<div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SECOND FIX · 2026</dt><dd style="margin: 6px 0 0; font-weight: 700">[Result being measured]</dd></div>
+</dl>
+</section>
+
+<section aria-label="The problem in one picture" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)">
+<div style="display: flex; flex-direction: column; gap: 20px">
+
+<div class="mode-before" data-map style="border-radius: 24px; border: 1px solid var(--line); background: var(--surface); overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 16px clamp(16px, 2.5vw, 22px); border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATION · 10 TRUCKS ON JAVA’S NORTH-COAST ROAD</span>
+<span class="before-only" style="font-weight: 700; font-size: 17px">20 paid requests on every update</span>
+<span class="after-only" style="font-weight: 700; font-size: 17px; color: var(--royal)">10 requests once — then nothing until the page reloads</span>
+</div>
+<div role="group" aria-label="Compare before and after the first fix" style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 14px; background: var(--surface-2)">
+<button type="button" class="seg on" data-seg="before" aria-pressed="true" data-action="map-before">Before</button>
+<button type="button" class="seg" data-seg="after" aria-pressed="false" data-action="map-after">After first fix</button>
+</div>
+</div>
+<svg class="map-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of Java. Before: ten trucks on the north-coast road from Jakarta to Surabaya, each adding its own copy of the same route plus a second live route, so the road becomes a thick tangle. After: one clean planned route, with one truck far off course clearly visible." style="display: block; width: 100%; height: clamp(300px, 34vw, 440px); background: var(--sea)">
+<defs>
+<symbol id="trk" viewBox="0 0 26 20"><rect x="1" y="3" width="15" height="12" rx="2"></rect><path d="M16 6h5l4 4v5h-9z"></path><circle cx="6" cy="16.5" r="2.5"></circle><circle cx="20" cy="16.5" r="2.5"></circle></symbol>
+</defs>
+<g fill="none" stroke-width="1" style="stroke: var(--line)">
+<path d="M0 100 H1200 M0 330 H1200 M200 0 V400 M400 0 V400 M600 0 V400 M800 0 V400 M1000 0 V400"></path>
+</g>
+<g style="fill: var(--land); stroke: var(--line)" stroke-width="2" stroke-linejoin="round">
+<path d="M70 190 C95 160 140 150 190 156 C240 162 270 150 320 158 C400 170 450 172 500 182 C580 196 650 186 720 196 C790 206 840 196 900 208 C950 218 990 214 1030 222 C1080 232 1120 236 1140 252 C1158 268 1148 290 1120 292 C1060 296 1010 288 950 292 C880 298 820 300 760 292 C690 284 630 290 560 280 C480 270 420 268 350 258 C280 248 220 246 160 238 C110 232 75 220 70 190 Z"></path>
+<path d="M990 186 C1010 176 1080 174 1110 182 C1122 188 1112 196 1090 197 C1050 199 1010 199 994 195 C986 193 984 189 990 186 Z"></path>
+<path d="M1168 262 C1176 254 1192 254 1200 258 L1200 290 C1186 292 1170 282 1168 262 Z"></path>
+</g>
+<g style="fill: var(--muted)" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="15" font-weight="600">
+<text x="262" y="214">Jakarta</text>
+<text x="470" y="236">Cirebon</text>
+<text x="690" y="246">Semarang</text>
+<text x="975" y="268">Surabaya</text>
+</g>
+<g class="before-only">
+<g fill="none" stroke-width="3" stroke-linecap="round" style="stroke: var(--violet)" stroke-opacity="0.22">
+<path transform="translate(0 -9)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 -6)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 -4)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 -2)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 2)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 4)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 6)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 9)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<path transform="translate(0 12)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+</g>
+<g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="7 7" style="stroke: var(--azure)" stroke-opacity="0.6">
+<path d="M372 178 C520 236 760 250 1020 232"></path>
+<path d="M452 186 C600 150 800 172 1020 230"></path>
+<path d="M572 196 C700 248 880 250 1020 232"></path>
+<path d="M612 263 C740 270 900 262 1020 234"></path>
+<path d="M652 200 C760 164 900 186 1020 228"></path>
+<path d="M792 210 C860 246 960 246 1020 234"></path>
+<path d="M882 216 C930 196 980 204 1020 228"></path>
+</g>
+<text x="520" y="150" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" style="fill: var(--violet)">Same road, drawn again and again</text>
+</g>
+<g class="after-only">
+<path d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230" fill="none" stroke-width="5" stroke-linecap="round" style="stroke: var(--violet)"></path>
+<circle cx="612" cy="256" r="28" style="fill: var(--violet)" fill-opacity="0.16"></circle>
+<text x="560" y="322" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" style="fill: var(--violet)">Off course — easy to spot</text>
+</g>
+<path d="M286 182 L300 160 L314 182 Z" style="fill: var(--depot)"></path>
+<circle cx="1020" cy="230" r="9" style="fill: var(--depot)"></circle>
+<circle cx="1020" cy="230" r="16" fill="none" stroke-width="2" style="stroke: var(--depot)" stroke-opacity="0.4"></circle>
+<g style="fill: var(--truck); stroke: var(--land)" stroke-width="1.5">
+<use href="#trk" x="360" y="160" width="24" height="18"></use>
+<use href="#trk" x="400" y="164" width="24" height="18"></use>
+<use href="#trk" x="440" y="168" width="24" height="18"></use>
+<use href="#trk" x="560" y="178" width="24" height="18"></use>
+<use href="#trk" x="640" y="182" width="24" height="18"></use>
+<use href="#trk" x="780" y="192" width="24" height="18"></use>
+<use href="#trk" x="820" y="194" width="24" height="18"></use>
+<use href="#trk" x="870" y="198" width="24" height="18"></use>
+<use href="#trk" x="930" y="204" width="24" height="18"></use>
+<use href="#trk" x="600" y="247" width="24" height="18"></use>
+</g>
+</svg>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">HOW TO READ THE MAP</span>
+<div style="display: flex; align-items: center; gap: 14px">
+<svg width="30" height="24" viewBox="0 0 26 20" aria-hidden="true" style="fill: var(--truck); flex-shrink: 0"><rect x="1" y="3" width="15" height="12" rx="2"></rect><path d="M16 6h5l4 4v5h-9z"></path><circle cx="6" cy="16.5" r="2.5"></circle><circle cx="20" cy="16.5" r="2.5"></circle></svg>
+<span><strong>A truck on the road.</strong> <span style="color: var(--muted)">Piles mean many trucks share a stretch of road.</span></span>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<svg width="30" height="24" viewBox="0 0 24 24" aria-hidden="true" style="fill: var(--depot); flex-shrink: 0"><path d="M2 11L12 3l10 8v11H2z"></path></svg>
+<span><strong>A warehouse or drop point.</strong> <span style="color: var(--muted)">Where routes start and end.</span></span>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="width: 30px; height: 10px; border-radius: 5px; background: var(--violet); opacity: 0.7; flex-shrink: 0"></span>
+<span><strong>A route line.</strong> <span style="color: var(--muted)">One per truck — so ten trucks on one road means ten lines drawn on top of each other.</span></span>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="width: 30px; height: 0; border-top: 3px dashed var(--azure); flex-shrink: 0"></span>
+<span><strong>A live route.</strong> <span style="color: var(--muted)">From the truck’s current spot to its destination — the second request, bought again every time the truck moves.</span></span>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="width: 30px; flex-shrink: 0"></span>
+<span style="font-size: 14px; color: var(--muted)">Illustration based on the live monitoring map.</span>
+</div>
+</div>
+<div style="padding: 28px; border-radius: 24px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">IN EVERYDAY TERMS</span>
+<p style="margin: 0; font-size: clamp(20px, 2vw, 24px); font-weight: 700; line-height: 1.4">Imagine ten drivers heading to the same shop — and each one buys the same paper map, then buys it again and again along the way.</p>
+<p style="margin: 0; color: #C9D4FF">That is what the page was doing: paying for the same directions over and over, and stacking every copy on the screen.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section aria-labelledby="ctx-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px 64px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">01 — CONTEXT</span>
+<h2 id="ctx-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">A map that never stopped asking</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; color: var(--muted)">
+<p style="margin: 0">An older system follows fertilizer trucks as they travel by road. Its map shows every truck and the route it is driving, and it updates on a regular schedule.</p>
+<p style="margin: 0">To draw each route, the page asked Google Maps for directions — and <strong style="color: var(--ink)">Google charges for every request</strong>. It actually asked <strong style="color: var(--ink)">twice per truck</strong>: once for the planned route from warehouse to destination, and once for a route from wherever the truck was right now to its destination.</p>
+<p style="margin: 0">And it did this for every truck, at every update. Ten trucks on the same road meant twenty requests, and a pile of identical lines drawn on top of each other.</p>
+</div>
+</section>
+
+<section aria-labelledby="pain-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">02 — THE PROBLEM</span>
+<h2 id="pain-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Two problems, one cause</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">FOR USERS</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">A slow page</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Every repeated route was one more line for the page to draw. The more trucks on the road, the heavier and slower the map became.</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">FOR THE BUDGET</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700">A growing bill</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">Because the page kept asking, the cost grew with every truck and every update — not with the number of roads that actually existed.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="fix1-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">03 — FIRST FIX · 2024–2025</span>
+<h2 id="fix1-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Ask once, for the route that doesn’t move — then remember it</h2>
+</div>
+<p style="margin: 0; max-width: 28em; color: var(--muted)">Two changes, made together: drop the request that could never be reused, and keep the one that could.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
+<div style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">BEFORE · 2 REQUESTS PER TRUCK</span>
+<svg viewBox="0 0 360 170" role="img" aria-label="Before: a solid line from warehouse to destination, plus a second dashed line from the truck's current spot to the destination that changes every time the truck moves" style="display: block; width: 100%; height: auto; border-radius: 14px; background: var(--sea)">
+<path d="M40 120 C110 60 200 150 320 60" fill="none" stroke-width="5" stroke-linecap="round" style="stroke: var(--violet)"></path>
+<path d="M150 108 C210 120 260 100 320 60" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 7" style="stroke: var(--azure)"></path>
+<path d="M28 132 L40 104 L52 132 Z" style="fill: var(--depot)"></path>
+<circle cx="320" cy="60" r="10" style="fill: var(--depot)"></circle>
+<rect x="138" y="96" width="24" height="18" rx="4" style="fill: var(--truck); stroke: var(--land)" stroke-width="2"></rect>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<span style="display: flex; gap: 10px; align-items: baseline"><span aria-hidden="true" style="width: 20px; height: 5px; border-radius: 3px; background: var(--violet); flex-shrink: 0; transform: translateY(-3px)"></span><span><strong>Warehouse → destination.</strong> <span style="color: var(--muted)">The planned route. Never changes.</span></span></span>
+<span style="display: flex; gap: 10px; align-items: baseline"><span aria-hidden="true" style="width: 20px; height: 0; border-top: 4px dashed var(--azure); flex-shrink: 0; transform: translateY(-3px)"></span><span><strong>Truck → destination.</strong> <span style="color: var(--muted)">Changes every time the truck moves, so it had to be bought again and again.</span></span></span>
+</div>
+</div>
+<div style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--royal)">AFTER · 1 REQUEST, KEPT FOR LATER</span>
+<svg viewBox="0 0 360 170" role="img" aria-label="After: only the warehouse-to-destination line is drawn; trucks are shown against it, and one truck far from the line stands out as off course" style="display: block; width: 100%; height: auto; border-radius: 14px; background: var(--sea)">
+<path d="M40 120 C110 60 200 150 320 60" fill="none" stroke-width="5" stroke-linecap="round" style="stroke: var(--violet)"></path>
+<path d="M28 132 L40 104 L52 132 Z" style="fill: var(--depot)"></path>
+<circle cx="320" cy="60" r="10" style="fill: var(--depot)"></circle>
+<rect x="98" y="78" width="24" height="18" rx="4" style="fill: var(--truck); stroke: var(--land)" stroke-width="2"></rect>
+<rect x="208" y="104" width="24" height="18" rx="4" style="fill: var(--truck); stroke: var(--land)" stroke-width="2"></rect>
+<circle cx="236" cy="38" r="20" style="fill: var(--violet)" fill-opacity="0.16"></circle>
+<rect x="224" y="29" width="24" height="18" rx="4" style="fill: var(--violet); stroke: var(--land)" stroke-width="2"></rect>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<span><strong>Only the planned route is requested,</strong> <span style="color: var(--muted)">and the page remembers it for later updates.</span></span>
+<span><strong style="color: var(--violet)">Bonus:</strong> <span style="color: var(--muted)">with every truck drawn against its planned route, one that strays far off course is easy to spot.</span></span>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px">
+<div role="img" aria-label="Four map updates for one truck: before, Google is asked twice at every update; after the first fix, Google is asked once and the route is remembered for the next three updates" style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">ONE TRUCK, FOUR MAP UPDATES</span>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 700">Before <span style="font-weight: 500; color: var(--muted)">· 8 paid requests</span></div>
+<div class="fix-grid" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; font-size: 13px; text-align: center">
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Ask Google ×2</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Ask Google ×2</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Ask Google ×2</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Ask Google ×2</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-weight: 700; color: var(--royal)">After the first fix <span style="font-weight: 500; color: var(--muted)">· 1 paid request</span></div>
+<div class="fix-grid" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; font-size: 13px; text-align: center">
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Ask Google</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1.5px dashed var(--royal); color: var(--royal); font-weight: 600">Remembered</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1.5px dashed var(--royal); color: var(--royal); font-weight: 600">Remembered</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1.5px dashed var(--royal); color: var(--royal); font-weight: 600">Remembered</span>
+</div>
+</div>
+</div>
+<div style="padding: 28px; border-radius: 24px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; justify-content: center; gap: 8px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">RESULT · FIRST FIX</span>
+<div style="font-size: clamp(52px, 6vw, 76px); font-weight: 800; letter-spacing: -0.03em; line-height: 1">−84%</div>
+<p style="margin: 0; font-size: 17px; color: #C9D4FF">The monthly Google Maps bill dropped from about Rp10 million to about Rp1.6 million.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="fix2-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">04 — SECOND FIX · 2026</span>
+<h2 id="fix2-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Remember it for a month, not just a visit</h2>
+</div>
+<p style="margin: 0; max-width: 28em; color: var(--muted)">The first fix had a catch: its memory was wiped whenever someone opened or reloaded the page, so every route was requested again. The second fix saves each route for 30 days.</p>
+</div>
+
+<div class="hide-sm" role="img" aria-label="Comparing page visits: after the first fix, every visit asks Google for every route; after the second fix, only brand-new routes are requested and later visits use saved routes" style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; overflow-x: auto">
+<div style="display: grid; grid-template-columns: 130px repeat(4, minmax(120px, 1fr)); gap: 8px; font-size: 13px; text-align: center; min-width: 640px">
+<span></span>
+<span style="color: var(--muted); font-weight: 600">Open the page</span>
+<span style="color: var(--muted); font-weight: 600">Reload</span>
+<span style="color: var(--muted); font-weight: 600">Another person opens it</span>
+<span style="color: var(--muted); font-weight: 600">Next day</span>
+<span style="text-align: left; font-weight: 700; align-self: center">First fix</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Asks for every route</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Asks for every route</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Asks for every route</span>
+<span style="padding: 10px 4px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600">Asks for every route</span>
+<span style="text-align: left; font-weight: 700; align-self: center; color: var(--royal)">Second fix</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1px solid var(--line); background: var(--chip); color: var(--chip-ink); font-weight: 600">Asks only for new routes</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1px solid var(--line); background: var(--chip); color: var(--chip-ink); font-weight: 600">Uses saved routes</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1px solid var(--line); background: var(--chip); color: var(--chip-ink); font-weight: 600">Uses saved routes</span>
+<span style="padding: 9px 4px; border-radius: 10px; border: 1px solid var(--line); background: var(--chip); color: var(--chip-ink); font-weight: 600">Uses saved routes</span>
+</div>
+</div>
+
+<div class="only-sm">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="padding: 20px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="font-weight: 700">First fix</span>
+<span style="padding: 10px 12px; border-radius: 10px; background: #4B2BFF; color: #FFFFFF; font-weight: 600; font-size: 14px">Every open, reload, new visitor or new day asks Google for every route</span>
+</div>
+<div style="padding: 20px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+<span style="font-weight: 700; color: var(--royal)">Second fix</span>
+<span style="padding: 10px 12px; border-radius: 10px; background: var(--chip); color: var(--chip-ink); font-weight: 600; font-size: 14px">Only brand-new routes are requested</span>
+<span style="padding: 10px 12px; border-radius: 10px; background: var(--chip); color: var(--chip-ink); font-weight: 600; font-size: 14px">Reloads, other visitors and the next day use saved routes</span>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--royal)">SAVED COPY IS UNDER 30 DAYS OLD</span>
+<h3 style="margin: 0; font-size: 22px; font-weight: 800">Use the saved copy</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">The route is drawn straight away. No request to Google, no cost.</p>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--violet)">NO COPY YET, OR OLDER THAN 30 DAYS</span>
+<h3 style="margin: 0; font-size: 22px; font-weight: 800">Ask Google once, save a fresh copy</h3>
+<p style="margin: 0; color: var(--muted); font-size: 15px">The new copy is kept for the next 30 days, so roads that change still get updated.</p>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
+<div role="img" aria-label="A saved route's 30-day life: requested on day 0, reused through day 29, refreshed on day 30" style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">ONE ROUTE’S 30-DAY LIFE</span>
+<div style="display: flex; align-items: center; gap: 0">
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #4B2BFF; flex-shrink: 0"></span>
+<div style="flex: 1; height: 8px; background: var(--chip)"></div>
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #4B2BFF; flex-shrink: 0"></span>
+</div>
+<div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14px">
+<span><strong>Day 0</strong><br><span style="color: var(--muted)">asked Google &amp; saved</span></span>
+<span style="text-align: center"><strong>Days 1–29</strong><br><span style="color: var(--muted)">saved copy reused</span></span>
+<span style="text-align: right"><strong>Day 30</strong><br><span style="color: var(--muted)">refreshed with a new copy</span></span>
+</div>
+</div>
+<div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink); display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">RESULT · SECOND FIX</span>
+<div style="font-size: clamp(30px, 3.4vw, 40px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1">[Result being measured]</div>
+<p style="margin: 0; font-size: 15px">Too early to call. Numbers go here once a few months of bills have come in.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cmp-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">05 — SIDE BY SIDE</span>
+<h2 id="cmp-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">What changed at each step</h2>
+</div>
+<div class="only-sm">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="padding: 20px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 800; font-size: 18px">Before</span>
+<span style="font-size: 15px; color: var(--muted)">Remembers nothing · asks Google twice per truck, at every update</span>
+<span style="font-weight: 700">~Rp10M / month</span>
+</div>
+<div style="padding: 20px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 800; font-size: 18px">First fix</span>
+<span style="font-size: 15px; color: var(--muted)">Asks once per truck, planned route only · remembers it while the page is open</span>
+<span style="font-weight: 700">~Rp1.6M / month <span style="color: var(--violet)">(−84%)</span></span>
+</div>
+<div style="padding: 20px; border-radius: 20px; background: var(--chip); color: var(--chip-ink); display: flex; flex-direction: column; gap: 6px">
+<span style="font-weight: 800; font-size: 18px">Second fix</span>
+<span style="font-size: 15px">Remembers for 30 days · asks only for new or outdated routes</span>
+<span style="font-weight: 700">[Being measured]</span>
+</div>
+</div>
+</div>
+<div class="hide-sm" style="overflow-x: auto; border-radius: 20px; border: 1px solid var(--line); background: var(--surface)">
+<table style="width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15px">
+<thead>
+<tr style="text-align: left">
+<th scope="col" style="padding: 16px 20px; border-bottom: 1px solid var(--line)"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Aspect</span></th>
+<th scope="col" style="padding: 16px 20px; border-bottom: 1px solid var(--line); font-weight: 700">Before</th>
+<th scope="col" style="padding: 16px 20px; border-bottom: 1px solid var(--line); font-weight: 700">First fix</th>
+<th scope="col" style="padding: 16px 20px; border-bottom: 1px solid var(--line); font-weight: 700; color: var(--royal)">Second fix</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row" style="padding: 14px 20px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 600; color: var(--muted)">Remembers the route</th><td style="padding: 14px 20px; border-bottom: 1px solid var(--line)">No</td><td style="padding: 14px 20px; border-bottom: 1px solid var(--line)">While the page is open</td><td style="padding: 14px 20px; border-bottom: 1px solid var(--line)">For 30 days</td></tr>
+<tr><th scope="row" style="padding: 14px 20px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 600; color: var(--muted)">Asks Google</th><td style="padding: 14px 20px; border-bottom: 1px solid var(--line)">Twice per truck (planned route + truck’s live route), at every update</td><td style="padding: 14px 20px; border-bottom: 1px solid var(--line)">Once per truck — planned route only — each time the page opens</td><td style="padding: 14px 20px; border-bottom: 1px solid var(--line)">Only for new or outdated routes</td></tr>
+<tr><th scope="row" style="padding: 14px 20px; text-align: left; font-weight: 600; color: var(--muted)">Monthly cost</th><td style="padding: 14px 20px">~Rp10M</td><td style="padding: 14px 20px; font-weight: 700">~Rp1.6M <span style="color: var(--violet)">(−84%)</span></td><td style="padding: 14px 20px">[Being measured]</td></tr>
+</tbody>
+</table>
+</div>
+<p style="margin: 0; max-width: 40em; font-size: clamp(18px, 1.8vw, 22px); font-weight: 600; line-height: 1.5">Each fix taught the map to remember a little longer — first for a visit, then for a month.</p>
+</section>
+
+<section aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
+<a href="idelivery.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink)">
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">NEXT CASE STUDY</span>
+<span style="font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em">iDelivery — Delivery Assignment</span>
+</span>
+<span style="width: 52px; height: 52px; border-radius: 50%; background: var(--btn); color: var(--btn-ink); display: inline-flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</a>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid var(--line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px clamp(20px, 5vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted)">
+<span>© 2026 Ilham Izzul Hadyan</span>
+<a href="mailto:ilhamizzul@gmail.com" style="font-weight: 600; text-decoration: none; padding: 8px 0">ilhamizzul@gmail.com</a>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
