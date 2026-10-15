@@ -16,7 +16,7 @@ Plain static HTML — no build step.
 | `geofencing.html` | Case study — Field Anti-Fraud Geofencing |
 | `supply-chain-analytics.html` | Case study — Supply Chain Analytics |
 | `404.html` | Not-found page |
-| `assets/` | Logo, shared styles (`site.css`) and interactions (`site.js`: theme toggle, mobile menu, before/after maps) |
+| `assets/` | Logo, résumé PDF, shared styles (`site.css`) and interactions (`site.js`: theme toggle, mobile menu, before/after maps) |
 
 The previous React/Vite version of this site is kept on the `legacy-react-portfolio` branch.
 
