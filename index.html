@@ -25,12 +25,49 @@ a{color:var(--royal)}a:hover{color:var(--violet)}
 @media (max-width: 760px){
 .nav-links{display:none}.menu-btn{display:inline-flex}.hide-sm{display:none !important}
 .brand-name{font-size:15px !important}
-.hero-viz{height:230px !important;padding-left:30px !important;padding-right:24px !important;gap:8px !important}
+.hero{padding-top:40px !important;padding-bottom:48px !important;gap:36px !important}
+.hero-copy{gap:22px !important}
+.hero-cta{display:grid !important;grid-template-columns:1fr;gap:10px !important}
+.hero-cta > a{justify-content:center;padding:14px 18px !important}
+.hero-viz{height:190px !important;padding-left:30px !important;padding-right:24px !important;gap:8px !important}
 .slab-in{padding:14px 8px 14px 18px !important;gap:6px !important}
 .slab-title{font-size:15px !important}
 .slab-meta{display:none !important}
 .deco{display:none !important}
-.hero-meta{gap:6px 16px !important}
+.hero-meta{gap:4px 14px !important;font-size:12px !important}
+.sec{gap:28px !important}
+.work-grid{gap:16px !important}
+.work-card{padding:14px 14px 18px !important;gap:12px !important;border-radius:20px !important}
+.work-card h3{font-size:20px !important}
+.viz{height:168px !important;box-sizing:border-box;border-radius:14px !important}
+.viz-rows{padding:30px 16px 12px !important}
+.viz-rows > div{padding:6px 10px !important}
+.tech{display:none !important}
+.skills-grid{gap:12px !important}
+.skill{display:grid !important;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:10px;align-items:center;padding:20px !important;border-radius:18px !important}
+.skill > div{width:40px !important;height:40px !important;border-radius:12px !important}
+.skill > h3{font-size:20px !important}
+.skill > p{grid-column:1 / -1}
+.skill > p:last-child{font-size:12px !important;line-height:1.7 !important}
+.exp{row-gap:28px !important}
+.timeline > li{padding:0 0 26px 22px !important}
+.timeline > li:last-child{padding-bottom:0 !important}
+.timeline h3{font-size:18px !important}
+.swipe{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px !important;margin:0 -20px;padding:2px 20px 8px;scroll-padding:0 20px;scrollbar-width:none}
+.swipe::-webkit-scrollbar{display:none}
+.swipe > *{flex:0 0 78%;scroll-snap-align:start;padding:18px !important}
+.swipe-hint{display:inline-flex !important}
+.about-card{padding:22px 20px !important;gap:24px !important}
+.facts{grid-template-columns:repeat(2, minmax(0, 1fr)) !important;gap:10px !important}
+.facts > div{padding:14px !important;border-radius:14px !important}
+.facts dd{font-size:14px;line-height:1.4}
+.facts > div:nth-child(n+3){grid-column:1 / -1}
+.contact-panel{padding:28px 22px !important;gap:18px !important;border-radius:24px !important}
+.contact-panel h2{font-size:30px !important}
+.contact-panel p{font-size:16px !important}
+.contact-btns{display:grid !important;grid-template-columns:1fr 1fr;gap:10px !important;margin-top:4px !important}
+.contact-btns > a{justify-content:center;padding:14px 12px !important}
+.contact-btns > a:first-child{grid-column:1 / -1}
 }
 @media (max-width: 360px){.brand-name{display:none}}
 </style>
@@ -81,15 +118,15 @@ a{color:var(--royal)}a:hover{color:var(--violet)}
 
 <main id="top">
 
-<section aria-labelledby="hero-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 112px) clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(48px, 6vw, 72px); align-items: center">
-<div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+<section class="hero" aria-labelledby="hero-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 9vw, 112px) clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(48px, 6vw, 72px); align-items: center">
+<div class="hero-copy" style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
 <div style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: var(--chip); color: var(--chip-ink); font-size: 14px; font-weight: 600">
 <span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--azure)"></span>
 Open to remote roles &amp; relocation
 </div>
 <h1 id="hero-title" style="margin: 0; font-size: clamp(46px, 7vw, 92px); line-height: 1; letter-spacing: -0.035em; font-weight: 800">Engineer <span style="color: var(--violet)">×</span> Data <span style="color: var(--violet)">×</span> QA</h1>
 <p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); max-width: 34em">I’m Izzul — a fullstack .NET engineer who builds supply-chain systems end to end, reads the data they produce, and tests them as if they’re about to break.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div class="hero-cta" style="display: flex; flex-wrap: wrap; gap: 12px">
 <a href="#work" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border-radius: 14px; background: var(--btn); color: var(--btn-ink); text-decoration: none; font-weight: 600">See selected work
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
 </a>
@@ -129,7 +166,7 @@ Download CV</a>
 </div>
 </section>
 
-<section id="work" aria-labelledby="work-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<section class="sec" id="work" aria-labelledby="work-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">01 — SELECTED WORK</span>
@@ -138,10 +175,10 @@ Download CV</a>
 <p style="margin: 0; max-width: 30em; color: var(--muted); font-size: 15px">Ordered by impact. Enterprise work is shown as anonymized snapshots — illustrative visuals, no production data.</p>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px">
+<div class="work-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px">
 
-<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div role="img" aria-label="Illustration: a list of delivery assignments, each with a warehouse, a truck and a status" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 36px 24px 16px">
+<article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div class="viz viz-rows" role="img" aria-label="Illustration: a list of delivery assignments, each with a warehouse, a truck and a status" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 36px 24px 16px">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
 <div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
@@ -165,7 +202,7 @@ Download CV</a>
 </div>
 <h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">iDelivery — Delivery Assignment</h3>
 <p style="margin: 0; color: var(--muted); font-size: 15px">Built from a blank page on a tight deadline — business process, data design, rules and API — for subsidized-fertilizer delivery. Live in 5 provinces, with 300+ deliveries and 2,500+ tons in its first 3 weeks.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<div class="tech" style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">.NET 10</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Clean Architecture</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">EF Core</span>
@@ -176,8 +213,8 @@ Download CV</a>
 </a>
 </article>
 
-<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div role="img" aria-label="Illustration: relative map spend before and after, down 84 percent" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; justify-content: center; gap: 40px; padding: 40px 24px 18px">
+<article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div class="viz" role="img" aria-label="Illustration: relative map spend before and after, down 84 percent" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; justify-content: center; gap: 40px; padding: 40px 24px 18px">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">RELATIVE SPEND</span>
 <div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px">
 <div style="width: 64px; height: 100%; border-radius: 10px 10px 4px 4px; background: var(--line)"></div>
@@ -196,7 +233,7 @@ Download CV</a>
 </div>
 <h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Route API Cost Efficiency</h3>
 <p style="margin: 0; color: var(--muted); font-size: 15px">Cut the monthly Google Maps bill by 84% — from about Rp10M to Rp1.6M — by asking for each route once and remembering it.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<div class="tech" style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">ASP.NET Core</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">JavaScript</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Google Maps</span>
@@ -206,8 +243,8 @@ Download CV</a>
 </a>
 </article>
 
-<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div role="img" aria-label="Illustration: a start zone and a finish zone, with a tap outside the zone refused" style="position: relative; height: 200px; border-radius: 16px; background-color: var(--surface-2); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; overflow: hidden">
+<article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div class="viz" role="img" aria-label="Illustration: a start zone and a finish zone, with a tap outside the zone refused" style="position: relative; height: 200px; border-radius: 16px; background-color: var(--surface-2); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; overflow: hidden">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
 <div style="position: absolute; left: 22%; top: 56%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; border: 2px solid var(--royal); background: rgba(26, 68, 224, 0.10)"></div>
 <div style="position: absolute; left: 22%; top: 56%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--royal)"></div>
@@ -223,7 +260,7 @@ Download CV</a>
 </div>
 <h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Field Anti-Fraud Geofencing</h3>
 <p style="margin: 0; color: var(--muted); font-size: 15px">Trips used to start and finish from anywhere — even another island. Now they only count inside a zone at the warehouse and the destination, sized per location by central staff.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<div class="tech" style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">C#</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">ASP.NET Core</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
@@ -233,8 +270,8 @@ Download CV</a>
 </a>
 </article>
 
-<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div role="img" aria-label="Illustration: an abstract bar chart without values" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; gap: 10px; padding: 44px 28px 24px">
+<article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div class="viz" role="img" aria-label="Illustration: an abstract bar chart without values" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; gap: 10px; padding: 44px 28px 24px">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
 <div style="flex: 1; height: 38%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
 <div style="flex: 1; height: 62%; border-radius: 6px 6px 2px 2px; background: var(--royal)"></div>
@@ -249,7 +286,7 @@ Download CV</a>
 </div>
 <h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Supply Chain Analytics</h3>
 <p style="margin: 0; color: var(--muted); font-size: 15px">12+ dashboards from plant warehouse to kiosk — jetties, ships, trucks, warehouses and kiosks — used by around 8 teams, and still growing.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<div class="tech" style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Snowflake</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Data reconciliation</span>
@@ -260,8 +297,8 @@ Download CV</a>
 </a>
 </article>
 
-<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div role="img" aria-label="Illustration: goods moving from warehouse to distributor to retailer, each hand-off a QR scan" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; gap: 0; padding: 0 28px">
+<article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div class="viz" role="img" aria-label="Illustration: goods moving from warehouse to distributor to retailer, each hand-off a QR scan" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; gap: 0; padding: 0 28px">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
 <div style="width: 56px; height: 56px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--royal); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v10H3z"></path><path d="M8 20v-6h8v6"></path></svg>
@@ -284,7 +321,7 @@ Download CV</a>
 <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--royal)">ITERATION 1 · 2023–2024</span><span style="color: var(--muted)">Traceability across four distribution tiers — every hand-off is a scan, and every scan is an auditable event.</span></div>
 <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--violet)">ITERATION 2 · QR UNTUNG · 2026</span><span style="color: var(--muted)">A gamified scanning app that rewards farmers for submitting data — turning each scan into market intelligence on distribution and end-user sales.</span></div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<div class="tech" style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">.NET</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">SQL Server</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">REST API</span>
@@ -298,8 +335,8 @@ Download CV</a>
 <h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.015em">Side projects</h3>
 <span style="color: var(--muted); font-size: 15px">Built for fun, outside work.</span>
 </div>
-<article style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px 28px; align-items: center">
-<div role="img" aria-label="Illustration: a budget app card with category progress bars" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center">
+<article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px 28px; align-items: center">
+<div class="viz" role="img" aria-label="Illustration: a budget app card with category progress bars" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">KANTONG</span>
 <div style="width: 210px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
 <div style="font-size: 12px; color: var(--muted)">This month</div>
@@ -318,7 +355,7 @@ Download CV</a>
 </div>
 <h3 style="margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700">Kantong — Budget Tracker</h3>
 <p style="margin: 0; color: var(--muted); font-size: 15px">A personal budget tracker built for fun with AI pair-programming — TypeScript end to end, with Vitest tests keeping the money math honest.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
+<div class="tech" style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--chip-ink)">
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">TypeScript</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">Vitest</span>
 <span style="padding: 4px 10px; border-radius: 8px; background: var(--chip)">AI pair-programming</span>
@@ -332,13 +369,13 @@ Download CV</a>
 </section>
 
 <section id="skills" aria-labelledby="skills-title" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
-<div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<div class="sec" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">02 — SKILLS</span>
 <h2 id="skills-title" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800; max-width: 16em">One engineer, three ways of looking at a system</h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px">
-<div style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px">
+<div class="skill" style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
 <div style="width: 48px; height: 48px; border-radius: 14px; background: #0A22B8; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"></path></svg>
 </div>
@@ -346,7 +383,7 @@ Download CV</a>
 <p style="margin: 0; color: var(--muted); font-size: 15px">Backend services and fullstack features in C#/.NET — APIs, data access, schema migrations, and the UI on top.</p>
 <p style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.8">C# · ASP.NET Core · Blazor · EF Core · REST · Laravel / Filament</p>
 </div>
-<div style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<div class="skill" style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
 <div style="width: 48px; height: 48px; border-radius: 14px; background: #0659D6; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>
 </div>
@@ -354,7 +391,7 @@ Download CV</a>
 <p style="margin: 0; color: var(--muted); font-size: 15px">From the SQL that answers the question to the dashboard people keep open. Analyst first, so numbers get sanity-checked.</p>
 <p style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.8">SQL Server · Snowflake · Grafana · Data profiling · Reconciliation · Dashboards</p>
 </div>
-<div style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
+<div class="skill" style="padding: 28px; border-radius: 20px; background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
 <div style="width: 48px; height: 48px; border-radius: 14px; background: #4B2BFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
 </div>
@@ -366,13 +403,13 @@ Download CV</a>
 </div>
 </section>
 
-<section id="experience" aria-labelledby="exp-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px 64px">
+<section class="exp" id="experience" aria-labelledby="exp-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px 64px">
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">03 — EXPERIENCE</span>
 <h2 id="exp-title" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 800">From QA to data to engineering</h2>
 <p style="margin: 0; color: var(--muted)">Four years of .NET, built on top of analysis and testing — and a stint teaching it.</p>
 </div>
-<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-left: 2px solid var(--line)">
+<ol class="timeline" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-left: 2px solid var(--line)">
 <li style="position: relative; padding: 0 0 36px 28px">
 <span aria-hidden="true" style="position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--royal); box-shadow: 0 0 0 4px var(--bg)"></span>
 <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--muted)">Sep 2022 — Present</div>
@@ -411,7 +448,7 @@ Download CV</a>
 </ol>
 </section>
 
-<section id="certifications" aria-labelledby="cert-title" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px); display: flex; flex-direction: column; gap: 32px">
+<section class="sec" id="certifications" aria-labelledby="cert-title" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px); display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">04 — CERTIFICATIONS &amp; RESEARCH</span>
@@ -420,8 +457,9 @@ Download CV</a>
 <a href="https://drive.google.com/drive/folders/1kjyUZuOneR2b2ejNd0bVBqYdlHbChlfP" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; font-weight: 700; text-decoration: none; font-size: 15px">All certificates
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg>
 </a>
+<span class="swipe-hint" aria-hidden="true" style="display: none; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SWIPE FOR MORE →</span>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px">
+<div class="swipe" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px">
 
 <a href="https://www.researchgate.net/publication/365028994_IMPLEMENTING_CONTINUOUS_CODE_QUALITY_FOR_CODE_QUALITY_DEVELOPMENT_IN_THE_SCRUM_TEAM" style="padding: 22px; border-radius: 20px; background: #0A22B8; color: #FFFFFF; text-decoration: none; display: flex; flex-direction: column; gap: 8px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">RESEARCH · TELKOM UNIVERSITY · 2022</span>
@@ -477,13 +515,13 @@ Download CV</a>
 </section>
 
 <section id="about" aria-labelledby="about-title" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px)">
-<div style="border-radius: 24px; border: 1px solid var(--line); background: var(--surface); padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 32px 56px">
+<div class="about-card" style="border-radius: 24px; border: 1px solid var(--line); background: var(--surface); padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 32px 56px">
 <div style="display: flex; flex-direction: column; gap: 16px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">05 — ABOUT</span>
 <h2 id="about-title" style="margin: 0; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">I kept all three hats on</h2>
 <p style="margin: 0; color: var(--muted)">I started on the QA side, moved through data analysis, and landed in backend engineering — without dropping the first two. Assisting lectures and lab practicums at university — and a thesis on continuous code quality in Scrum teams — left me with a habit of writing docs as if someone will learn from them. I work in Scrum and like small, shippable increments.</p>
 </div>
-<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 20px; align-content: start">
+<dl class="facts" style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 20px; align-content: start">
 <div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">BASED IN</dt><dd style="margin: 6px 0 0; font-weight: 700">Jakarta · UTC+7</dd></div>
 <div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">LANGUAGES</dt><dd style="margin: 6px 0 0; font-weight: 700">Indonesian, English</dd></div>
 <div style="padding: 18px; border-radius: 16px; background: var(--bg)"><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">OPEN TO</dt><dd style="margin: 6px 0 0; font-weight: 700">Remote roles, relocation, freelance &amp; collaborations</dd></div>
@@ -493,13 +531,13 @@ Download CV</a>
 </section>
 
 <section id="contact" aria-labelledby="contact-title" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px) clamp(56px, 8vw, 96px)">
-<div style="position: relative; overflow: hidden; border-radius: 28px; background: var(--panel); color: var(--panel-ink); padding: clamp(32px, 6vw, 72px); display: flex; flex-direction: column; gap: 24px">
+<div class="contact-panel" style="position: relative; overflow: hidden; border-radius: 28px; background: var(--panel); color: var(--panel-ink); padding: clamp(32px, 6vw, 72px); display: flex; flex-direction: column; gap: 24px">
 <div class="deco" aria-hidden="true" style="position: absolute; right: -40px; top: -60px; width: 220px; height: 420px; transform: skewX(-18deg); border-radius: 28px; background: rgba(255, 255, 255, 0.06)"></div>
 <div class="deco" aria-hidden="true" style="position: absolute; right: 160px; top: 80px; width: 120px; height: 360px; transform: skewX(-18deg); border-radius: 24px; background: rgba(120, 100, 255, 0.35)"></div>
 <span style="position: relative; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--panel-muted); letter-spacing: 0.04em">06 — CONTACT</span>
 <h2 id="contact-title" style="position: relative; margin: 0; font-size: clamp(34px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; max-width: 13em">Have something to build, measure, or test?</h2>
 <p style="position: relative; margin: 0; color: var(--panel-muted); font-size: 18px; max-width: 32em">Open to remote roles, freelance projects and collaborations. Tell me what you’re working on.</p>
-<div style="position: relative; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<div class="contact-btns" style="position: relative; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
 <a href="mailto:ilhamizzul@gmail.com" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 14px; background: #FFFFFF; color: #0A1A8C; text-decoration: none; font-weight: 700">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
 ilhamizzul@gmail.com</a>

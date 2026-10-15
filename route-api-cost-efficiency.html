@@ -31,6 +31,16 @@ a{color:var(--royal)}a:hover{color:var(--violet)}
 .map-svg{height:250px !important}
 .map-chips{position:static !important;padding:12px 14px 16px}
 .fix-grid{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
+main > section{row-gap:24px !important}
+.meta{grid-template-columns:repeat(2, minmax(0, 1fr)) !important;gap:14px 18px !important;padding-top:20px !important;margin-top:4px !important}
+.meta dd{font-size:15px;line-height:1.4}
+.meta > div:last-child:nth-child(odd){grid-column:1 / -1}
+.cards{gap:12px !important}
+.cards > *{padding:20px !important;border-radius:18px !important}
+.cards h3{font-size:18px !important}
+.next > a{flex-wrap:nowrap !important;padding:20px !important}
+.next > a > span:first-child > span:last-child{font-size:20px !important;line-height:1.25}
+.next > a > span:last-child{flex-shrink:0;width:44px !important;height:44px !important}
 }
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -63,7 +73,7 @@ All work</a>
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">CASE STUDY · COST SAVING · TWO FIXES · 2024–2026</span>
 <h1 id="cs-title" style="margin: 0; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; max-width: 12em">Route API Cost Efficiency</h1>
 <p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">A map that follows fertilizer trucks was paying Google for the same road again and again. Two simple fixes taught it to remember — and cut the monthly bill by 84%.</p>
-<dl style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
+<dl class="meta" style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MY ROLE</dt><dd style="margin: 6px 0 0; font-weight: 700">Found the cause, designed and built the fix</dd></div>
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SERVICE</dt><dd style="margin: 6px 0 0; font-weight: 700">Google Maps</dd></div>
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">FIRST FIX · 2024–2025</dt><dd style="margin: 6px 0 0; font-weight: 800; color: var(--violet)">−84% monthly cost</dd></div>
@@ -151,7 +161,7 @@ All work</a>
 </svg>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">HOW TO READ THE MAP</span>
 <div style="display: flex; align-items: center; gap: 14px">
@@ -202,7 +212,7 @@ All work</a>
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">02 — THE PROBLEM</span>
 <h2 id="pain-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Two problems, one cause</h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">FOR USERS</span>
 <h3 style="margin: 0; font-size: 20px; font-weight: 700">A slow page</h3>
@@ -225,7 +235,7 @@ All work</a>
 <p style="margin: 0; max-width: 28em; color: var(--muted)">Two changes, made together: drop the request that could never be reused, and keep the one that could.</p>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
 <div style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">BEFORE · 2 REQUESTS PER TRUCK</span>
 <svg viewBox="0 0 360 170" role="img" aria-label="Before: a solid line from warehouse to destination, plus a second dashed line from the truck's current spot to the destination that changes every time the truck moves" style="display: block; width: 100%; height: auto; border-radius: 14px; background: var(--sea)">
@@ -258,7 +268,7 @@ All work</a>
 </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px">
 <div role="img" aria-label="Four map updates for one truck: before, Google is asked twice at every update; after the first fix, Google is asked once and the route is remembered for the next three updates" style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">ONE TRUCK, FOUR MAP UPDATES</span>
 <div style="display: flex; flex-direction: column; gap: 10px">
@@ -331,7 +341,7 @@ All work</a>
 </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 12px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--royal)">SAVED COPY IS UNDER 30 DAYS OLD</span>
 <h3 style="margin: 0; font-size: 22px; font-weight: 800">Use the saved copy</h3>
@@ -344,7 +354,7 @@ All work</a>
 </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px">
 <div role="img" aria-label="A saved route's 30-day life: requested on day 0, reused through day 29, refreshed on day 30" style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">ONE ROUTE’S 30-DAY LIFE</span>
 <div style="display: flex; align-items: center; gap: 0">
@@ -410,7 +420,7 @@ All work</a>
 <p style="margin: 0; max-width: 40em; font-size: clamp(18px, 1.8vw, 22px); font-weight: 600; line-height: 1.5">Each fix taught the map to remember a little longer — first for a visit, then for a month.</p>
 </section>
 
-<section aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
+<section class="next" aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
 <a href="idelivery.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink)">
 <span style="display: flex; flex-direction: column; gap: 4px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">NEXT CASE STUDY</span>

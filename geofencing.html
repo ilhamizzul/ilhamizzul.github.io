@@ -26,6 +26,17 @@ a{color:var(--royal)}a:hover{color:var(--violet)}
 .mode-after .before-only{display:none}
 @media (max-width: 760px){
 .geo-map{height:280px !important}
+main > section{row-gap:24px !important}
+.meta{grid-template-columns:repeat(2, minmax(0, 1fr)) !important;gap:14px 18px !important;padding-top:20px !important;margin-top:4px !important}
+.meta dd{font-size:15px;line-height:1.4}
+.meta > div:last-child:nth-child(odd){grid-column:1 / -1}
+.cards{gap:12px !important}
+.cards > *{padding:20px !important;border-radius:18px !important}
+.cards h3{font-size:18px !important}
+.cards svg[width="72"]{width:56px;height:56px}
+.next > a{flex-wrap:nowrap !important;padding:20px !important}
+.next > a > span:first-child > span:last-child{font-size:20px !important;line-height:1.25}
+.next > a > span:last-child{flex-shrink:0;width:44px !important;height:44px !important}
 }
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -58,7 +69,7 @@ All work</a>
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">CASE STUDY · TRUCK TRACKING · ANTI-FRAUD</span>
 <h1 id="cs-title" style="margin: 0; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; max-width: 12em">Field Anti-Fraud Geofencing</h1>
 <p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">A delivery trip could be started and finished from anywhere — even from another island. Geofencing made the start line and the finish line mean something again.</p>
-<dl style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
+<dl class="meta" style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">YEAR</dt><dd style="margin: 6px 0 0; font-weight: 700">2024–2025</dd></div>
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MY ROLE</dt><dd style="margin: 6px 0 0; font-weight: 700">Designed and built the geofence check</dd></div>
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SYSTEM</dt><dd style="margin: 6px 0 0; font-weight: 700">Truck Tracking</dd></div>
@@ -158,7 +169,7 @@ All work</a>
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">02 — THE LOOPHOLE</span>
 <h2 id="gap-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Nothing checked where those taps happened</h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">START</span>
 <h3 style="margin: 0; font-size: 20px; font-weight: 700">Start the trip from anywhere</h3>
@@ -181,7 +192,7 @@ All work</a>
 </div>
 <p style="margin: 0; max-width: 28em; color: var(--muted)">A geofence is an invisible circle around a place. When the driver presses start or finish, the app checks whether they are inside it.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; gap: 10px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">INSIDE THE ZONE</span>
 <h3 style="margin: 0; font-size: 22px; font-weight: 800">The trip starts — or finishes — as normal</h3>
@@ -203,7 +214,7 @@ All work</a>
 </div>
 <p style="margin: 0; max-width: 28em; color: var(--muted)">A fixed radius would either let cheaters through or lock honest drivers out. Two things make every location different.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">SIZE</span>
 <h3 style="margin: 0; font-size: 20px; font-weight: 700">Places come in different sizes</h3>
@@ -216,7 +227,7 @@ All work</a>
 </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 20px; align-items: stretch">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 20px; align-items: stretch">
 <div role="img" aria-label="Illustration of geofence settings: a compact site with a tight radius, a large area with a wider radius, and a rural weak-signal location with the widest radius" style="padding: clamp(20px, 3vw, 28px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MAIN SYSTEM · GEOFENCE SETTINGS · ILLUSTRATION</span>
 <div style="display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 16px; background: var(--surface-2)">
@@ -245,13 +256,13 @@ All work</a>
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">05 — OUTCOME</span>
 <h2 id="out-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Start and finish mean something again</h2>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Less room for fraud</div><p style="margin: 8px 0 0; font-size: 15px">Starting from another island, or finishing short of the destination, no longer works.</p></div>
 <div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Delivery data that holds up</div><p style="margin: 8px 0 0; font-size: 15px">Every recorded start and finish is tied to the place it was supposed to happen.</p></div>
 </div>
 </section>
 
-<section aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
+<section class="next" aria-label="Next project" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px)">
 <a href="route-api-cost-efficiency.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink)">
 <span style="display: flex; flex-direction: column; gap: 4px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">NEXT CASE STUDY · SAME SYSTEM</span>
