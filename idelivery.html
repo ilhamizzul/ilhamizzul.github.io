@@ -17,9 +17,99 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0}
-.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--dot:rgba(10,31,176,.13)}
-.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--dot:rgba(120,150,255,.18)}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--dot:rgba(10,31,176,.13);--plate-front:#DCE4F7;--plate-side:#C7D3EF;--road:#E1E7F7;--truck:#1A44E0;--truck-front:#1436B8;--truck-side:#0F2A90;--depot:#0A1140;--trunk:#9FB1DC}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--dot:rgba(120,150,255,.18);--plate-front:#0D1438;--plate-side:#091030;--road:#26336E;--truck:#6E95FF;--truck-front:#4F78E6;--truck-side:#3A5FC4;--depot:#EEF2FF;--trunk:#33438A}
 a{color:var(--royal)}a:hover{color:var(--violet)}
+.dl-n-t,.dl-api-t{fill:var(--surface-2);stroke:var(--line)}
+.dl-n-f,.dl-api-f{fill:var(--plate-front);stroke:var(--line)}
+.dl-n-s,.dl-api-s{fill:var(--plate-side);stroke:var(--line)}
+.dl-n-t,.dl-n-f,.dl-n-s,.dl-api-t,.dl-api-f,.dl-api-s{vector-effect:non-scaling-stroke;stroke-width:1}
+.dl-app-t{fill:#0A22B8}
+.dl-app-f{fill:#081C99}
+.dl-app-s{fill:#06157A}
+.dl-dom-t{fill:#4B2BFF}
+.dl-dom-f{fill:#3C22D9}
+.dl-dom-s{fill:#2F1AAE}
+.dl-infra-t{fill:#0659D6}
+.dl-infra-f{fill:#054BB5}
+.dl-infra-s{fill:#043C91}
+.dl-slot{fill:var(--line)}
+.dl-guide{fill:none;stroke:var(--line);stroke-dasharray:3 5;vector-effect:non-scaling-stroke}
+.dl-wire{fill:none;stroke:var(--violet);stroke-width:2.5;stroke-dasharray:6 6;stroke-linecap:round}
+.dl-lead{fill:none;stroke:var(--line);stroke-width:1.5}
+.dl-name{fill:var(--ink);font:700 16px 'Plus Jakarta Sans',system-ui,sans-serif}
+.dl-sub,.dl-req-t{fill:var(--muted);font:500 12px 'JetBrains Mono',ui-monospace,monospace}
+.dl-ext{fill:var(--ink);font:700 14px 'Plus Jakarta Sans',system-ui,sans-serif}
+.dl-req{fill:none;stroke:var(--violet);stroke-width:2.5;stroke-dasharray:4 5;stroke-linecap:round}
+.dl-req-head{fill:none;stroke:var(--violet);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.t-dark .dl-glow{filter:url(#dlGlow)}
+.df-n-t{fill:var(--surface);stroke:var(--line)}
+.df-n-f{fill:var(--plate-front);stroke:var(--line)}
+.df-n-s{fill:var(--plate-side);stroke:var(--line)}
+.df-n-t,.df-n-f,.df-n-s,.df-inset{vector-effect:non-scaling-stroke;stroke-width:1}
+.df-k-t,.df-k-f,.df-k-s{fill:var(--trunk)}
+.df-t-t{fill:var(--truck)}
+.df-t-f{fill:var(--truck-front)}
+.df-t-s{fill:var(--truck-side)}
+.df-inset{fill:none;stroke:var(--line);stroke-dasharray:4 6}
+.df-road-e{fill:none;stroke:var(--line);stroke-width:18;stroke-linecap:round}
+.df-road{fill:none;stroke:var(--road);stroke-width:16;stroke-linecap:round}
+.df-road-mid{fill:none;stroke:var(--surface);stroke-width:1.5;stroke-dasharray:7 9}
+.df-door{fill:var(--depot)}
+.df-screen{fill:var(--violet)}
+.df-screen-l{fill:none;stroke:#FFFFFF;stroke-width:1.5;stroke-linecap:round}
+.df-ring{fill:var(--violet);fill-opacity:.14;stroke:var(--violet);stroke-width:2.5}
+.df-vis{fill:none;stroke:var(--violet);stroke-width:2.5;stroke-dasharray:2 7;stroke-linecap:round}
+.df-badge{fill:var(--btn)}
+.df-badge-halo{fill:var(--royal);fill-opacity:.18}
+.df-num{fill:#FFFFFF;font:800 14px 'Plus Jakarta Sans',system-ui,sans-serif}
+.df-b{transform-box:fill-box;transform-origin:center}
+.df-badge-ext{fill:var(--surface);stroke:var(--muted);stroke-width:2}
+.df-num-ext{fill:var(--ink);font:800 14px 'Plus Jakarta Sans',system-ui,sans-serif}
+.df-data{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:3 6;stroke-linecap:round;stroke-opacity:.8}
+.df-assign{fill:none;stroke:var(--violet);stroke-width:2.5;stroke-dasharray:3 6;stroke-linecap:round}
+.t-dark .df-glow{filter:url(#dvGlow)}
+.df-rt{fill:none;stroke:var(--violet);stroke-width:5;stroke-linecap:round}
+.pulse{fill:none;stroke:var(--btn);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}
+.pulse.ext{stroke:var(--muted)}
+.fx .sg{opacity:.3;transition:opacity .45s ease}
+.st-1 .on1,.st-2 .on2,.st-3 .on3,.st-4 .on4,.st-5 .on5,.st-6 .on6,.st-7 .on7{opacity:1}
+.fx .arc{opacity:0;transition:opacity .45s ease}
+.st-1 .arc.on1,.st-2 .arc.on2,.st-3 .arc.on3{opacity:1}
+.fx .rt{stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset .9s cubic-bezier(.4,0,.2,1)}
+.st-4 .rt.on4,.st-6 .rt.on6{stroke-dashoffset:0}
+.sb{opacity:.45;transform-box:fill-box;transform-origin:center;transition:opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.st-1 .b1,.st-2 .b2,.st-3 .b3,.st-4 .b4,.st-5 .b5,.st-6 .b6,.st-7 .b7{opacity:1;transform:scale(1.3)}
+@keyframes dvPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+.st-1 .b1 .pulse,.st-2 .b2 .pulse,.st-3 .b3 .pulse,.st-4 .b4 .pulse,.st-5 .b5 .pulse,.st-6 .b6 .pulse,.st-7 .b7 .pulse{animation:dvPulse 1.8s ease-out infinite}
+.df-cap-i{animation:dvIn .35s ease both}
+@keyframes dvIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.df-nav{min-width:44px;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:700 14px 'Plus Jakarta Sans',system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.df-nav.primary{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}
+.df-chip{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:800 14px 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.df-chip.ext{border-style:dashed}
+.st-1 .df-chip.k1,.st-2 .df-chip.k2,.st-3 .df-chip.k3,.st-4 .df-chip.k4,.st-5 .df-chip.k5,.st-6 .df-chip.k6,.st-7 .df-chip.k7{background:var(--btn);border-color:var(--btn);border-style:solid;color:var(--btn-ink)}
+.df-tag-own,.df-tag-ext{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font:600 12px 'Plus Jakarta Sans',system-ui,sans-serif}
+.df-tag-own{background:var(--chip);color:var(--chip-ink)}
+.df-tag-ext{border:1px solid var(--line);color:var(--muted)}
+@media (prefers-reduced-motion: reduce){.fx .sg,.fx .arc,.fx .rt,.sb{transition:none}.pulse,.df-cap-i{animation:none !important}}
+.df-cap-i{display:none}
+.st-1 .cap-k1,.st-2 .cap-k2,.st-3 .cap-k3,.st-4 .cap-k4,.st-5 .cap-k5,.st-6 .cap-k6,.st-7 .cap-k7{display:flex}
+.arch-key{display:none}
+@media (max-width: 760px){
+.arch-svg{height:auto !important;aspect-ratio:793.2 / 449}
+.dl-lead,.dl-name,.dl-sub,.dl-ext,.dl-req-t{display:none}
+.arch-key{display:grid}
+.flow-svg{height:auto !important;aspect-ratio:967.3 / 586.5}
+.sb{transform:scale(1.5)}
+.st-1 .b1,.st-2 .b2,.st-3 .b3,.st-4 .b4,.st-5 .b5,.st-6 .b6,.st-7 .b7{transform:scale(1.9)}
+.df-cap{grid-template-columns:1fr !important}
+.df-cap-nav{width:100%}
+.df-cap-nav .df-nav{flex:1}
+.df-chips{justify-content:space-between;gap:4px !important;flex-wrap:nowrap !important}
+.df-chip{width:38px;height:42px;border-radius:10px}
+.df-label{display:none}
+}
 @media (max-width: 760px){
 .flow-box{padding:48px 16px 20px !important;gap:18px !important;border-radius:20px !important}
 .flow{display:grid !important;grid-template-columns:repeat(2, minmax(0, 1fr));gap:10px !important}
@@ -87,21 +177,125 @@ All work</a>
 </section>
 
 <section aria-label="Illustration" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px)">
-<div class="flow-box" role="img" aria-label="Delivery flow: assignment, warehouse pickup, delivery and receipt, with point-of-sale and warehouse inventory integrations" style="position: relative; border-radius: 24px; border: 1px solid var(--line); background-color: var(--surface-2); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 20px 20px; padding: 60px clamp(20px, 3vw, 40px) 36px; display: flex; flex-direction: column; gap: 28px">
-<span style="position: absolute; top: 18px; left: 20px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE FLOW</span>
-<div class="flow" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
-<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">STEP 1</div><div style="font-weight: 700">Assignment</div></div>
-<svg class="flow-arrow" width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h18M14 4l6 6-6 6"></path></svg>
-<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: #0A22B8; color: #FFFFFF; text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #C9D4FF">STEP 2</div><div style="font-weight: 700">Warehouse pickup</div></div>
-<svg class="flow-arrow" width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h18M14 4l6 6-6 6"></path></svg>
-<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: #0659D6; color: #FFFFFF; text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #D6E6FF">STEP 3</div><div style="font-weight: 700">Delivery</div></div>
-<svg class="flow-arrow" width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h18M14 4l6 6-6 6"></path></svg>
-<div style="flex: 1 1 150px; padding: 18px; border-radius: 16px; background: #4B2BFF; color: #FFFFFF; text-align: center"><div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #E2DCFF">STEP 4</div><div style="font-weight: 700">Drop point</div></div>
+<div class="fx st-1" data-flow style="position: relative; border-radius: 24px; border: 1px solid var(--line); background: var(--surface-2); overflow: hidden">
+<span class="df-label" style="position: absolute; top: 18px; left: 20px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE · ONE ORDER, START TO FINISH</span>
+<svg class="flow-svg" viewBox="-327.8 -34.5 967.3 586.5" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Isometric scene of one fertilizer order: a kiosk orders in the Point of Sales app, the Sales and Delivery app assigns it to Transporter A, a truck collects it from the warehouse, and it is delivered back to the kiosk. The current step is highlighted." style="display: block; width: 100%; height: clamp(320px, 40vw, 520px)">
+<defs>
+<filter id="dvGlow" filterUnits="userSpaceOnUse" x="-327.8" y="-34.5" width="967.3" height="586.5"><feGaussianBlur stdDeviation="3.5" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+<g id="dvTree"><g transform="matrix(0.866 0.5 0 1 -3.5 -23)"><rect class="df-k-f" width="4" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 0 -21)"><rect class="df-k-s" width="4" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -25)"><rect class="df-k-t" width="4" height="4"></rect></g><g transform="matrix(0.866 0.5 0 1 -13.9 -32)"><rect class="df-n-f" width="16" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 0 -24)"><rect class="df-n-s" width="16" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -40)"><rect class="df-n-t" width="16" height="16"></rect></g><g transform="matrix(0.866 0.5 0 1 -6.9 -39)"><rect class="df-n-f" width="8" height="7"></rect></g><g transform="matrix(0.866 -0.5 0 1 0 -35)"><rect class="df-n-s" width="8" height="7"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -43)"><rect class="df-n-t" width="8" height="8"></rect></g></g>
+</defs>
+<g transform="matrix(0.866 0.5 0 1 -311.8 166)"><rect class="df-n-f" width="720" height="14"></rect></g><g transform="matrix(0.866 -0.5 0 1 311.8 526)"><rect class="df-n-s" width="360" height="14"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -14)"><rect class="df-n-t" width="720" height="360"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -14)"><rect class="df-inset" x="10" y="10" width="700" height="340" rx="10"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -14)"><path class="df-road-e" d="M112 300 C180 300 200 240 280 236 C350 232 360 214 410 212 C500 208 520 112 640 108"></path><path class="df-road" d="M112 300 C180 300 200 240 280 236 C350 232 360 214 410 212 C500 208 520 112 640 108"></path><path class="df-road-mid" d="M112 300 C180 300 200 240 280 236 C350 232 360 214 410 212 C500 208 520 112 640 108"></path></g>
+<g class="sg on7"><g class="df-glow"><g transform="matrix(0.866 0.5 -0.866 0.5 0 -14)"><ellipse class="df-ring" cx="640" cy="104" rx="38" ry="38"></ellipse></g></g></g>
+<g class="df-glow"><g transform="matrix(0.866 0.5 -0.866 0.5 0 -15)"><path class="df-rt rt on4" d="M112 300 C180 300 200 240 280 236 C350 232 360 214 410 212"></path><path class="df-rt rt on6" d="M410 212 C500 208 520 112 640 108"></path></g></g>
+<use href="#dvTree" transform="translate(225.2 170)"></use><use href="#dvTree" transform="translate(233.8 205)"></use><use href="#dvTree" transform="translate(381.1 260)"></use><use href="#dvTree" transform="translate(112.6 185)"></use><g class="sg on1 on2"><g transform="matrix(0.866 0.5 0 1 38.1 36)"><rect class="df-n-f" width="52" height="58"></rect></g><g transform="matrix(0.866 -0.5 0 1 83.1 62)"><rect class="df-n-s" width="46" height="58"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 77.9 13)"><rect class="df-n-t" width="52" height="46"></rect></g>
+<g class="df-glow"><g transform="matrix(0.866 0.5 0 1 38.1 36)"><rect class="df-screen" x="10" y="10" width="32" height="18" rx="2"></rect></g></g><g transform="matrix(0.866 0.5 0 1 38.1 36)"><path class="df-screen-l" d="M15 16 H35 M15 21 H28"></path></g>
+</g><g class="sg on2 on3"><g transform="matrix(0.866 0.5 0 1 -209.6 103)"><rect class="df-n-f" width="70" height="28"></rect></g><g transform="matrix(0.866 -0.5 0 1 -149 138)"><rect class="df-n-s" width="52" height="28"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -164.5 77)"><rect class="df-n-t" width="70" height="52"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -209.6 103)"><rect class="df-door" x="10" y="12" width="16" height="16"></rect><rect class="df-door" x="34" y="12" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -237.3 144)"><rect class="df-t-f" width="26" height="12"></rect></g><g transform="matrix(0.866 -0.5 0 1 -214.8 157)"><rect class="df-t-s" width="14" height="12"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -225.2 137)"><rect class="df-t-t" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -213.9 160.5)"><rect class="df-t-f" width="10" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 -205.2 165.5)"><rect class="df-t-s" width="14" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -201.8 153.5)"><rect class="df-t-t" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -263.3 159)"><rect class="df-t-f" width="26" height="12"></rect></g><g transform="matrix(0.866 -0.5 0 1 -240.8 172)"><rect class="df-t-s" width="14" height="12"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -251.1 152)"><rect class="df-t-t" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -239.9 175.5)"><rect class="df-t-f" width="10" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 -231.2 180.5)"><rect class="df-t-s" width="14" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -227.8 168.5)"><rect class="df-t-t" width="10" height="14"></rect></g>
+</g><g class="sg on4"><g transform="matrix(0.866 0.5 0 1 -58.9 209)"><rect class="df-t-f" width="26" height="12"></rect></g><g transform="matrix(0.866 -0.5 0 1 -36.4 222)"><rect class="df-t-s" width="14" height="12"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -46.8 202)"><rect class="df-t-t" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -35.5 225.5)"><rect class="df-t-f" width="10" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 -26.8 230.5)"><rect class="df-t-s" width="14" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 -23.4 218.5)"><rect class="df-t-t" width="10" height="14"></rect></g>
+</g><g class="sg on4 on5"><g transform="matrix(0.866 0.5 0 1 123 209)"><rect class="df-n-f" width="74" height="36"></rect></g><g transform="matrix(0.866 -0.5 0 1 187.1 246)"><rect class="df-n-s" width="56" height="36"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 171.5 181)"><rect class="df-n-t" width="74" height="56"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 123 209)"><rect class="df-door" x="28" y="14" width="22" height="22"></rect></g>
+</g><g class="sg on5"><g transform="matrix(0.866 0.5 0 1 119.5 262)"><rect class="df-t-f" width="26" height="12"></rect></g><g transform="matrix(0.866 -0.5 0 1 142 275)"><rect class="df-t-s" width="14" height="12"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 131.6 255)"><rect class="df-t-t" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 142.9 278.5)"><rect class="df-t-f" width="10" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 151.6 283.5)"><rect class="df-t-s" width="14" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 155 271.5)"><rect class="df-t-t" width="10" height="14"></rect></g>
+</g><use href="#dvTree" transform="translate(-69.3 290)"></use><use href="#dvTree" transform="translate(-34.6 320)"></use><use href="#dvTree" transform="translate(147.2 385)"></use><use href="#dvTree" transform="translate(216.5 405)"></use><g class="sg on6"><g transform="matrix(0.866 0.5 0 1 292.7 312)"><rect class="df-t-f" width="26" height="12"></rect></g><g transform="matrix(0.866 -0.5 0 1 315.2 325)"><rect class="df-t-s" width="14" height="12"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 304.8 305)"><rect class="df-t-t" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 316.1 328.5)"><rect class="df-t-f" width="10" height="9"></rect></g><g transform="matrix(0.866 -0.5 0 1 324.8 333.5)"><rect class="df-t-s" width="14" height="9"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 328.2 321.5)"><rect class="df-t-t" width="10" height="14"></rect></g>
+</g><g class="sg on1 on6 on7"><g transform="matrix(0.866 0.5 0 1 455.5 323)"><rect class="df-n-f" width="44" height="26"></rect></g><g transform="matrix(0.866 -0.5 0 1 493.6 345)"><rect class="df-n-s" width="36" height="26"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 486.7 305)"><rect class="df-n-t" width="44" height="36"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 448.6 330)"><rect class="df-t-f" width="48" height="3"></rect></g><g transform="matrix(0.866 -0.5 0 1 490.2 354)"><rect class="df-t-s" width="8" height="3"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 455.5 326)"><rect class="df-t-t" width="48" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 455.5 323)"><rect class="df-door" x="16" y="10" width="12" height="16"></rect></g>
+</g><path class="df-data arc on1" d="M485 306 Q282.8 -64.5 80.5 25.5"></path>
+<g class="arc on2 on3"><g class="df-glow"><path class="df-assign" d="M80.5 25.5 Q-78.5 30.2 -157.6 95"></path></g></g>
+<g class="df-b sb b1"><circle class="pulse ext" cx="478" cy="268" r="13"></circle><circle class="df-badge-ext" cx="478" cy="268" r="13"></circle><text class="df-num-ext" x="478" y="273" text-anchor="middle">1</text></g>
+<g class="df-b sb b2"><circle class="pulse" cx="80.5" cy="-0.5" r="13"></circle><g class="df-glow"><circle class="df-badge-halo" cx="80.5" cy="-0.5" r="19"></circle></g><circle class="df-badge" cx="80.5" cy="-0.5" r="13"></circle><text class="df-num" x="80.5" y="4.5" text-anchor="middle">2</text></g>
+<g class="df-b sb b3"><circle class="pulse" cx="-157.6" cy="73" r="13"></circle><g class="df-glow"><circle class="df-badge-halo" cx="-157.6" cy="73" r="19"></circle></g><circle class="df-badge" cx="-157.6" cy="73" r="13"></circle><text class="df-num" x="-157.6" y="78" text-anchor="middle">3</text></g>
+<g class="df-b sb b4"><circle class="pulse" cx="-41.6" cy="180" r="13"></circle><g class="df-glow"><circle class="df-badge-halo" cx="-41.6" cy="180" r="19"></circle></g><circle class="df-badge" cx="-41.6" cy="180" r="13"></circle><text class="df-num" x="-41.6" y="185" text-anchor="middle">4</text></g>
+<g class="df-b sb b5"><circle class="pulse ext" cx="179.3" cy="179.5" r="13"></circle><circle class="df-badge-ext" cx="179.3" cy="179.5" r="13"></circle><text class="df-num-ext" x="179.3" y="184.5" text-anchor="middle">5</text></g>
+<g class="df-b sb b6"><circle class="pulse" cx="310" cy="283" r="13"></circle><g class="df-glow"><circle class="df-badge-halo" cx="310" cy="283" r="19"></circle></g><circle class="df-badge" cx="310" cy="283" r="13"></circle><text class="df-num" x="310" y="288" text-anchor="middle">6</text></g>
+<g class="df-b sb b7"><circle class="pulse ext" cx="512.7" cy="288" r="13"></circle><circle class="df-badge-ext" cx="512.7" cy="288" r="13"></circle><text class="df-num-ext" x="512.7" y="293" text-anchor="middle">7</text></g>
+</svg>
+<div class="df-cap" style="display: grid; grid-template-columns: 1fr auto; gap: 16px 24px; align-items: center; padding: 20px clamp(16px, 2.5vw, 24px); border-top: 1px solid var(--line); background: var(--surface)">
+<div aria-live="polite">
+<div class="df-cap-i cap-k1" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 1 OF 7</span>
+<span class="df-tag-ext">Point of Sales app</span>
 </div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
-<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">SYNCED WITH</span>
-<span style="padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600">Point of sale</span>
-<span style="padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600">Warehouse inventory</span>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Kiosk orders and pays</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">The kiosk orders fertilizer and pays for it directly in the Point of Sales app.</p>
+</div>
+<div class="df-cap-i cap-k2" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 2 OF 7</span>
+<span class="df-tag-own">Sales and Delivery app → iDelivery</span>
+</div>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Checked and assigned to a transporter</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">The Sales and Delivery app receives the order, checks that stock is available, and assigns it to the transporter mapped to it — Transporter A. iDelivery receives it as a delivery task.</p>
+</div>
+<div class="df-cap-i cap-k3" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 3 OF 7</span>
+<span class="df-tag-own">In iDelivery</span>
+</div>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Truck and driver assigned</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">Transporter A picks a truck and a driver from its fleet to fulfil the kiosk’s order.</p>
+</div>
+<div class="df-cap-i cap-k4" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 4 OF 7</span>
+<span class="df-tag-own">In iDelivery</span>
+</div>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Off to the warehouse</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">The driver heads to the fertilizer warehouse to collect the goods for this assignment.</p>
+</div>
+<div class="df-cap-i cap-k5" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 5 OF 7</span>
+<span class="df-tag-ext">Warehouse Inventory app</span>
+</div>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Confirmed and loaded</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">The warehouse checks the pickup in the Warehouse Inventory app and, if everything matches, loads the fertilizer onto the truck.</p>
+</div>
+<div class="df-cap-i cap-k6" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 6 OF 7</span>
+<span class="df-tag-own">In iDelivery</span>
+</div>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Delivered to the kiosk</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">The driver takes the fertilizer to the kiosk that placed the order.</p>
+</div>
+<div class="df-cap-i cap-k7" style="flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">STEP 7 OF 7</span>
+<span class="df-tag-ext">Point of Sales app</span>
+</div>
+<strong style="font-size: clamp(18px, 1.8vw, 22px); line-height: 1.3">Received — case closed</strong>
+<p style="margin: 0; color: var(--muted); font-size: 15px; max-width: 46em">The kiosk confirms receipt in the Point of Sales app, and the order is complete.</p>
+</div>
+</div>
+<div class="df-cap-nav" style="display: flex; gap: 8px">
+<button type="button" class="df-nav" data-action="flow-prev" aria-label="Previous step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>Back</button>
+<button type="button" class="df-nav primary" data-action="flow-next" aria-label="Next step">Next<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 0 clamp(16px, 2.5vw, 24px) 20px; background: var(--surface)">
+<div class="df-chips" role="group" aria-label="Choose a step" style="display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 auto">
+<button type="button" class="df-chip k1 ext" aria-pressed="true" aria-label="Step 1: Kiosk orders and pays" data-action="flow-go" data-step="1">1</button>
+<button type="button" class="df-chip k2" aria-pressed="false" aria-label="Step 2: Checked and assigned to a transporter" data-action="flow-go" data-step="2">2</button>
+<button type="button" class="df-chip k3" aria-pressed="false" aria-label="Step 3: Truck and driver assigned" data-action="flow-go" data-step="3">3</button>
+<button type="button" class="df-chip k4" aria-pressed="false" aria-label="Step 4: Off to the warehouse" data-action="flow-go" data-step="4">4</button>
+<button type="button" class="df-chip k5 ext" aria-pressed="false" aria-label="Step 5: Confirmed and loaded" data-action="flow-go" data-step="5">5</button>
+<button type="button" class="df-chip k6" aria-pressed="false" aria-label="Step 6: Delivered to the kiosk" data-action="flow-go" data-step="6">6</button>
+<button type="button" class="df-chip k7 ext" aria-pressed="false" aria-label="Step 7: Received — case closed" data-action="flow-go" data-step="7">7</button>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 13px; color: var(--muted)">
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: var(--btn)"></span>In iDelivery</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; box-sizing: border-box; border-radius: 4px; border: 1.5px dashed var(--muted)"></span>In a connected app · Point of Sales, Warehouse Inventory</span>
+</div>
 </div>
 </div>
 </section>
@@ -177,18 +371,34 @@ All work</a>
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">04 — ARCHITECTURE</span>
 <h2 id="arch-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Layers, from the request inward</h2>
 </div>
-<div role="img" aria-label="Clean Architecture layers: API, Application, Domain, and Infrastructure with EF Core and SQL Server, connected to point of sale and warehouse inventory" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; padding: clamp(20px, 3vw, 32px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line)">
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="padding: 16px 20px; border-radius: 14px; background: var(--surface-2); display: flex; justify-content: space-between; gap: 12px" class="layer-row"><span style="font-weight: 700">API</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">endpoints · JWT roles</span></div>
-<div style="padding: 16px 20px; border-radius: 14px; background: #0A22B8; color: #FFFFFF; display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 700">Application</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">use cases</span></div>
-<div style="padding: 16px 20px; border-radius: 14px; background: #4B2BFF; color: #FFFFFF; display: flex; justify-content: space-between; gap: 12px"><span style="font-weight: 700">Domain</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #E2DCFF">delivery rules</span></div>
-<div style="padding: 16px 20px; border-radius: 14px; background: #0659D6; color: #FFFFFF; display: flex; justify-content: space-between; gap: 12px" class="layer-row"><span style="font-weight: 700">Infrastructure</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #D6E6FF">EF Core · SQL Server</span></div>
-</div>
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 12px">
-<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">EXTERNAL SYSTEMS</span>
-<div style="display: flex; align-items: center; gap: 12px"><svg width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h20M6 4L2 10l4 6M18 4l4 6-4 6"></path></svg><div style="flex: 1; padding: 16px 20px; border-radius: 14px; border: 1.5px dashed var(--line); font-weight: 700">Point of sale</div></div>
-<div style="display: flex; align-items: center; gap: 12px"><svg width="24" height="20" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--azure); flex-shrink: 0"><path d="M2 10h20M6 4L2 10l4 6M18 4l4 6-4 6"></path></svg><div style="flex: 1; padding: 16px 20px; border-radius: 14px; border: 1.5px dashed var(--line); font-weight: 700">Warehouse inventory</div></div>
-</div>
+<div style="border-radius: 24px; background: var(--surface); border: 1px solid var(--line); overflow: hidden">
+<svg class="arch-svg" viewBox="-331.2 -185 793.2 449" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Clean Architecture as four stacked layers: API on top with endpoints and JWT roles, then Application with use cases, Domain with delivery rules, and Infrastructure with EF Core and SQL Server at the bottom. A request enters from the top. Infrastructure is wired to point of sale and warehouse inventory." style="display: block; width: 100%; height: clamp(300px, 34vw, 440px)">
+<defs><filter id="dlGlow" filterUnits="userSpaceOnUse" x="-331.2" y="-185" width="793.2" height="449"><feGaussianBlur stdDeviation="3.5" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs>
+<g class="dl-glow" transform="matrix(0.866 0.5 -0.866 0.5 0 -9)"><path class="dl-wire" d="M200 34 C250 34 260 10 300 10"></path><path class="dl-wire" d="M200 106 C250 106 260 132 300 132"></path></g>
+<g transform="matrix(0.866 0.5 0 1 233.8 141)"><rect class="dl-n-f" width="44" height="24"></rect></g><g transform="matrix(0.866 -0.5 0 1 271.9 163)"><rect class="dl-n-s" width="40" height="24"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 268.5 121)"><rect class="dl-n-t" width="44" height="40"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 268.5 121)"><rect class="dl-slot" x="8" y="10" width="28" height="4" rx="2"></rect><rect class="dl-slot" x="8" y="20" width="18" height="4" rx="2"></rect></g>
+<path class="dl-guide" d="M-121.2 70 V-98"></path><path class="dl-guide" d="M52 170 V2"></path><path class="dl-guide" d="M173.2 100 V-68"></path>
+<g transform="matrix(0.866 0.5 0 1 -121.2 52)"><rect class="dl-infra-f" width="200" height="18"></rect></g><g transform="matrix(0.866 -0.5 0 1 52 152)"><rect class="dl-infra-s" width="140" height="18"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><rect class="dl-infra-t" width="200" height="140"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -121.2 2)"><rect class="dl-dom-f" width="200" height="18"></rect></g><g transform="matrix(0.866 -0.5 0 1 52 102)"><rect class="dl-dom-s" width="140" height="18"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -68)"><rect class="dl-dom-t" width="200" height="140"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -121.2 -48)"><rect class="dl-app-f" width="200" height="18"></rect></g><g transform="matrix(0.866 -0.5 0 1 52 52)"><rect class="dl-app-s" width="140" height="18"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -118)"><rect class="dl-app-t" width="200" height="140"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -121.2 -98)"><rect class="dl-api-f" width="200" height="18"></rect></g><g transform="matrix(0.866 -0.5 0 1 52 2)"><rect class="dl-api-s" width="140" height="18"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 0 -168)"><rect class="dl-api-t" width="200" height="140"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 128.2 202)"><rect class="dl-n-f" width="44" height="24"></rect></g><g transform="matrix(0.866 -0.5 0 1 166.3 224)"><rect class="dl-n-s" width="40" height="24"></rect></g><g transform="matrix(0.866 0.5 -0.866 0.5 162.8 182)"><rect class="dl-n-t" width="44" height="40"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 162.8 182)"><rect class="dl-slot" x="8" y="10" width="28" height="4" rx="2"></rect><rect class="dl-slot" x="8" y="20" width="18" height="4" rx="2"></rect></g>
+<path class="dl-lead" d="M-129.2 61 H-161.2"></path><text class="dl-name" x="-169.2" y="59" text-anchor="end">Infrastructure</text><text class="dl-sub" x="-169.2" y="77" text-anchor="end">EF Core · SQL Server</text>
+<path class="dl-lead" d="M-129.2 11 H-161.2"></path><text class="dl-name" x="-169.2" y="9" text-anchor="end">Domain</text><text class="dl-sub" x="-169.2" y="27" text-anchor="end">delivery rules</text>
+<path class="dl-lead" d="M-129.2 -39 H-161.2"></path><text class="dl-name" x="-169.2" y="-41" text-anchor="end">Application</text><text class="dl-sub" x="-169.2" y="-23" text-anchor="end">use cases</text>
+<path class="dl-lead" d="M-129.2 -89 H-161.2"></path><text class="dl-name" x="-169.2" y="-91" text-anchor="end">API</text><text class="dl-sub" x="-169.2" y="-73" text-anchor="end">endpoints · JWT roles</text>
+<g class="dl-glow"><path class="dl-req" d="M26 -163 V-99"></path><path class="dl-req-head" d="M19 -107 L26 -95 L33 -107"></path></g><text class="dl-req-t" x="38" y="-149" text-anchor="start">request</text>
+<text class="dl-ext" x="301.3" y="170" text-anchor="start">Point of sale</text>
+<text class="dl-ext" x="195.6" y="231" text-anchor="start">Warehouse inventory</text>
+</svg>
+<ul class="arch-key" style="list-style: none; margin: 0; padding: 16px 20px 20px; gap: 10px; border-top: 1px solid var(--line); font-size: 14px">
+<li style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex-shrink: 0; width: 16px; height: 16px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--line)"></span><span><strong>API</strong> <span style="color: var(--muted)">· endpoints, JWT roles</span></span></li>
+<li style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex-shrink: 0; width: 16px; height: 16px; border-radius: 4px; background: #0A22B8"></span><span><strong>Application</strong> <span style="color: var(--muted)">· use cases</span></span></li>
+<li style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex-shrink: 0; width: 16px; height: 16px; border-radius: 4px; background: #4B2BFF"></span><span><strong>Domain</strong> <span style="color: var(--muted)">· delivery rules</span></span></li>
+<li style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex-shrink: 0; width: 16px; height: 16px; border-radius: 4px; background: #0659D6"></span><span><strong>Infrastructure</strong> <span style="color: var(--muted)">· EF Core, SQL Server</span></span></li>
+<li style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex-shrink: 0; width: 16px; height: 0; border-top: 2.5px dashed var(--violet)"></span><span><strong>Wired to</strong> <span style="color: var(--muted)">· point of sale, warehouse inventory</span></span></li>
+</ul>
 </div>
 </section>
 

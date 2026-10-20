@@ -17,9 +17,38 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0}
-.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--dot:rgba(10,31,176,.13);--panel:#0A1FB0;--panel-ink:#FFFFFF;--panel-muted:#C9D4FF}
-.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--dot:rgba(120,150,255,.18);--panel:#101C66;--panel-ink:#FFFFFF;--panel-muted:#BCC8FF}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--dot:rgba(10,31,176,.13);--panel:#0A1FB0;--panel-ink:#FFFFFF;--panel-muted:#C9D4FF;--road:#E1E7F7;--plate-front:#DCE4F7;--plate-side:#C7D3EF;--truck:#1A44E0;--truck-front:#1436B8;--truck-side:#0F2A90;--depot:#0A1140}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--dot:rgba(120,150,255,.18);--panel:#101C66;--panel-ink:#FFFFFF;--panel-muted:#BCC8FF;--road:#26336E;--plate-front:#0D1438;--plate-side:#091030;--truck:#6E95FF;--truck-front:#4F78E6;--truck-side:#3A5FC4;--depot:#EEF2FF}
 a{color:var(--royal)}a:hover{color:var(--violet)}
+.hv-n-t{fill:var(--surface);stroke:var(--line)}
+.hv-n-f{fill:var(--plate-front);stroke:var(--line)}
+.hv-n-s{fill:var(--plate-side);stroke:var(--line)}
+.hv-n-t,.hv-n-f,.hv-n-s,.hv-inset{vector-effect:non-scaling-stroke;stroke-width:1}
+.hv-t-t{fill:var(--truck)}
+.hv-t-f{fill:var(--truck-front)}
+.hv-t-s{fill:var(--truck-side)}
+.hv-v-t{fill:var(--violet)}
+.hv-v-f{fill:var(--violet);filter:brightness(.82)}
+.hv-v-s{fill:var(--violet);filter:brightness(.66)}
+.hv-inset{fill:none;stroke:var(--line);stroke-dasharray:3 5}
+.hv-road-e{fill:none;stroke:var(--line);stroke-width:14;stroke-linecap:round}
+.hv-road{fill:none;stroke:var(--road);stroke-width:12;stroke-linecap:round}
+.hv-door{fill:var(--depot)}
+.hv-ring{fill:var(--violet);fill-opacity:.14;stroke:var(--violet);stroke-width:2}
+.hv-badge{fill:var(--violet)}
+.hv-check{fill:none;stroke:#FFFFFF;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.hv-pile{fill:none;stroke:var(--violet);stroke-width:2.5;stroke-opacity:.3;stroke-linecap:round}
+.hv-line{fill:none;stroke:var(--violet);stroke-width:4;stroke-linecap:round}
+.hv-big{fill:var(--violet);font:800 34px 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:-.03em}
+.hv-zone{fill:var(--royal);fill-opacity:.12;stroke:var(--royal);stroke-width:2}
+.hv-stray{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:4 6;stroke-opacity:.7;stroke-linecap:round}
+.hv-no-bg{fill:var(--surface)}
+.hv-no{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round}
+.hv-trend{fill:none;stroke:var(--violet);stroke-width:2;stroke-dasharray:2 6;stroke-linecap:round}
+.hv-qr-bg{fill:var(--violet)}
+.hv-qr rect{fill:#FFFFFF}
+.hv-beam{fill:none;stroke:var(--violet);stroke-width:2;stroke-dasharray:3 4;stroke-opacity:.7}
+.t-dark .hv-glow{filter:url(#hvGlow)}
 .nav-links{display:flex}
 .menu-btn{display:none}
 @media (max-width: 760px){
@@ -178,23 +207,31 @@ Download CV</a>
 <div class="work-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px">
 
 <article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div class="viz viz-rows" role="img" aria-label="Illustration: a list of delivery assignments, each with a warehouse, a truck and a status" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 36px 24px 16px">
+<div class="viz" role="img" aria-label="Illustration: a truck on its way from a warehouse to a drop point that is marked delivered" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2)">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
-<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><div style="height: 7px; width: 70%; border-radius: 4px; background: var(--line)"></div><div style="height: 6px; width: 45%; border-radius: 4px; background: var(--line)"></div></div>
-<span style="padding: 3px 8px; border-radius: 6px; background: var(--chip); color: var(--chip-ink); font-size: 11px; font-weight: 600">Assigned</span>
-</div>
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
-<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><div style="height: 7px; width: 60%; border-radius: 4px; background: var(--line)"></div><div style="height: 6px; width: 50%; border-radius: 4px; background: var(--line)"></div></div>
-<span style="padding: 3px 8px; border-radius: 6px; background: var(--royal); color: #FFFFFF; font-size: 11px; font-weight: 600">Dispatched</span>
-</div>
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line)">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--royal); flex-shrink: 0"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
-<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><div style="height: 7px; width: 75%; border-radius: 4px; background: var(--line)"></div><div style="height: 6px; width: 35%; border-radius: 4px; background: var(--line)"></div></div>
-<span style="padding: 3px 8px; border-radius: 6px; background: var(--violet); color: #FFFFFF; font-size: 11px; font-weight: 600">Delivered</span>
-</div>
+<svg viewBox="-117.9 -20 331.1 205" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position: absolute; top: 30px; left: 12px; width: calc(100% - 24px); height: calc(100% - 40px)">
+<defs><filter id="hvGlow" filterUnits="userSpaceOnUse" x="-400" y="-300" width="800" height="600"><feGaussianBlur stdDeviation="2.6" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs>
+<g transform="matrix(0.866 0.5 0 1 -103.9 52)"><rect class="hv-n-f" width="230" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 95.3 167)"><rect class="hv-n-s" width="120" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-n-t" width="230" height="120"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-inset" x="7" y="7" width="216" height="106" rx="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><path class="hv-road-e" d="M40 64 H200"></path><path class="hv-road" d="M40 64 H200"></path></g>
+<g class="hv-glow" transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><ellipse class="hv-ring" cx="200" cy="64" rx="26" ry="26"></ellipse></g>
+<g transform="matrix(0.866 0.5 0 1 -48.5 12)"><rect class="hv-n-f" width="28" height="22"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -24.2 26)"><rect class="hv-n-s" width="28" height="22"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -24.2 -2)"><rect class="hv-n-t" width="28" height="28"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -48.5 12)"><rect class="hv-door" x="9" y="10" width="10" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 58 85.5)"><rect class="hv-t-f" width="20" height="10"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 75.3 95.5)"><rect class="hv-t-s" width="12" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 68.4 79.5)"><rect class="hv-t-t" width="20" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 76.2 99)"><rect class="hv-t-f" width="8" height="7"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 83.1 103)"><rect class="hv-t-s" width="12" height="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 86.6 93)"><rect class="hv-t-t" width="8" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 100.5 110)"><rect class="hv-n-f" width="20" height="14"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 117.8 120)"><rect class="hv-n-s" width="20" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 117.8 100)"><rect class="hv-n-t" width="20" height="20"></rect></g>
+<g class="hv-glow"><circle class="hv-badge" cx="117.8" cy="80" r="11"></circle></g><path class="hv-check" d="M112.8 80 l3.5 3.5 l6.5 -7"></path>
+</svg>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Enterprise · Logistics</span>
@@ -214,17 +251,29 @@ Download CV</a>
 </article>
 
 <article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div class="viz" role="img" aria-label="Illustration: relative map spend before and after, down 84 percent" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; justify-content: center; gap: 40px; padding: 40px 24px 18px">
-<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">RELATIVE SPEND</span>
-<div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px">
-<div style="width: 64px; height: 100%; border-radius: 10px 10px 4px 4px; background: var(--line)"></div>
-<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">Before</span>
-</div>
-<div style="height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px">
-<span style="font-size: 30px; font-weight: 800; letter-spacing: -0.03em; color: var(--violet)">−84%</span>
-<div style="width: 64px; height: 16%; border-radius: 10px 10px 4px 4px; background: var(--royal)"></div>
-<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">After</span>
-</div>
+<div class="viz" role="img" aria-label="Illustration: many copies of the same route collapse into one glowing route, with the bill down 84 percent" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2)">
+<span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
+<svg viewBox="-109.3 -20 322.4 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position: absolute; top: 30px; left: 12px; width: calc(100% - 24px); height: calc(100% - 40px)">
+<g transform="matrix(0.866 0.5 0 1 -95.3 47)"><rect class="hv-n-f" width="230" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 103.9 162)"><rect class="hv-n-s" width="110" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-n-t" width="230" height="110"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-inset" x="7" y="7" width="216" height="96" rx="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><path class="hv-road-e" d="M20 70 C70 70 90 40 140 40 S190 40 212 40"></path><path class="hv-road" d="M20 70 C70 70 90 40 140 40 S190 40 212 40"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -10)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -15)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -20)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -25)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -30)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -35)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -40)"><path class="hv-pile" d="M20 70 C50 70 66 58 84 50"></path></g>
+<g class="hv-glow" transform="matrix(0.866 0.5 -0.866 0.5 0 -9)"><path class="hv-line" d="M20 70 C70 70 90 40 140 40 S190 40 212 40"></path></g>
+<g transform="matrix(0.866 0.5 0 1 -21.7 41.5)"><rect class="hv-t-f" width="20" height="10"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -4.3 51.5)"><rect class="hv-t-s" width="12" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -11.3 35.5)"><rect class="hv-t-t" width="20" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -3.5 55)"><rect class="hv-t-f" width="8" height="7"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 3.5 59)"><rect class="hv-t-s" width="12" height="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 6.9 49)"><rect class="hv-t-t" width="8" height="12"></rect></g><text class="hv-big" x="138.6" y="58" text-anchor="middle">−84%</text>
+</svg>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Cost saving</span>
@@ -244,14 +293,27 @@ Download CV</a>
 </article>
 
 <article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div class="viz" role="img" aria-label="Illustration: a start zone and a finish zone, with a tap outside the zone refused" style="position: relative; height: 200px; border-radius: 16px; background-color: var(--surface-2); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; overflow: hidden">
+<div class="viz" role="img" aria-label="Illustration: a warehouse inside a geofence zone, with a tap outside the zone refused" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2)">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
-<div style="position: absolute; left: 22%; top: 56%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; border: 2px solid var(--royal); background: rgba(26, 68, 224, 0.10)"></div>
-<div style="position: absolute; left: 22%; top: 56%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--royal)"></div>
-<div style="position: absolute; left: 66%; top: 56%; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%; border: 2px dashed var(--azure); background: rgba(10, 120, 230, 0.08)"></div>
-<div style="position: absolute; left: 66%; top: 56%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--azure)"></div>
-<div style="position: absolute; left: 40%; top: 20%; width: 14px; height: 14px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 6px rgba(75, 43, 255, 0.18)"></div>
-<div style="position: absolute; left: calc(40% + 22px); top: calc(20% - 4px); padding: 3px 8px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); font-size: 11px; font-weight: 600; color: var(--violet)">Can’t start here</div>
+<svg viewBox="-117.9 -20 331.1 205" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position: absolute; top: 30px; left: 12px; width: calc(100% - 24px); height: calc(100% - 40px)">
+<g transform="matrix(0.866 0.5 0 1 -103.9 52)"><rect class="hv-n-f" width="230" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 95.3 167)"><rect class="hv-n-s" width="120" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-n-t" width="230" height="120"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-inset" x="7" y="7" width="216" height="106" rx="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><path class="hv-road-e" d="M64 66 C110 66 130 40 210 40"></path><path class="hv-road" d="M64 66 C110 66 130 40 210 40"></path></g>
+<g class="hv-glow" transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><ellipse class="hv-zone" cx="58" cy="62" rx="40" ry="40"></ellipse></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><path class="hv-stray" d="M58 62 Q120 110 168 96"></path></g>
+<g transform="matrix(0.866 0.5 0 1 -27.7 30)"><rect class="hv-n-f" width="28" height="22"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -3.5 44)"><rect class="hv-n-s" width="28" height="22"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -3.5 16)"><rect class="hv-n-t" width="28" height="28"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -27.7 30)"><rect class="hv-door" x="9" y="10" width="10" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 37.2 67.5)"><rect class="hv-t-f" width="20" height="10"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 54.6 77.5)"><rect class="hv-t-s" width="12" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 47.6 61.5)"><rect class="hv-t-t" width="20" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 55.4 81)"><rect class="hv-t-f" width="8" height="7"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 62.4 85)"><rect class="hv-t-s" width="12" height="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 65.8 75)"><rect class="hv-t-t" width="8" height="12"></rect></g><circle class="hv-no-bg" cx="62.4" cy="124" r="9"></circle><circle class="hv-no" cx="62.4" cy="124" r="9"></circle><path class="hv-no" d="M58.8 120.4 l7.2 7.2 M66 120.4 l-7.2 7.2"></path>
+</svg>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Anti-fraud</span>
@@ -271,14 +333,32 @@ Download CV</a>
 </article>
 
 <article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div class="viz" role="img" aria-label="Illustration: an abstract bar chart without values" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: flex-end; gap: 10px; padding: 44px 28px 24px">
+<div class="viz" role="img" aria-label="Illustration: an abstract isometric bar chart without values" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2)">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
-<div style="flex: 1; height: 38%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
-<div style="flex: 1; height: 62%; border-radius: 6px 6px 2px 2px; background: var(--royal)"></div>
-<div style="flex: 1; height: 48%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
-<div style="flex: 1; height: 80%; border-radius: 6px 6px 2px 2px; background: var(--royal)"></div>
-<div style="flex: 1; height: 70%; border-radius: 6px 6px 2px 2px; background: var(--azure)"></div>
-<div style="flex: 1; height: 100%; border-radius: 6px 6px 2px 2px; background: var(--violet)"></div>
+<svg viewBox="-109.3 -20 305.1 190" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position: absolute; top: 30px; left: 12px; width: calc(100% - 24px); height: calc(100% - 40px)">
+<g transform="matrix(0.866 0.5 0 1 -95.3 47)"><rect class="hv-n-f" width="210" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 86.6 152)"><rect class="hv-n-s" width="110" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-n-t" width="210" height="110"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-inset" x="7" y="7" width="196" height="96" rx="7"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -34.6 12)"><rect class="hv-t-f" width="18" height="22"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -19.1 21)"><rect class="hv-t-s" width="18" height="22"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -19.1 3)"><rect class="hv-t-t" width="18" height="18"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -8.7 13)"><rect class="hv-t-f" width="18" height="36"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 6.9 22)"><rect class="hv-t-s" width="18" height="36"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 6.9 4)"><rect class="hv-t-t" width="18" height="18"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 17.3 36)"><rect class="hv-t-f" width="18" height="28"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 32.9 45)"><rect class="hv-t-s" width="18" height="28"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 32.9 27)"><rect class="hv-t-t" width="18" height="18"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 43.3 31)"><rect class="hv-t-f" width="18" height="48"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 58.9 40)"><rect class="hv-t-s" width="18" height="48"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 58.9 22)"><rect class="hv-t-t" width="18" height="18"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 69.3 54)"><rect class="hv-t-f" width="18" height="40"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 84.9 63)"><rect class="hv-t-s" width="18" height="40"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 84.9 45)"><rect class="hv-t-t" width="18" height="18"></rect></g>
+<g class="hv-glow"><g transform="matrix(0.866 0.5 0 1 95.3 45)"><rect class="hv-v-f" width="18" height="64"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 110.9 54)"><rect class="hv-v-s" width="18" height="64"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 110.9 36)"><rect class="hv-v-t" width="18" height="18"></rect></g></g><path class="hv-trend hv-glow" d="M-19.1 2 C-14.7 2.2 -1.7 -1 6.9 3 C15.6 7 24.2 23 32.9 26 C41.6 29 50.2 18 58.9 21 C67.5 24 76.2 41.7 84.9 44 C93.5 46.3 106.5 36.5 110.9 35"></path>
+</svg>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Enterprise · Analytics</span>
@@ -298,19 +378,31 @@ Download CV</a>
 </article>
 
 <article class="work-card" style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 16px">
-<div class="viz" role="img" aria-label="Illustration: goods moving from warehouse to distributor to retailer, each hand-off a QR scan" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; gap: 0; padding: 0 28px">
+<div class="viz" role="img" aria-label="Illustration: goods moving from warehouse to distributor to retailer, each hand-off a QR scan" style="position: relative; height: 200px; border-radius: 16px; background: var(--surface-2)">
 <span style="position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATIVE</span>
-<div style="width: 56px; height: 56px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--royal); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v10H3z"></path><path d="M8 20v-6h8v6"></path></svg>
-</div>
-<div style="flex: 1; border-top: 2px dashed var(--azure); position: relative; min-width: 24px"></div>
-<div style="width: 56px; height: 56px; border-radius: 14px; background: var(--royal); color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6"></rect><rect x="14" y="4" width="6" height="6"></rect><rect x="4" y="14" width="6" height="6"></rect><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 18h2M18 14h2"></path></svg>
-</div>
-<div style="flex: 1; border-top: 2px dashed var(--azure); min-width: 24px"></div>
-<div style="width: 56px; height: 56px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--royal); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l1-5h14l1 5M4 9v11h16V9M4 9h16"></path><path d="M10 20v-5h4v5"></path></svg>
-</div>
+<svg viewBox="-109.3 -20 331.1 205" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position: absolute; top: 30px; left: 12px; width: calc(100% - 24px); height: calc(100% - 40px)">
+<g transform="matrix(0.866 0.5 0 1 -95.3 47)"><rect class="hv-n-f" width="240" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 112.6 167)"><rect class="hv-n-s" width="110" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-n-t" width="240" height="110"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><rect class="hv-inset" x="7" y="7" width="226" height="96" rx="7"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -8)"><path class="hv-road-e" d="M30 62 H214"></path><path class="hv-road" d="M30 62 H214"></path></g>
+<g transform="matrix(0.866 0.5 0 1 -53.7 13)"><rect class="hv-n-f" width="30" height="24"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -27.7 28)"><rect class="hv-n-s" width="30" height="24"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -27.7 -2)"><rect class="hv-n-t" width="30" height="30"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 22.5 63)"><rect class="hv-n-f" width="30" height="18"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 48.5 78)"><rect class="hv-n-s" width="30" height="18"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 48.5 48)"><rect class="hv-n-t" width="30" height="30"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 102.2 111)"><rect class="hv-n-f" width="28" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 126.4 125)"><rect class="hv-n-s" width="30" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 128.2 96)"><rect class="hv-n-t" width="28" height="30"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 0 48)"><rect class="hv-t-f" width="10" height="10"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 8.7 53)"><rect class="hv-t-s" width="10" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 8.7 43)"><rect class="hv-t-t" width="10" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 81.4 95)"><rect class="hv-t-f" width="10" height="10"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 90.1 100)"><rect class="hv-t-s" width="10" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 90.1 90)"><rect class="hv-t-t" width="10" height="10"></rect></g>
+<g class="hv-glow"><rect class="hv-qr-bg" x="-4.3" y="11" width="26" height="26" rx="6"></rect><g class="hv-qr"><rect x="-0.3" y="15" width="4.5" height="4.5" rx="1"></rect><rect x="5.7" y="15" width="4.5" height="4.5" rx="1"></rect><rect x="11.7" y="15" width="4.5" height="4.5" rx="1"></rect><rect x="-0.3" y="21" width="4.5" height="4.5" rx="1"></rect><rect x="11.7" y="21" width="4.5" height="4.5" rx="1"></rect><rect x="-0.3" y="27" width="4.5" height="4.5" rx="1"></rect><rect x="5.7" y="27" width="4.5" height="4.5" rx="1"></rect><rect x="11.7" y="27" width="4.5" height="4.5" rx="1"></rect></g></g><path class="hv-beam" d="M8.7 37 V46"></path><g class="hv-glow"><rect class="hv-qr-bg" x="77.1" y="58" width="26" height="26" rx="6"></rect><g class="hv-qr"><rect x="81.1" y="62" width="4.5" height="4.5" rx="1"></rect><rect x="87.1" y="62" width="4.5" height="4.5" rx="1"></rect><rect x="93.1" y="62" width="4.5" height="4.5" rx="1"></rect><rect x="81.1" y="68" width="4.5" height="4.5" rx="1"></rect><rect x="93.1" y="68" width="4.5" height="4.5" rx="1"></rect><rect x="81.1" y="74" width="4.5" height="4.5" rx="1"></rect><rect x="87.1" y="74" width="4.5" height="4.5" rx="1"></rect><rect x="93.1" y="74" width="4.5" height="4.5" rx="1"></rect></g></g><path class="hv-beam" d="M90.1 84 V93"></path>
+</svg>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <span style="padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 500">Enterprise · Distribution</span>

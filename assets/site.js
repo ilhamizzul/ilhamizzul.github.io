@@ -24,6 +24,14 @@
     });
   }
 
+  function setFlow(wrap, n) {
+    wrap.className = wrap.className.replace(/\bst-\d\b/, 'st-' + n);
+    wrap.setAttribute('data-step', String(n));
+    wrap.querySelectorAll('[data-action="flow-go"]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-step') === String(n)));
+    });
+  }
+
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-action]');
     if (!el) return;
@@ -36,6 +44,13 @@
     } else if (action === 'map-before' || action === 'map-after') {
       var wrap = el.closest('[data-map]');
       if (wrap) setMap(wrap, action === 'map-after');
+    } else if (action.indexOf('flow-') === 0) {
+      var flow = el.closest('[data-flow]');
+      if (!flow) return;
+      var cur = parseInt(flow.getAttribute('data-step') || '1', 10);
+      var n = action === 'flow-go' ? parseInt(el.getAttribute('data-step'), 10)
+        : action === 'flow-next' ? (cur % 7) + 1 : ((cur + 5) % 7) + 1;
+      setFlow(flow, n);
     }
   });
 
