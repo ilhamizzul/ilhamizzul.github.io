@@ -17,18 +17,51 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <style>
 body{margin:0}
-.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--road:#E1E7F7;--sea:#D4E1FA;--land:#FBFCFF;--truck:#1A44E0;--depot:#0A1140;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E}
-.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--road:#26336E;--sea:#070D2A;--land:#141D47;--truck:#6E95FF;--depot:#EEF2FF;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF}
+.t-light{--bg:#F6F8FF;--surface:#FFFFFF;--surface-2:#EEF2FE;--ink:#0A1140;--muted:#47507A;--line:#DCE3F7;--road:#E1E7F7;--sea:#D4E1FA;--land:#FBFCFF;--truck:#1A44E0;--depot:#0A1140;--royal:#1A44E0;--azure:#0A78E6;--violet:#4B2BFF;--btn:#1A3FDB;--btn-ink:#FFFFFF;--chip:#E6ECFF;--chip-ink:#1A2E9E;--plate-front:#DCE4F7;--plate-side:#C7D3EF;--truck-front:#1436B8;--truck-side:#0F2A90}
+.t-dark{--bg:#060A1F;--surface:#0C1331;--surface-2:#111A42;--ink:#EEF2FF;--muted:#A6B0D9;--line:#1F2A5C;--road:#26336E;--sea:#070D2A;--land:#141D47;--truck:#6E95FF;--depot:#EEF2FF;--royal:#6E95FF;--azure:#4DA8FF;--violet:#9A8CFF;--btn:#2F62F5;--btn-ink:#FFFFFF;--chip:#16214F;--chip-ink:#C3D2FF;--plate-front:#0D1438;--plate-side:#091030;--truck-front:#4F78E6;--truck-side:#3A5FC4}
 a{color:var(--royal)}a:hover{color:var(--violet)}
 .only-sm{display:none}
 .seg{min-height:44px;padding:8px 16px;border-radius:10px;border:0;background:transparent;color:var(--muted);font:600 14px 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer}
 .seg.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(10,17,64,.14)}
 .mode-before .after-only{display:none}
 .mode-after .before-only{display:none}
+.im-plate-top{fill:var(--land);stroke:var(--line)}
+.im-plate-front{fill:var(--plate-front);stroke:var(--line)}
+.im-plate-side{fill:var(--plate-side);stroke:var(--line)}
+.im-inset{fill:none;stroke:var(--line);stroke-dasharray:4 6}
+.im-bld-top{fill:var(--land);stroke:var(--line)}
+.im-bld-front{fill:var(--plate-front);stroke:var(--line)}
+.im-bld-side{fill:var(--plate-side);stroke:var(--line)}
+.im-tree-top{fill:var(--road);stroke:var(--line)}
+.im-tree-front{fill:var(--plate-front);stroke:var(--line)}
+.im-tree-side{fill:var(--plate-side);stroke:var(--line)}
+.im-trunk-front,.im-trunk-side,.im-trunk-top{fill:var(--plate-side)}
+.im-plate-top,.im-plate-front,.im-plate-side,.im-inset,.im-bld-top,.im-bld-front,.im-bld-side,.im-tree-top,.im-tree-front,.im-tree-side{vector-effect:non-scaling-stroke;stroke-width:1}
+.im-door{fill:var(--depot)}
+.im-road-edge{fill:none;stroke:var(--line);stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
+.im-road{fill:none;stroke:var(--road);stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.im-road-mid{fill:none;stroke:var(--land);stroke-width:1.5;stroke-dasharray:8 10}
+.im-ring{fill:none;stroke:var(--depot);stroke-width:2;stroke-dasharray:5 5;opacity:.45}
+.im-trk-top{fill:var(--truck)}
+.im-trk-front{fill:var(--truck-front)}
+.im-trk-side{fill:var(--truck-side)}
+.im-off .im-trk-top{fill:var(--violet)}
+.im-off .im-trk-front,.im-off .im-trk-side{fill:var(--violet);filter:brightness(.78)}
+.im-dup{fill:none;stroke:var(--violet);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.3}
+.im-dup.top{stroke-opacity:.9}
+.im-route{fill:none;stroke:var(--violet);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.im-alert{fill:var(--violet);fill-opacity:.14;stroke:var(--violet);stroke-width:2.5}
+.im-live{fill:none;stroke:var(--azure);stroke-width:2;stroke-dasharray:6 7;stroke-linecap:round;stroke-opacity:.55}
+.im-label{fill:var(--muted);font:600 15px 'Plus Jakarta Sans',system-ui,sans-serif}
+.im-callout{fill:var(--violet);font:700 17px 'Plus Jakarta Sans',system-ui,sans-serif}
+.t-dark .im-glow,.t-dark .im-dup.top{filter:url(#imGlow)}
 @media (max-width: 760px){
+.im-label{font-size:30px}
+.im-callout{font-size:30px}
+.im-callout.before-only{display:none}
 .hide-sm{display:none !important}
 .only-sm{display:block}
-.map-svg{height:250px !important}
+.map-svg{height:auto !important;aspect-ratio:1125.3 / 618}
 .map-chips{position:static !important;padding:12px 14px 16px}
 .fix-grid{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
 main > section{row-gap:24px !important}
@@ -87,7 +120,7 @@ All work</a>
 <div class="mode-before" data-map style="border-radius: 24px; border: 1px solid var(--line); background: var(--surface); overflow: hidden">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 16px clamp(16px, 2.5vw, 22px); border-bottom: 1px solid var(--line)">
 <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
-<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATION · 10 TRUCKS ON JAVA’S NORTH-COAST ROAD</span>
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--muted)">ILLUSTRATION · 10 TRUCKS ON ONE ROAD</span>
 <span class="before-only" style="font-weight: 700; font-size: 17px">20 paid requests on every update</span>
 <span class="after-only" style="font-weight: 700; font-size: 17px; color: var(--royal)">10 requests once — then nothing until the page reloads</span>
 </div>
@@ -96,70 +129,154 @@ All work</a>
 <button type="button" class="seg" data-seg="after" aria-pressed="false" data-action="map-after">After first fix</button>
 </div>
 </div>
-<svg class="map-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of Java. Before: ten trucks on the north-coast road from Jakarta to Surabaya, each adding its own copy of the same route plus a second live route, so the road becomes a thick tangle. After: one clean planned route, with one truck far off course clearly visible." style="display: block; width: 100%; height: clamp(300px, 34vw, 440px); background: var(--sea)">
+<svg class="map-svg" viewBox="-463.7 -48 1125.3 618" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Isometric illustration of ten trucks on one winding road from a warehouse to a destination. Before: the same route is drawn once per truck, piling up into a stack of identical lines, and every truck also buys a live route to the destination. After the first fix: one planned route on the road, and the one truck far off course is clearly highlighted." style="display: block; width: 100%; height: clamp(320px, 38vw, 500px); background: var(--surface-2)">
 <defs>
-<symbol id="trk" viewBox="0 0 26 20"><rect x="1" y="3" width="15" height="12" rx="2"></rect><path d="M16 6h5l4 4v5h-9z"></path><circle cx="6" cy="16.5" r="2.5"></circle><circle cx="20" cy="16.5" r="2.5"></circle></symbol>
+<filter id="imGlow" filterUnits="userSpaceOnUse" x="-463.7" y="-48" width="1125.3" height="618"><feGaussianBlur stdDeviation="3.5" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+<path id="imRoad" d="M40 350 L186 350 Q230 350 230 306 L230 259 Q230 215 274 215 L396 215 Q440 215 440 171 L440 124 Q440 80 484 80 L612 80"></path>
 </defs>
-<g fill="none" stroke-width="1" style="stroke: var(--line)">
-<path d="M0 100 H1200 M0 330 H1200 M200 0 V400 M400 0 V400 M600 0 V400 M800 0 V400 M1000 0 V400"></path>
-</g>
-<g style="fill: var(--land); stroke: var(--line)" stroke-width="2" stroke-linejoin="round">
-<path d="M70 190 C95 160 140 150 190 156 C240 162 270 150 320 158 C400 170 450 172 500 182 C580 196 650 186 720 196 C790 206 840 196 900 208 C950 218 990 214 1030 222 C1080 232 1120 236 1140 252 C1158 268 1148 290 1120 292 C1060 296 1010 288 950 292 C880 298 820 300 760 292 C690 284 630 290 560 280 C480 270 420 268 350 258 C280 248 220 246 160 238 C110 232 75 220 70 190 Z"></path>
-<path d="M990 186 C1010 176 1080 174 1110 182 C1122 188 1112 196 1090 197 C1050 199 1010 199 994 195 C986 193 984 189 990 186 Z"></path>
-<path d="M1168 262 C1176 254 1192 254 1200 258 L1200 290 C1186 292 1170 282 1168 262 Z"></path>
-</g>
-<g style="fill: var(--muted)" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="15" font-weight="600">
-<text x="262" y="214">Jakarta</text>
-<text x="470" y="236">Cirebon</text>
-<text x="690" y="246">Semarang</text>
-<text x="975" y="268">Surabaya</text>
-</g>
+<g transform="matrix(0.866 0.5 0 1 -363.7 192)"><rect class="im-plate-front" width="660" height="18"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 207.8 522)"><rect class="im-plate-side" width="420" height="18"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><rect class="im-plate-top" width="660" height="420"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><rect class="im-inset" x="14" y="14" width="632" height="392" rx="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 48.5 64)"><rect class="im-trunk-front" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 52 66)"><rect class="im-trunk-side" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 52 62)"><rect class="im-trunk-top" width="4" height="4"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 38.1 48)"><rect class="im-tree-front" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 52 56)"><rect class="im-tree-side" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 52 40)"><rect class="im-tree-top" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 114.3 82)"><rect class="im-trunk-front" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 117.8 84)"><rect class="im-trunk-side" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 117.8 80)"><rect class="im-trunk-top" width="4" height="4"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 103.9 66)"><rect class="im-tree-front" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 117.8 74)"><rect class="im-tree-side" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 117.8 58)"><rect class="im-tree-top" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -29.4 79)"><rect class="im-trunk-front" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -26 81)"><rect class="im-trunk-side" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -26 77)"><rect class="im-trunk-top" width="4" height="4"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -39.8 63)"><rect class="im-tree-front" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -26 71)"><rect class="im-tree-side" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -26 55)"><rect class="im-tree-top" width="16" height="16"></rect></g>
+<use class="im-road-edge" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"></use>
+<use class="im-road" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"></use>
+<use class="im-road-mid" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"></use>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><ellipse class="im-ring" cx="620" cy="80" rx="34" ry="34"></ellipse></g>
+<g transform="matrix(0.866 0.5 0 1 -273.7 128)"><rect class="im-bld-front" width="34" height="30"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -244.2 145)"><rect class="im-bld-side" width="34" height="30"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -244.2 111)"><rect class="im-bld-top" width="34" height="34"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -273.7 128)"><rect class="im-door" x="11" y="14" width="12" height="16"></rect></g>
 <g class="before-only">
-<g fill="none" stroke-width="3" stroke-linecap="round" style="stroke: var(--violet)" stroke-opacity="0.22">
-<path transform="translate(0 -9)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 -6)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 -4)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 -2)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 2)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 4)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 6)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 9)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
-<path transform="translate(0 12)" d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230"></path>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -19)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -25)"></use>
 </g>
-<g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="7 7" style="stroke: var(--azure)" stroke-opacity="0.6">
-<path d="M372 178 C520 236 760 250 1020 232"></path>
-<path d="M452 186 C600 150 800 172 1020 230"></path>
-<path d="M572 196 C700 248 880 250 1020 232"></path>
-<path d="M612 263 C740 270 900 262 1020 234"></path>
-<path d="M652 200 C760 164 900 186 1020 228"></path>
-<path d="M792 210 C860 246 960 246 1020 234"></path>
-<path d="M882 216 C930 196 980 204 1020 228"></path>
+<g class="after-only im-glow"><use class="im-route" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -19)"></use></g>
+<g class="after-only im-glow"><g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><ellipse class="im-alert" cx="330" cy="320" rx="36" ry="36"></ellipse></g></g>
+<g transform="matrix(0.866 0.5 0 1 -256.3 179)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -233.8 192)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -244.2 172)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -233 195.5)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -224.3 200.5)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -220.8 188.5)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -207.8 207)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -185.3 220)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -195.7 200)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -184.5 223.5)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -175.8 228.5)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -172.3 216.5)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 37.2 213.5)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 59.8 226.5)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 49.4 206.5)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 60.6 230)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 69.3 235)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 72.7 223)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -45 222)"><rect class="im-trk-front" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -32.9 229)"><rect class="im-trk-side" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -36.4 217)"><rect class="im-trk-top" width="14" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 -68.4 232.5)"><rect class="im-trk-front" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 -56.3 239.5)"><rect class="im-trk-side" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 -45.9 219.5)"><rect class="im-trk-top" width="14" height="26"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 82.3 239.5)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 104.8 252.5)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 94.4 232.5)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 105.7 256)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 114.3 261)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 117.8 249)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 337.7 252)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 360.3 265)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 349.9 245)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 361.1 268.5)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 369.8 273.5)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 373.3 261.5)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 252.9 260)"><rect class="im-trk-front" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 265 267)"><rect class="im-trk-side" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 261.5 255)"><rect class="im-trk-top" width="14" height="10"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 229.5 270.5)"><rect class="im-trk-front" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 241.6 277.5)"><rect class="im-trk-side" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 252 257.5)"><rect class="im-trk-top" width="14" height="26"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 127.3 265.5)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 149.8 278.5)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 139.4 258.5)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 150.7 282)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 159.3 287)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 162.8 275)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 386.2 280)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 408.8 293)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 398.4 273)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 409.6 296.5)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 418.3 301.5)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 421.8 289.5)"><rect class="im-trk-top" width="10" height="14"></rect></g>
+<g class="before-only">
+<g transform="matrix(0.866 0.5 0 1 -12.1 290)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 10.4 303)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 283)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 11.3 306.5)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 19.9 311.5)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 23.4 299.5)"><rect class="im-trk-top" width="10" height="14"></rect></g>
 </g>
-<text x="520" y="150" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" style="fill: var(--violet)">Same road, drawn again and again</text>
+<g class="after-only im-off">
+<g transform="matrix(0.866 0.5 0 1 -12.1 290)"><rect class="im-trk-front" width="26" height="12"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 10.4 303)"><rect class="im-trk-side" width="14" height="12"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 0 283)"><rect class="im-trk-top" width="26" height="14"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 11.3 306.5)"><rect class="im-trk-front" width="10" height="9"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 19.9 311.5)"><rect class="im-trk-side" width="14" height="9"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 23.4 299.5)"><rect class="im-trk-top" width="10" height="14"></rect></g>
 </g>
-<g class="after-only">
-<path d="M300 172 C380 180 430 184 500 192 S650 200 720 206 S860 214 905 218 S990 226 1020 230" fill="none" stroke-width="5" stroke-linecap="round" style="stroke: var(--violet)"></path>
-<circle cx="612" cy="256" r="28" style="fill: var(--violet)" fill-opacity="0.16"></circle>
-<text x="560" y="322" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" style="fill: var(--violet)">Off course — easy to spot</text>
+<g transform="matrix(0.866 0.5 0 1 91.8 389)"><rect class="im-trunk-front" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 95.3 391)"><rect class="im-trunk-side" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 95.3 387)"><rect class="im-trunk-top" width="4" height="4"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 81.4 373)"><rect class="im-tree-front" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 95.3 381)"><rect class="im-tree-side" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 95.3 365)"><rect class="im-tree-top" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 169.7 404)"><rect class="im-trunk-front" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 173.2 406)"><rect class="im-trunk-side" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 173.2 402)"><rect class="im-trunk-top" width="4" height="4"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 159.3 388)"><rect class="im-tree-front" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 173.2 396)"><rect class="im-tree-side" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 173.2 380)"><rect class="im-tree-top" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 152.4 444)"><rect class="im-trunk-front" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 155.9 446)"><rect class="im-trunk-side" width="4" height="8"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 155.9 442)"><rect class="im-trunk-top" width="4" height="4"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 142 428)"><rect class="im-tree-front" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 155.9 436)"><rect class="im-tree-side" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 155.9 420)"><rect class="im-tree-top" width="16" height="16"></rect></g>
+<g transform="matrix(0.866 0.5 0 1 446.9 312)"><rect class="im-bld-front" width="24" height="20"></rect></g>
+<g transform="matrix(0.866 -0.5 0 1 467.7 324)"><rect class="im-bld-side" width="24" height="20"></rect></g>
+<g transform="matrix(0.866 0.5 -0.866 0.5 467.7 300)"><rect class="im-bld-top" width="24" height="24"></rect></g>
+<g class="before-only">
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -31)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -37)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -43)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -49)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -55)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -61)"></use>
+<use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -67)"></use>
+<use class="im-dup top" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -73)"></use>
 </g>
-<path d="M286 182 L300 160 L314 182 Z" style="fill: var(--depot)"></path>
-<circle cx="1020" cy="230" r="9" style="fill: var(--depot)"></circle>
-<circle cx="1020" cy="230" r="16" fill="none" stroke-width="2" style="stroke: var(--depot)" stroke-opacity="0.4"></circle>
-<g style="fill: var(--truck); stroke: var(--land)" stroke-width="1.5">
-<use href="#trk" x="360" y="160" width="24" height="18"></use>
-<use href="#trk" x="400" y="164" width="24" height="18"></use>
-<use href="#trk" x="440" y="168" width="24" height="18"></use>
-<use href="#trk" x="560" y="178" width="24" height="18"></use>
-<use href="#trk" x="640" y="182" width="24" height="18"></use>
-<use href="#trk" x="780" y="192" width="24" height="18"></use>
-<use href="#trk" x="820" y="194" width="24" height="18"></use>
-<use href="#trk" x="870" y="198" width="24" height="18"></use>
-<use href="#trk" x="930" y="204" width="24" height="18"></use>
-<use href="#trk" x="600" y="247" width="24" height="18"></use>
-</g>
-</svg>
-</div>
+<g class="before-only im-glow"><path class="im-live" d="M-235.6 184 Q116 163.5 467.7 312"></path><path class="im-live" d="M-187.1 212 Q140.3 182 467.7 312"></path><path class="im-live" d="M-46.8 227 Q210.4 199.9 467.7 312"></path><path class="im-live" d="M58 218.5 Q262.8 202.5 467.7 312"></path><path class="im-live" d="M103.1 244.5 Q285.4 219.8 467.7 312"></path><path class="im-live" d="M148.1 270.5 Q307.9 236.9 467.7 312"></path><path class="im-live" d="M251.1 265 Q359.4 241.1 467.7 312"></path><path class="im-live" d="M358.5 257 Q413.1 243.2 467.7 312"></path><path class="im-live" d="M407 285 Q437.3 262.2 467.7 312"></path><path class="im-live" d="M8.7 295 Q238.2 239.6 467.7 312"></path></g>
+<text class="im-label" x="-291" y="150" text-anchor="end">Warehouse</text>
+<text class="im-label" x="483.2" y="367" text-anchor="start">Destination</text>
+<text class="before-only im-callout" x="17.3" y="82" text-anchor="middle">Same road, drawn again and again</text>
+<text class="after-only im-callout" x="-31.2" y="352" text-anchor="middle">Off course — easy to spot</text>
+</svg></div>
 
 <div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px">
@@ -182,7 +299,7 @@ All work</a>
 </div>
 <div style="display: flex; align-items: center; gap: 14px">
 <span aria-hidden="true" style="width: 30px; flex-shrink: 0"></span>
-<span style="font-size: 14px; color: var(--muted)">Illustration based on the live monitoring map.</span>
+<span style="font-size: 14px; color: var(--muted)">A simplified illustration of the live monitoring map.</span>
 </div>
 </div>
 <div style="padding: 28px; border-radius: 24px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
