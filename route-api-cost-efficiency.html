@@ -55,6 +55,19 @@ a{color:var(--royal)}a:hover{color:var(--violet)}
 .im-label{fill:var(--muted);font:600 15px 'Plus Jakarta Sans',system-ui,sans-serif}
 .im-callout{fill:var(--violet);font:700 17px 'Plus Jakarta Sans',system-ui,sans-serif}
 .t-dark .im-glow,.t-dark .im-dup.top{filter:url(#imGlow)}
+.mode-before svg .after-only,.mode-after svg .before-only{display:inline;opacity:0;pointer-events:none}
+svg .before-only,svg .after-only{transition:opacity .45s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.mode-after svg .im-pile{transform:translateY(48px)}
+.mode-after svg .im-pile.lo{transform:translateY(8px)}
+.mode-after svg .im-arcs{transform:translateY(-22px)}
+.mode-before svg text.after-only,.mode-after svg text.before-only{transform:translateY(10px)}
+.im-pop{transform-box:fill-box;transform-origin:center}
+.mode-before svg .im-pop{transform:scale(.4)}
+.im-route{stroke-dasharray:780;stroke-dashoffset:780;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1) .2s}
+.mode-after .im-route{stroke-dashoffset:0}
+.mode-before span.before-only,.mode-after span.after-only{animation:imIn .4s ease both}
+@keyframes imIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){svg .before-only,svg .after-only,.im-route{transition:none}.mode-before span.before-only,.mode-after span.after-only{animation:none}}
 @media (max-width: 760px){
 .im-label{font-size:30px}
 .im-callout{font-size:30px}
@@ -164,12 +177,12 @@ All work</a>
 <g transform="matrix(0.866 -0.5 0 1 -244.2 145)"><rect class="im-bld-side" width="34" height="30"></rect></g>
 <g transform="matrix(0.866 0.5 -0.866 0.5 -244.2 111)"><rect class="im-bld-top" width="34" height="34"></rect></g>
 <g transform="matrix(0.866 0.5 0 1 -273.7 128)"><rect class="im-door" x="11" y="14" width="12" height="16"></rect></g>
-<g class="before-only">
+<g class="before-only im-pile lo">
 <use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -19)"></use>
 <use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -25)"></use>
 </g>
 <g class="after-only im-glow"><use class="im-route" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -19)"></use></g>
-<g class="after-only im-glow"><g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><ellipse class="im-alert" cx="330" cy="320" rx="36" ry="36"></ellipse></g></g>
+<g class="after-only im-glow im-pop"><g transform="matrix(0.866 0.5 -0.866 0.5 0 -18)"><ellipse class="im-alert" cx="330" cy="320" rx="36" ry="36"></ellipse></g></g>
 <g transform="matrix(0.866 0.5 0 1 -256.3 179)"><rect class="im-trk-front" width="26" height="12"></rect></g>
 <g transform="matrix(0.866 -0.5 0 1 -233.8 192)"><rect class="im-trk-side" width="14" height="12"></rect></g>
 <g transform="matrix(0.866 0.5 -0.866 0.5 -244.2 172)"><rect class="im-trk-top" width="26" height="14"></rect></g>
@@ -261,7 +274,7 @@ All work</a>
 <g transform="matrix(0.866 0.5 0 1 446.9 312)"><rect class="im-bld-front" width="24" height="20"></rect></g>
 <g transform="matrix(0.866 -0.5 0 1 467.7 324)"><rect class="im-bld-side" width="24" height="20"></rect></g>
 <g transform="matrix(0.866 0.5 -0.866 0.5 467.7 300)"><rect class="im-bld-top" width="24" height="24"></rect></g>
-<g class="before-only">
+<g class="before-only im-pile">
 <use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -31)"></use>
 <use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -37)"></use>
 <use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -43)"></use>
@@ -271,7 +284,7 @@ All work</a>
 <use class="im-dup" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -67)"></use>
 <use class="im-dup top" href="#imRoad" transform="matrix(0.866 0.5 -0.866 0.5 0 -73)"></use>
 </g>
-<g class="before-only im-glow"><path class="im-live" d="M-235.6 184 Q116 163.5 467.7 312"></path><path class="im-live" d="M-187.1 212 Q140.3 182 467.7 312"></path><path class="im-live" d="M-46.8 227 Q210.4 199.9 467.7 312"></path><path class="im-live" d="M58 218.5 Q262.8 202.5 467.7 312"></path><path class="im-live" d="M103.1 244.5 Q285.4 219.8 467.7 312"></path><path class="im-live" d="M148.1 270.5 Q307.9 236.9 467.7 312"></path><path class="im-live" d="M251.1 265 Q359.4 241.1 467.7 312"></path><path class="im-live" d="M358.5 257 Q413.1 243.2 467.7 312"></path><path class="im-live" d="M407 285 Q437.3 262.2 467.7 312"></path><path class="im-live" d="M8.7 295 Q238.2 239.6 467.7 312"></path></g>
+<g class="before-only im-glow im-arcs"><path class="im-live" d="M-235.6 184 Q116 163.5 467.7 312"></path><path class="im-live" d="M-187.1 212 Q140.3 182 467.7 312"></path><path class="im-live" d="M-46.8 227 Q210.4 199.9 467.7 312"></path><path class="im-live" d="M58 218.5 Q262.8 202.5 467.7 312"></path><path class="im-live" d="M103.1 244.5 Q285.4 219.8 467.7 312"></path><path class="im-live" d="M148.1 270.5 Q307.9 236.9 467.7 312"></path><path class="im-live" d="M251.1 265 Q359.4 241.1 467.7 312"></path><path class="im-live" d="M358.5 257 Q413.1 243.2 467.7 312"></path><path class="im-live" d="M407 285 Q437.3 262.2 467.7 312"></path><path class="im-live" d="M8.7 295 Q238.2 239.6 467.7 312"></path></g>
 <text class="im-label" x="-291" y="150" text-anchor="end">Warehouse</text>
 <text class="im-label" x="483.2" y="367" text-anchor="start">Destination</text>
 <text class="before-only im-callout" x="17.3" y="82" text-anchor="middle">Same road, drawn again and again</text>
