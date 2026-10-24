@@ -118,7 +118,7 @@ All work</a>
 <section aria-labelledby="cs-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 40px) 40px; display: flex; flex-direction: column; gap: 24px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal); letter-spacing: 0.04em">CASE STUDY · TRUCK TRACKING · ANTI-FRAUD</span>
 <h1 id="cs-title" style="margin: 0; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 800; max-width: 12em">Field Anti-Fraud Geofencing</h1>
-<p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">A delivery trip could be started and finished from anywhere — even from another island. Geofencing made the start line and the finish line mean something again.</p>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 21px); color: var(--muted); max-width: 36em">A delivery trip could be started and finished from anywhere, even from another island. With geofencing, a trip can now only start at the warehouse and finish at the destination.</p>
 <dl class="meta" style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 24px; border-top: 1px solid var(--line)">
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">YEAR</dt><dd style="margin: 6px 0 0; font-weight: 700">2024–2025</dd></div>
 <div><dt style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--muted)">MY ROLE</dt><dd style="margin: 6px 0 0; font-weight: 700">Designed and built the geofence check</dd></div>
@@ -290,11 +290,11 @@ All work</a>
 <section aria-labelledby="ctx-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px 64px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">01 — CONTEXT</span>
-<h2 id="ctx-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Every trip has a start line and a finish line</h2>
+<h2 id="ctx-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">How a trip is recorded</h2>
 </div>
 <div style="display: flex; flex-direction: column; gap: 16px; color: var(--muted)">
-<p style="margin: 0">This happens inside <strong style="color: var(--ink)">Truck Tracking</strong>, the same system behind the <a href="route-api-cost-efficiency.html" style="font-weight: 600">Route API cost story</a>. Each delivery trip has an official starting point — the warehouse — and an official destination.</p>
-<p style="margin: 0">The driver presses <strong style="color: var(--ink)">start</strong> when the trip begins and <strong style="color: var(--ink)">finish</strong> when it ends. Those two taps are what the rest of the system trusts.</p>
+<p style="margin: 0">This happens inside <strong style="color: var(--ink)">Truck Tracking</strong>, the same system behind the <a href="route-api-cost-efficiency.html" style="font-weight: 600">Route API cost story</a>. Each delivery trip has an official starting point (the warehouse) and an official destination.</p>
+<p style="margin: 0">The driver presses <strong style="color: var(--ink)">start</strong> when the trip begins and <strong style="color: var(--ink)">finish</strong> when it ends. The rest of the system relies on those two taps.</p>
 </div>
 </section>
 
@@ -307,7 +307,7 @@ All work</a>
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">START</span>
 <h3 style="margin: 0; font-size: 20px; font-weight: 700">Start the trip from anywhere</h3>
-<p style="margin: 0; color: var(--muted); font-size: 15px">A trip could be started wherever the phone happened to be — far from the warehouse, even on a different island.</p>
+<p style="margin: 0; color: var(--muted); font-size: 15px">A trip could be started wherever the phone happened to be, far from the warehouse, even on a different island.</p>
 </div>
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--chip); color: var(--chip-ink); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px">FINISH</span>
@@ -315,21 +315,21 @@ All work</a>
 <p style="margin: 0; color: var(--muted); font-size: 15px">The same at the other end: a delivery could be marked complete without ever reaching its destination.</p>
 </div>
 </div>
-<p style="margin: 0; max-width: 40em; font-size: clamp(18px, 1.8vw, 22px); font-weight: 600; line-height: 1.5">For a dishonest driver, that was an open door. For everyone else, it meant the delivery records couldn’t prove what really happened.</p>
+<p style="margin: 0; max-width: 40em; font-size: clamp(18px, 1.8vw, 22px); font-weight: 600; line-height: 1.5">That left room for fraud, and it meant the delivery records couldn’t prove what really happened.</p>
 </section>
 
 <section aria-labelledby="fix-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">03 — THE FIX</span>
-<h2 id="fix-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Put a fence around the start and the finish</h2>
+<h2 id="fix-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">A geofence around the start and the finish</h2>
 </div>
 <p style="margin: 0; max-width: 28em; color: var(--muted)">A geofence is an invisible circle around a place. When the driver presses start or finish, the app checks whether they are inside it.</p>
 </div>
 <div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; gap: 10px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">INSIDE THE ZONE</span>
-<h3 style="margin: 0; font-size: 22px; font-weight: 800">The trip starts — or finishes — as normal</h3>
+<h3 style="margin: 0; font-size: 22px; font-weight: 800">The trip starts or finishes as normal</h3>
 <p style="margin: 0; color: #C9D4FF; font-size: 15px">Nothing changes for a driver who is where they should be.</p>
 </div>
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
@@ -344,9 +344,9 @@ All work</a>
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">04 — THE TWIST</span>
-<h2 id="radius-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">One circle size can’t fit every place</h2>
+<h2 id="radius-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Why one radius didn’t work</h2>
 </div>
-<p style="margin: 0; max-width: 28em; color: var(--muted)">A fixed radius would either let cheaters through or lock honest drivers out. Two things make every location different.</p>
+<p style="margin: 0; max-width: 28em; color: var(--muted)">With one fixed radius, some places would let cheaters through and others would lock out drivers who were already on site. Locations differ in two ways.</p>
 </div>
 <div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px">
@@ -380,7 +380,7 @@ All work</a>
 <div style="padding: clamp(24px, 4vw, 36px); border-radius: 24px; background: #0A22B8; color: #FFFFFF; display: flex; flex-direction: column; justify-content: center; gap: 12px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #C9D4FF">SO THE RADIUS BECAME A SETTING</span>
 <p style="margin: 0; font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; line-height: 1.25">Central staff set the right radius for each location, straight from the main system.</p>
-<p style="margin: 0; color: #C9D4FF">The fence stays tight where it can and loosens only where the place — or the signal — demands it.</p>
+<p style="margin: 0; color: #C9D4FF">The radius stays tight by default and is widened only where the site is large or the signal is weak.</p>
 </div>
 </div>
 </section>
@@ -388,11 +388,11 @@ All work</a>
 <section aria-labelledby="out-title" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 40px) 0; display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-direction: column; gap: 10px">
 <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: var(--royal)">05 — OUTCOME</span>
-<h2 id="out-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Start and finish mean something again</h2>
+<h2 id="out-title" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 800">Results</h2>
 </div>
 <div class="cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Less room for fraud</div><p style="margin: 8px 0 0; font-size: 15px">Starting from another island, or finishing short of the destination, no longer works.</p></div>
-<div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">Delivery data that holds up</div><p style="margin: 8px 0 0; font-size: 15px">Every recorded start and finish is tied to the place it was supposed to happen.</p></div>
+<div style="padding: 28px; border-radius: 20px; background: var(--chip); color: var(--chip-ink)"><div style="font-size: 22px; font-weight: 800; line-height: 1.25">More reliable delivery data</div><p style="margin: 8px 0 0; font-size: 15px">Every recorded start and finish is tied to the place it was supposed to happen.</p></div>
 </div>
 </section>
 
